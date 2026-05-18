@@ -32,10 +32,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
       z-index: 1000;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08)
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.35s ease;
+    }
+
+    header.hide-header {
+      transform: translateY(-120%);
+    }
+
+    body {
+      padding-top: 86px;
+    }
+
+    section {
+      scroll-margin-top: 95px;
     }
 
     .logo {
@@ -406,10 +420,355 @@
         font-size: 32px
       }
     }
+
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 20px;
+    }
+
+    .popup-box {
+      position: relative;
+      max-width: 420px;
+      width: 100%;
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      animation: popupShow .4s ease;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+    }
+
+    .popup-box img {
+      width: 100%;
+      display: block;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: #ff2e2e;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .popup-btn {
+      display: block;
+      text-align: center;
+      background: #00c853;
+      color: white;
+      text-decoration: none;
+      padding: 16px;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    @keyframes popupShow {
+      from {
+        transform: scale(.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* ===== Premium Blue Footer Section ===== */
+    .premium-footer {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0, 153, 255, .35), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(0, 119, 255, .28), transparent 35%),
+        linear-gradient(135deg, #002b5c 0%, #004f9f 45%, #0077ff 100%);
+      color: #ffffff;
+      padding: 70px 8% 32px;
+    }
+
+    .premium-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: .18;
+      pointer-events: none;
+    }
+
+    .footer-container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.25fr 1.35fr;
+      gap: 70px;
+      max-width: 1350px;
+      margin: auto;
+      align-items: flex-start;
+    }
+
+    .footer-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-wrap img {
+      width: 92px;
+      height: 92px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid rgba(255, 255, 255, .35);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .22);
+    }
+
+    .footer-logo-wrap h2 {
+      font-size: 32px;
+      color: #ffffff;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+
+    .footer-brand h3 {
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .footer-offer {
+      font-size: 21px;
+      margin-bottom: 28px;
+      color: #d8ecff;
+      font-weight: 700;
+    }
+
+    .footer-about {
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 590px;
+      margin-bottom: 24px;
+      color: rgba(255, 255, 255, .9);
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 14px;
+      max-width: 590px;
+      margin-bottom: 38px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 18px;
+      padding: 10px;
+      backdrop-filter: blur(12px);
+    }
+
+    .subscribe-form input {
+      flex: 1;
+      height: 48px;
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 0 12px;
+      font-size: 15px;
+      outline: none;
+      min-width: 0;
+    }
+
+    .subscribe-form input::placeholder {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .subscribe-form button {
+      min-width: 145px;
+      height: 48px;
+      border: none;
+      border-radius: 13px;
+      background: #ffffff;
+      color: #005bbb;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 900;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .22);
+      transition: .3s;
+    }
+
+    .social-icons a:hover {
+      background: #ffffff;
+      color: #005bbb;
+      transform: translateY(-4px);
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .footer-links>div {
+      background: rgba(255, 255, 255, .11);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 24px;
+      padding: 28px 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
+    }
+
+    .footer-links h4 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .footer-links a {
+      display: block;
+      text-decoration: none;
+      color: rgba(255, 255, 255, .88);
+      margin-bottom: 15px;
+      font-size: 15px;
+      transition: .25s;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      max-width: 1350px;
+      margin: 42px auto 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .18);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, .82);
+      font-size: 13px;
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, .82);
+      text-decoration: none;
+      margin-left: 22px;
+    }
+
+    .footer-bottom a:hover {
+      color: #ffffff;
+    }
+
+    @media(max-width: 980px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 560px) {
+      .premium-footer {
+        padding: 55px 6% 28px;
+      }
+
+      .footer-logo-wrap {
+        align-items: flex-start;
+      }
+
+      .footer-logo-wrap img {
+        width: 72px;
+        height: 72px;
+      }
+
+      .footer-logo-wrap h2 {
+        font-size: 24px;
+      }
+
+      .footer-brand h3 {
+        font-size: 32px;
+      }
+
+      .footer-offer {
+        font-size: 18px;
+      }
+
+      .subscribe-form {
+        flex-direction: column;
+      }
+
+      .subscribe-form button {
+        width: 100%;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-bottom a {
+        margin-left: 0;
+        margin-right: 18px;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Popup Offer -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <button class="close-popup" id="closePopup">×</button>
+      <img src="offer-banner.png" alt="Mega Offer">
+      <a href="https://wa.me/916364343110" target="_blank" class="popup-btn">Order Now</a>
+    </div>
+  </div>
+
 
   <header>
     <div class="logo">
@@ -473,7 +832,7 @@
       </div>
 
       <div class="offer-card">
-        <img src="colgate.jpg" alt="">
+        <img src="colgate.jpeg" alt="">
         <div class="offer-content">
           <h3>SLS-Free Toothpaste</h3>
           <p>Premium toothpaste included in Mega Offer.</p>
@@ -545,15 +904,86 @@
 
   <a href="https://wa.me/916364343110" class="whatsapp" target="_blank">WhatsApp</a>
 
-  <footer>© 2026 Salman Enterprises. All Rights Reserved.</footer>
+  <footer class="premium-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="logo.png" alt="Salman Enterprises Logo">
+          <h2>Salman Enterprises</h2>
+        </div>
+
+        <h3>Subscribe to Save!</h3>
+        <p class="footer-offer">Get Hudood mega offers, product updates and WhatsApp order support.</p>
+
+        <p class="footer-about">
+          Be the first to access exclusive Hudood offers, quality daily care products,
+          membership updates and lucky draw news. Sign up today and stay connected
+          with Salman Enterprises.
+        </p>
+
+        <form class="subscribe-form">
+          <input type="email" placeholder="E-mail" required>
+          <button type="submit">Subscribe</button>
+        </form>
+
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/hudood_official_/" target="_blank" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>Shop</h4>
+          <a href="#offers">Hudood Soap</a>
+          <a href="#offers">SLS-Free Toothpaste</a>
+          <a href="#offers">Membership</a>
+          <a href="#offers">Mega Offer</a>
+          <a href="#offers">Delivery Available</a>
+          <a href="#contact">Order Details</a>
+        </div>
+
+        <div>
+          <h4>About us</h4>
+          <a href="#home">Our Journey</a>
+          <a href="#features">Why Choose Us</a>
+          <a href="#instagram">Instagram</a>
+          <a href="#contact">Customer Support</a>
+        </div>
+
+        <div>
+          <h4>Get Help</h4>
+          <a href="#contact">Contact Us</a>
+          <a href="https://wa.me/916364343110" target="_blank">WhatsApp Order</a>
+          <a href="#offers">Products</a>
+          <a href="#features">Lucky Draw</a>
+          <a href="#contact">Business Enquiries</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 - Salman Enterprises | All Rights Reserved</p>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
 
   <script>
     const menuBtn = document.getElementById("menuBtn");
     const menu = document.getElementById("menu");
+    const header = document.querySelector("header");
 
+    // Mobile Menu
     menuBtn.addEventListener("click", () => {
       menu.classList.toggle("active");
       menuBtn.innerHTML = menu.classList.contains("active") ? "✕" : "☰";
+      header.classList.remove("hide-header");
     });
 
     document.querySelectorAll(".menu a").forEach(link => {
@@ -561,6 +991,33 @@
         menu.classList.remove("active");
         menuBtn.innerHTML = "☰";
       });
+    });
+
+    // Popup
+    const popup = document.getElementById("popup");
+    const closePopup = document.getElementById("closePopup");
+
+    if (closePopup) {
+      closePopup.addEventListener("click", () => {
+        popup.style.display = "none";
+      });
+    }
+
+    // Header hide on scroll down and show on scroll up
+    let lastScrollTop = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop && currentScroll > 120) {
+        header.classList.add("hide-header");
+        menu.classList.remove("active");
+        menuBtn.innerHTML = "☰";
+      } else {
+        header.classList.remove("hide-header");
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
   </script>
 

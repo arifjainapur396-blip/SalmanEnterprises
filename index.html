@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Salman Enterprises | Hudood Products</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: #f4f9ff;
+      color: #0b2545;
+      overflow-x: hidden
+    }
+
+    header {
+      width: 100%;
+      background: white;
+      padding: 14px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08)
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo img {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0077ff
+    }
+
+    .logo h2 {
+      color: #005bbb;
+      font-size: 25px;
+      font-weight: 800
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 20px
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #0b2545;
+      font-weight: 800
+    }
+
+    .menu a:hover {
+      color: #0077ff
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 38px;
+      font-weight: 900;
+      cursor: pointer;
+      color: #005bbb
+    }
+
+    .hero {
+      min-height: 90vh;
+      padding: 85px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+      background: linear-gradient(135deg, #eaf5ff, #ffffff)
+    }
+
+    .hero-text {
+      max-width: 620px
+    }
+
+    .hero-text span {
+      display: inline-block;
+      background: #e3f1ff;
+      color: #005bbb;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: 800;
+      margin-bottom: 18px
+    }
+
+    .hero-text h1 {
+      font-size: 55px;
+      line-height: 1.1;
+      color: #003f88;
+      margin-bottom: 20px
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #3d4a5c;
+      margin-bottom: 30px
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #0077ff;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: 800
+    }
+
+    .btn.secondary {
+      background: white;
+      color: #005bbb;
+      border: 2px solid #dbeeff
+    }
+
+    .hero-card {
+      width: 370px;
+      background: white;
+      padding: 35px;
+      border-radius: 30px;
+      box-shadow: 0 18px 45px rgba(0, 70, 160, 0.15)
+    }
+
+    .hero-card h2 {
+      color: #005bbb;
+      margin-bottom: 18px
+    }
+
+    .hero-card ul {
+      list-style: none
+    }
+
+    .hero-card li {
+      background: #f0f7ff;
+      margin: 12px 0;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 700
+    }
+
+    section {
+      padding: 75px 8%
+    }
+
+    .title {
+      text-align: center;
+      font-size: 38px;
+      color: #003f88;
+      margin-bottom: 14px
+    }
+
+    .subtitle {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 45px;
+      color: #516173;
+      line-height: 1.7
+    }
+
+    .mega-offer {
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      max-width: 1450px;
+      margin: 0 auto 45px;
+      box-shadow: 0 18px 45px rgba(0, 70, 160, 0.16)
+    }
+
+    .mega-offer img {
+      width: 100%;
+      height: auto;
+      display: block
+    }
+
+    .mega-content {
+      text-align: center;
+      padding: 30px
+    }
+
+    .mega-content h3 {
+      font-size: 34px;
+      color: #0066cc;
+      margin-bottom: 15px
+    }
+
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px
+    }
+
+    .offer-card {
+      background: white;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 60, 140, 0.09)
+    }
+
+    .offer-card img {
+      width: 100%;
+      height: 245px;
+      object-fit: cover
+    }
+
+    .offer-content {
+      padding: 26px
+    }
+
+    .offer-content h3 {
+      color: #0066cc;
+      margin-bottom: 12px
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .badge {
+      background: #e7f2ff;
+      color: #0066cc;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 800
+    }
+
+    .order-small {
+      text-decoration: none;
+      background: #0077ff;
+      color: white;
+      padding: 9px 16px;
+      border-radius: 30px;
+      font-weight: 800
+    }
+
+    .features {
+      background: white
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px
+    }
+
+    .feature-box {
+      background: #f4f9ff;
+      padding: 28px;
+      border-radius: 22px;
+      text-align: center
+    }
+
+    .instagram-box,
+    .contact-box {
+      border-radius: 30px;
+      padding: 45px 30px;
+      text-align: center
+    }
+
+    .instagram-box {
+      background: white;
+      box-shadow: 0 12px 35px rgba(0, 60, 140, 0.08)
+    }
+
+    .instagram-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: 800
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #005bbb, #0099ff);
+      color: white
+    }
+
+    .contact-box a {
+      display: inline-block;
+      margin-top: 20px;
+      background: white;
+      color: #005bbb;
+      padding: 14px 30px;
+      border-radius: 35px;
+      text-decoration: none;
+      font-weight: 800
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #00c853;
+      color: white;
+      padding: 15px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 800;
+      z-index: 999
+    }
+
+    footer {
+      background: #002b5c;
+      color: white;
+      text-align: center;
+      padding: 22px
+    }
+
+    @media(max-width:850px) {
+      header {
+        padding: 14px 5%;
+        flex-wrap: nowrap
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px
+      }
+
+      .logo h2 {
+        font-size: 18px
+      }
+
+      .menu-btn {
+        display: flex;
+        margin-left: auto;
+        width: 45px;
+        height: 45px;
+        align-items: center;
+        justify-content: center
+      }
+
+      .menu {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+        background: white;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        padding: 20px;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08)
+      }
+
+      .menu.active {
+        display: flex
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 65px 6%
+      }
+
+      .hero-text h1 {
+        font-size: 40px
+      }
+
+      .hero-card {
+        width: 100%
+      }
+
+      section {
+        padding: 60px 6%
+      }
+    }
+
+    @media(max-width:480px) {
+      .logo h2 {
+        font-size: 17px
+      }
+
+      .hero-text h1 {
+        font-size: 32px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <h2>Salman Enterprises</h2>
+    </div>
+
+    <div class="menu-btn" id="menuBtn">☰</div>
+
+    <nav class="menu" id="menu">
+      <a href="#home">Home</a>
+      <a href="#offers">Products</a>
+      <a href="#features">Why Us</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <span>Hudood Products Available</span>
+      <h1>Organic Soaps, Toothpaste & Daily Care Offers</h1>
+      <p>Welcome to Salman Enterprises. Premium Hudood products available with Mega Offer.</p>
+      <a href="https://wa.me/916364343110" class="btn" target="_blank">Order on WhatsApp</a>
+      <a href="#offers" class="btn secondary">View Offers</a>
+    </div>
+
+    <div class="hero-card">
+      <h2>Today's Mega Offer</h2>
+      <ul>
+        <li>Hudood Membership</li>
+        <li>100g SLS-Free Toothpaste</li>
+        <li>Quality Soap</li>
+        <li>Lucky Draw Prizes</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="offers">
+    <h2 class="title">Our Products & Offers</h2>
+    <p class="subtitle">Hudood Mega Offer available now.</p>
+
+    <div class="mega-offer">
+      <img src="offer-banner.png" alt="Hudood Mega Offer">
+      <div class="mega-content">
+        <h3>Hudood Mega Offer - ₹156</h3>
+        <p>Hudood Membership, SLS-Free Toothpaste, Quality Soap and Lucky Draw chance.</p>
+        <a href="https://wa.me/916364343110" class="btn" target="_blank">Order Mega Offer</a>
+      </div>
+    </div>
+
+    <div class="offers">
+      <div class="offer-card">
+        <img src="hudood-soap.jpeg" alt="">
+        <div class="offer-content">
+          <h3>Hudood Quality Soap</h3>
+          <p>Fresh and clean daily skin care.</p>
+          <div class="price-row"><span class="badge">₹36 Value</span><a href="https://wa.me/916364343110"
+              class="order-small">Order Now</a></div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <img src="colgate.jpg" alt="">
+        <div class="offer-content">
+          <h3>SLS-Free Toothpaste</h3>
+          <p>Premium toothpaste included in Mega Offer.</p>
+          <div class="price-row"><span class="badge">₹70 Value</span><a href="https://wa.me/916364343110"
+              class="order-small">Order Now</a></div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <img src="combo-pack.png" alt="">
+        <div class="offer-content">
+          <h3>Hudood Membership</h3>
+          <p>6 months membership validity.</p>
+          <div class="price-row"><span class="badge">₹50 Value</span><a href="https://wa.me/916364343110"
+              class="order-small">Order Now</a></div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <img src="delivery.png" alt="">
+        <div class="offer-content">
+          <h3>Delivery Available</h3>
+          <p>Fast local delivery available.</p>
+          <div class="price-row"><span class="badge">Quick Delivery</span><a href="https://wa.me/916364343110"
+              class="order-small">Ask Details</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <h2 class="title">Why Choose Us?</h2>
+    <div class="feature-grid">
+      <div class="feature-box">
+        <h3>Mega Offer</h3>
+        <p>Full value pack at ₹156.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Lucky Draw</h3>
+        <p>Chance to win scooter and fridge.</p>
+      </div>
+      <div class="feature-box">
+        <h3>WhatsApp Order</h3>
+        <p>Direct order through WhatsApp.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Trusted Service</h3>
+        <p>Reliable and genuine products.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="instagram">
+    <div class="instagram-box">
+      <h2>Follow Hudood Official</h2>
+      <p>Stay connected for latest offers and updates.</p>
+      <a href="https://www.instagram.com/hudood_official_/" class="instagram-btn" target="_blank">Open Instagram</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Contact Salman Enterprises</h2>
+      <p><strong>Phone:</strong> 6364343110</p>
+      <p><strong>Address:</strong> Sai Park Ring Road, Vijayapur</p>
+      <a href="https://wa.me/916364343110" target="_blank">Chat on WhatsApp</a>
+    </div>
+  </section>
+
+  <a href="https://wa.me/916364343110" class="whatsapp" target="_blank">WhatsApp</a>
+
+  <footer>© 2026 Salman Enterprises. All Rights Reserved.</footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("active");
+      menuBtn.innerHTML = menu.classList.contains("active") ? "✕" : "☰";
+    });
+
+    document.querySelectorAll(".menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("active");
+        menuBtn.innerHTML = "☰";
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -2,9 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salman Enterprises | Hudood Products</title>
 
   <style>
@@ -12,7 +11,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif
+      font-family: "Segoe UI", Arial, sans-serif
     }
 
     html {
@@ -20,340 +19,992 @@
     }
 
     body {
-      background: #f4f9ff;
-      color: #0b2545;
-      overflow-x: hidden
+      background: #f7efe2;
+      color: #2b2118;
+      overflow-x: hidden;
+      padding-top: 88px
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 10% 15%, rgba(100, 72, 40, .18), transparent 30%), radial-gradient(circle at 90% 5%, rgba(70, 105, 55, .18), transparent 35%), linear-gradient(135deg, #f8efe1, #fff8ed);
+      z-index: -2
+    }
+
+    section {
+      padding: 90px 8%;
+      scroll-margin-top: 100px
     }
 
     header {
       width: 100%;
-      background: white;
-      padding: 14px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.35s ease;
+      padding: 14px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 250, 241, .82);
+      backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(107, 76, 43, .15);
+      box-shadow: 0 18px 45px rgba(55, 38, 22, .08);
+      transition: .35s
     }
 
     header.hide-header {
-      transform: translateY(-120%);
-    }
-
-    body {
-      padding-top: 86px;
-    }
-
-    section {
-      scroll-margin-top: 95px;
+      transform: translateY(-120%)
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px
+      gap: 13px
     }
 
     .logo img {
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #0077ff
+      border: 3px solid #86663d;
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(70, 48, 28, .2)
     }
 
     .logo h2 {
-      color: #005bbb;
-      font-size: 25px;
-      font-weight: 800
+      font-size: 24px;
+      color: #322216;
+      font-weight: 900
     }
 
     .menu {
       display: flex;
       align-items: center;
-      gap: 20px
+      gap: 27px
     }
 
     .menu a {
       text-decoration: none;
-      color: #0b2545;
-      font-weight: 800
+      color: #3a2a1d;
+      font-weight: 800;
+      position: relative
     }
 
-    .menu a:hover {
-      color: #0077ff
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: #5f7f45;
+      transition: .3s
+    }
+
+    .menu a:hover::after {
+      width: 100%
     }
 
     .menu-btn {
       display: none;
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 900;
-      cursor: pointer;
-      color: #005bbb
+      color: #322216;
+      cursor: pointer
     }
 
     .hero {
-      min-height: 90vh;
-      padding: 85px 8%;
-      display: flex;
-      justify-content: space-between;
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
       align-items: center;
-      gap: 50px;
-      background: linear-gradient(135deg, #eaf5ff, #ffffff)
+      gap: 65px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(255, 248, 236, .92),
+          rgba(255, 248, 236, .90));
     }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url(logo.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 700px;
+      opacity: 0.08;
+      z-index: 1;
+      pointer-events: none;
+      filter:
+        grayscale(10%)
+        drop-shadow(0 0 35px rgba(255, 255, 255, .30));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      right: -150px;
+      top: 20px;
+      background: radial-gradient(circle, rgba(95, 127, 69, .24), transparent 68%);
+      animation: heroGlow 7s infinite alternate ease-in-out;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes heroGlow {
+      from {
+        transform: translateY(0)
+      }
+
+      to {
+        transform: translateY(35px)
+      }
+    }
+
 
     .hero-text {
-      max-width: 620px
+      position: relative;
+      z-index: 2;
+      max-width: 700px
     }
 
-    .hero-text span {
-      display: inline-block;
-      background: #e3f1ff;
-      color: #005bbb;
-      padding: 10px 18px;
+    .premium-label {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      background: rgba(255, 250, 242, .9);
+      border: 1px solid rgba(134, 102, 61, .22);
+      color: #573b25;
+      padding: 12px 21px;
       border-radius: 50px;
-      font-weight: 800;
-      margin-bottom: 18px
+      font-weight: 900;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 30px rgba(72, 50, 29, .08)
     }
 
-    .hero-text h1 {
-      font-size: 55px;
-      line-height: 1.1;
-      color: #003f88;
-      margin-bottom: 20px
+    .hero h1 {
+      font-size: clamp(40px, 5.4vw, 72px);
+      line-height: 1.04;
+      color: #2e2015;
+      margin-bottom: 24px;
+      letter-spacing: -2px
     }
 
-    .hero-text p {
+    .hero h1 span {
+      color: #5f7f45
+    }
+
+    .hero p {
       font-size: 18px;
-      line-height: 1.8;
-      color: #3d4a5c;
-      margin-bottom: 30px
+      line-height: 1.9;
+      color: #6b5a48;
+      max-width: 630px;
+      margin-bottom: 32px
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
-      background: #0077ff;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 40px;
-      font-weight: 800
+      background: linear-gradient(135deg, #4f6f43, #82a75d);
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 50px;
+      font-weight: 900;
+      box-shadow: 0 18px 38px rgba(79, 111, 67, .28);
+      transition: .35s;
+      border: none
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 22px 50px rgba(79, 111, 67, .35)
     }
 
     .btn.secondary {
-      background: white;
-      color: #005bbb;
-      border: 2px solid #dbeeff
+      background: rgba(255, 250, 242, .88);
+      color: #332216;
+      border: 1px solid #dec59c;
+      box-shadow: 0 14px 32px rgba(72, 50, 29, .08)
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 42px;
+      max-width: 450px
+    }
+
+    .stat-box {
+      padding: 24px 20px;
+      border-radius: 26px;
+      background: rgba(255, 250, 242, .76);
+      border: 1px solid rgba(134, 102, 61, .18);
+      box-shadow: 0 18px 38px rgba(76, 52, 28, .08);
+      backdrop-filter: blur(16px)
+    }
+
+    .stat-box h3 {
+      font-size: 30px;
+      color: #5f7f45;
+      margin-bottom: 5px
+    }
+
+    .stat-box p {
+      font-size: 14px;
+      font-weight: 800;
+      color: #6a5846;
+      margin: 0;
+      line-height: 1.4
     }
 
     .hero-card {
-      width: 370px;
-      background: white;
-      padding: 35px;
-      border-radius: 30px;
-      box-shadow: 0 18px 45px rgba(0, 70, 160, 0.15)
+      position: relative;
+      z-index: 3;
+      padding: 18px;
+      border-radius: 42px;
+      background: rgba(255, 250, 242, .74);
+      border: 1px solid rgba(134, 102, 61, .22);
+      box-shadow: 0 32px 80px rgba(60, 42, 25, .2);
+      backdrop-filter: blur(20px);
+      animation: floatCard 4.8s infinite alternate
     }
 
-    .hero-card h2 {
-      color: #005bbb;
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 3;
+    }
+
+    @keyframes floatCard {
+      from {
+        transform: translateY(0)
+      }
+
+      to {
+        transform: translateY(-18px)
+      }
+    }
+
+    .hero-card img {
+      width: 100%;
+      border-radius: 32px;
+      display: block;
       margin-bottom: 18px
     }
 
+    .hero-card-content {
+      padding: 18px 18px 24px
+    }
+
+    .hero-card h2 {
+      font-size: 30px;
+      color: #302116;
+      margin-bottom: 15px
+    }
+
     .hero-card ul {
-      list-style: none
+      list-style: none;
+      display: grid;
+      gap: 12px
     }
 
     .hero-card li {
-      background: #f0f7ff;
-      margin: 12px 0;
-      padding: 14px;
-      border-radius: 14px;
-      font-weight: 700
+      padding: 15px 17px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #f1dfc4, #fff8ec);
+      font-weight: 850;
+      color: #473323;
+      border: 1px solid rgba(134, 102, 61, .12)
     }
 
-    section {
-      padding: 75px 8%
+    .luxury-strip {
+      padding: 38px 8%;
+      background: #2e2015;
+      color: #fff7ec;
+      overflow: hidden
     }
 
-    .title {
+    .strip-track {
+      display: flex;
+      gap: 40px;
+      white-space: nowrap;
+      animation: marquee 18s linear infinite;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 1px
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .section-head {
       text-align: center;
-      font-size: 38px;
-      color: #003f88;
+      max-width: 780px;
+      margin: auto
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: #5f7f45;
+      background: rgba(95, 127, 69, .1);
+      padding: 9px 18px;
+      border-radius: 30px;
+      font-weight: 900;
       margin-bottom: 14px
     }
 
+    .title {
+      font-size: clamp(32px, 4vw, 50px);
+      color: #302116;
+      margin-bottom: 14px;
+      letter-spacing: -1px
+    }
+
     .subtitle {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 45px;
-      color: #516173;
-      line-height: 1.7
+      color: #746250;
+      line-height: 1.75;
+      margin: 0 auto 50px;
+      max-width: 760px
     }
 
     .mega-offer {
-      background: white;
-      border-radius: 30px;
+      background: rgba(255, 250, 242, .9);
+      border-radius: 42px;
       overflow: hidden;
       max-width: 1450px;
-      margin: 0 auto 45px;
-      box-shadow: 0 18px 45px rgba(0, 70, 160, 0.16)
+      margin: 0 auto 50px;
+      box-shadow: 0 28px 70px rgba(75, 55, 35, .16);
+      border: 1px solid rgba(134, 102, 61, .18)
     }
 
     .mega-offer img {
       width: 100%;
-      height: auto;
       display: block
     }
 
     .mega-content {
       text-align: center;
-      padding: 30px
+      padding: 42px 28px;
+      background: radial-gradient(circle at 20% 20%, rgba(95, 127, 69, .12), transparent 35%), #fffaf2
     }
 
     .mega-content h3 {
-      font-size: 34px;
-      color: #0066cc;
-      margin-bottom: 15px
+      font-size: 38px;
+      color: #302116;
+      margin-bottom: 14px
+    }
+
+    .mega-content p {
+      color: #6f5e4b;
+      margin-bottom: 20px;
+      line-height: 1.7
     }
 
     .offers {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 32px
     }
 
     .offer-card {
-      background: white;
-      border-radius: 26px;
+      background: rgba(255, 250, 242, .92);
+      border-radius: 36px;
       overflow: hidden;
-      box-shadow: 0 12px 35px rgba(0, 60, 140, 0.09)
+      border: 1px solid rgba(134, 102, 61, .16);
+      box-shadow: 0 22px 50px rgba(75, 55, 35, .12);
+      transition: .35s;
+      position: relative
+    }
+
+    .offer-card::before {
+      content: "Premium";
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      background: rgba(255, 250, 242, .94);
+      color: #4f6f43;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 900
+    }
+
+    .offer-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 32px 75px rgba(75, 55, 35, .18)
     }
 
     .offer-card img {
       width: 100%;
-      height: 245px;
-      object-fit: cover
+      height: 260px;
+      object-fit: cover;
+      transition: .5s
+    }
+
+    .offer-card:hover img {
+      transform: scale(1.06)
     }
 
     .offer-content {
-      padding: 26px
+      padding: 28px
     }
 
     .offer-content h3 {
-      color: #0066cc;
+      font-size: 24px;
+      color: #302116;
       margin-bottom: 12px
+    }
+
+    .offer-content p {
+      color: #756250;
+      line-height: 1.65
     }
 
     .price-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 18px;
+      margin-top: 22px;
       gap: 10px;
       flex-wrap: wrap
     }
 
     .badge {
-      background: #e7f2ff;
-      color: #0066cc;
-      padding: 8px 16px;
+      background: #efe0c7;
+      color: #5b3d25;
+      padding: 9px 16px;
       border-radius: 30px;
-      font-weight: 800
+      font-weight: 900
     }
 
     .order-small {
       text-decoration: none;
-      background: #0077ff;
+      background: #4f6f43;
       color: white;
-      padding: 9px 16px;
+      padding: 10px 18px;
       border-radius: 30px;
-      font-weight: 800
+      font-weight: 900;
+      box-shadow: 0 12px 25px rgba(79, 111, 67, .25)
     }
 
     .features {
-      background: white
+      background: linear-gradient(135deg, rgba(255, 246, 232, .86), rgba(246, 226, 194, .62))
     }
 
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px
+      gap: 26px
     }
 
     .feature-box {
-      background: #f4f9ff;
-      padding: 28px;
+      background: rgba(255, 250, 242, .85);
+      padding: 36px 28px;
+      border-radius: 32px;
+      text-align: center;
+      border: 1px solid rgba(134, 102, 61, .16);
+      box-shadow: 0 20px 46px rgba(75, 55, 35, .1);
+      transition: .3s
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px)
+    }
+
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #4f6f43, #8a6a3d);
+      color: white;
+      font-size: 27px;
+      box-shadow: 0 16px 28px rgba(79, 111, 67, .24)
+    }
+
+    .feature-box h3 {
+      color: #302116;
+      margin-bottom: 10px
+    }
+
+    .feature-box p {
+      color: #746250;
+      line-height: 1.65
+    }
+
+    .ingredients {
+      background: transparent
+    }
+
+    .ingredient-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+      max-width: 1250px;
+      margin: auto
+    }
+
+    .ingredient-image {
+      background: rgba(255, 250, 242, .86);
+      border-radius: 44px;
+      padding: 20px;
+      border: 1px solid rgba(134, 102, 61, .18);
+      box-shadow: 0 28px 65px rgba(75, 55, 35, .15);
+      position: relative
+    }
+
+    .ingredient-image::after {
+      content: "Natural Care";
+      position: absolute;
+      right: 28px;
+      bottom: 34px;
+      background: rgba(255, 250, 242, .92);
+      color: #4f6f43;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 900;
+      box-shadow: 0 10px 25px rgba(75, 55, 35, .12)
+    }
+
+    .ingredient-image img {
+      width: 100%;
+      border-radius: 34px;
+      display: block
+    }
+
+    .ingredient-text h2 {
+      font-size: clamp(32px, 4vw, 50px);
+      color: #302116;
+      margin-bottom: 18px;
+      letter-spacing: -1px
+    }
+
+    .ingredient-text p {
+      color: #6f5e4b;
+      line-height: 1.85;
+      margin-bottom: 24px
+    }
+
+    .ingredient-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    .ingredient-list span {
+      background: rgba(255, 250, 242, .92);
+      border: 1px solid rgba(134, 102, 61, .16);
+      padding: 15px;
+      border-radius: 20px;
+      font-weight: 900;
+      color: #443123;
+      box-shadow: 0 12px 28px rgba(75, 55, 35, .06)
+    }
+
+    .testimonials {
+      background: #fff7eb
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px
+    }
+
+    .review-card {
+      background: #fffaf2;
+      border: 1px solid rgba(134, 102, 61, .16);
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: 0 20px 45px rgba(75, 55, 35, .1)
+    }
+
+    .stars {
+      color: #b4873f;
+      font-size: 22px;
+      margin-bottom: 12px
+    }
+
+    .review-card p {
+      color: #6f5e4b;
+      line-height: 1.75;
+      margin-bottom: 18px
+    }
+
+    .review-card h3 {
+      color: #302116
+    }
+
+    .faq {
+      background: transparent
+    }
+
+    .faq-grid {
+      max-width: 980px;
+      margin: auto;
+      display: grid;
+      gap: 18px
+    }
+
+    details {
+      background: rgba(255, 250, 242, .92);
+      border: 1px solid rgba(134, 102, 61, .16);
       border-radius: 22px;
-      text-align: center
+      padding: 22px 24px;
+      box-shadow: 0 14px 34px rgba(75, 55, 35, .08)
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 900;
+      color: #302116
+    }
+
+    details p {
+      margin-top: 14px;
+      color: #6f5e4b;
+      line-height: 1.7
     }
 
     .instagram-box,
     .contact-box {
-      border-radius: 30px;
-      padding: 45px 30px;
-      text-align: center
+      border-radius: 42px;
+      padding: 58px 32px;
+      text-align: center;
+      border: 1px solid rgba(134, 102, 61, .18);
+      max-width: 1150px;
+      margin: auto
     }
 
     .instagram-box {
-      background: white;
-      box-shadow: 0 12px 35px rgba(0, 60, 140, 0.08)
+      background: radial-gradient(circle at top left, rgba(131, 58, 180, .12), transparent 35%), rgba(255, 250, 242, .92);
+      box-shadow: 0 24px 60px rgba(75, 55, 35, .12)
+    }
+
+    .instagram-box h2,
+    .contact-box h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      margin-bottom: 14px
+    }
+
+    .instagram-box p,
+    .contact-box p {
+      line-height: 1.75;
+      margin-bottom: 6px
     }
 
     .instagram-btn {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 22px;
       background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
       color: white;
       text-decoration: none;
-      padding: 14px 28px;
+      padding: 15px 31px;
       border-radius: 40px;
-      font-weight: 800
+      font-weight: 900;
+      box-shadow: 0 16px 35px rgba(253, 29, 29, .22)
     }
 
     .contact-box {
-      background: linear-gradient(135deg, #005bbb, #0099ff);
-      color: white
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, .18), transparent 35%), linear-gradient(135deg, #4f6f43, #8a6a3d);
+      color: white;
+      box-shadow: 0 26px 65px rgba(79, 111, 67, .24)
     }
 
     .contact-box a {
       display: inline-block;
-      margin-top: 20px;
-      background: white;
-      color: #005bbb;
-      padding: 14px 30px;
+      margin-top: 22px;
+      background: #fffaf2;
+      color: #302116;
+      padding: 15px 32px;
       border-radius: 35px;
       text-decoration: none;
-      font-weight: 800
+      font-weight: 900
     }
 
     .whatsapp {
       position: fixed;
       right: 20px;
       bottom: 20px;
-      background: #00c853;
+      background: #25d366;
       color: white;
       padding: 15px 22px;
       border-radius: 50px;
       text-decoration: none;
-      font-weight: 800;
-      z-index: 999
+      font-weight: 900;
+      z-index: 999;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .24)
     }
 
-    footer {
-      background: #002b5c;
-      color: white;
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(47, 33, 22, .78);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 20px;
+      backdrop-filter: blur(8px)
+    }
+
+    .popup-box {
+      position: relative;
+      max-width: 430px;
+      width: 100%;
+      background: #fffaf2;
+      border-radius: 34px;
+      overflow: hidden;
+      animation: popupShow .45s ease;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .38)
+    }
+
+    .popup-box img {
+      width: 100%;
+      display: block
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: #302116;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      font-weight: bold
+    }
+
+    .popup-btn {
+      display: block;
       text-align: center;
-      padding: 22px
+      background: linear-gradient(135deg, #4f6f43, #789d55);
+      color: white;
+      text-decoration: none;
+      padding: 17px;
+      font-weight: 900;
+      font-size: 18px
     }
 
-    @media(max-width:850px) {
+    @keyframes popupShow {
+      from {
+        transform: scale(.82) translateY(20px);
+        opacity: 0
+      }
+
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1
+      }
+    }
+
+    .premium-footer {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, .12), transparent 30%), linear-gradient(135deg, #24170f, #3b2a1d, #4f6f43);
+      color: white;
+      padding: 75px 8% 32px
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1.25fr 1.35fr;
+      gap: 70px;
+      max-width: 1350px;
+      margin: auto
+    }
+
+    .footer-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px
+    }
+
+    .footer-logo-wrap img {
+      width: 92px;
+      height: 92px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid rgba(255, 255, 255, .35)
+    }
+
+    .footer-logo-wrap h2 {
+      font-size: 32px;
+      font-weight: 900
+    }
+
+    .footer-brand h3 {
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 12px
+    }
+
+    .footer-offer {
+      font-size: 21px;
+      margin-bottom: 28px;
+      color: #f2dfc3;
+      font-weight: 700
+    }
+
+    .footer-about {
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 590px;
+      margin-bottom: 24px;
+      color: rgba(255, 255, 255, .9)
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 14px;
+      max-width: 590px;
+      margin-bottom: 38px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 20px;
+      padding: 10px;
+      backdrop-filter: blur(12px)
+    }
+
+    .subscribe-form input {
+      flex: 1;
+      height: 50px;
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 0 12px;
+      font-size: 15px;
+      outline: none;
+      min-width: 0
+    }
+
+    .subscribe-form input::placeholder {
+      color: rgba(255, 255, 255, .75)
+    }
+
+    .subscribe-form button {
+      min-width: 145px;
+      height: 50px;
+      border: none;
+      border-radius: 15px;
+      background: #fffaf2;
+      color: #302116;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+      cursor: pointer
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .social-icons a {
+      width: 43px;
+      height: 43px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 900;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .22)
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px
+    }
+
+    .footer-links>div {
+      background: rgba(255, 255, 255, .11);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 26px;
+      padding: 30px 24px;
+      backdrop-filter: blur(12px)
+    }
+
+    .footer-links h4 {
+      font-size: 20px;
+      margin-bottom: 20px
+    }
+
+    .footer-links a {
+      display: block;
+      text-decoration: none;
+      color: rgba(255, 255, 255, .88);
+      margin-bottom: 15px;
+      font-size: 15px
+    }
+
+    .footer-bottom {
+      max-width: 1350px;
+      margin: 42px auto 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .18);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, .82);
+      font-size: 13px
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, .82);
+      text-decoration: none;
+      margin-left: 22px
+    }
+
+    @media(max-width:900px) {
       header {
-        padding: 14px 5%;
-        flex-wrap: nowrap
+        padding: 14px 5%
       }
 
       .logo img {
@@ -379,13 +1030,13 @@
         display: none;
         flex-direction: column;
         gap: 16px;
-        background: white;
+        background: rgba(255, 250, 242, .97);
         position: absolute;
         top: 78px;
         left: 0;
-        padding: 20px;
-        border-radius: 0 0 20px 20px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08)
+        padding: 24px;
+        border-radius: 0 0 26px 26px;
+        box-shadow: 0 18px 40px rgba(75, 55, 35, .16)
       }
 
       .menu.active {
@@ -393,382 +1044,268 @@
       }
 
       .hero {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         text-align: center;
-        padding: 65px 6%
+        padding: 70px 6%
       }
 
-      .hero-text h1 {
-        font-size: 40px
+      .hero-text {
+        margin: auto
       }
 
-      .hero-card {
-        width: 100%
+      .hero-actions {
+        justify-content: center
+      }
+
+      .hero-stats {
+        margin-left: auto;
+        margin-right: auto
+      }
+
+      .ingredient-wrap,
+      .footer-container,
+      .footer-links {
+        grid-template-columns: 1fr
       }
 
       section {
-        padding: 60px 6%
+        padding: 65px 6%
       }
     }
 
-    @media(max-width:480px) {
-      .logo h2 {
-        font-size: 17px
+    @media(max-width:500px) {
+      body {
+        padding-top: 80px
       }
 
-      .hero-text h1 {
-        font-size: 32px
-      }
-    }
-
-    .popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-      padding: 20px;
-    }
-
-    .popup-box {
-      position: relative;
-      max-width: 420px;
-      width: 100%;
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      animation: popupShow .4s ease;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
-    }
-
-    .popup-box img {
-      width: 100%;
-      display: block;
-    }
-
-    .close-popup {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 38px;
-      height: 38px;
-      border: none;
-      border-radius: 50%;
-      background: #ff2e2e;
-      color: #fff;
-      font-size: 24px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .popup-btn {
-      display: block;
-      text-align: center;
-      background: #00c853;
-      color: white;
-      text-decoration: none;
-      padding: 16px;
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    @keyframes popupShow {
-      from {
-        transform: scale(.8);
-        opacity: 0;
+      .btn {
+        width: 100%
       }
 
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    /* ===== Premium Blue Footer Section ===== */
-    .premium-footer {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(0, 153, 255, .35), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(0, 119, 255, .28), transparent 35%),
-        linear-gradient(135deg, #002b5c 0%, #004f9f 45%, #0077ff 100%);
-      color: #ffffff;
-      padding: 70px 8% 32px;
-    }
-
-    .premium-footer::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px),
-        linear-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: .18;
-      pointer-events: none;
-    }
-
-    .footer-container {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.25fr 1.35fr;
-      gap: 70px;
-      max-width: 1350px;
-      margin: auto;
-      align-items: flex-start;
-    }
-
-    .footer-logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 20px;
-    }
-
-    .footer-logo-wrap img {
-      width: 92px;
-      height: 92px;
-      object-fit: cover;
-      border-radius: 50%;
-      background: #fff;
-      border: 4px solid rgba(255, 255, 255, .35);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, .22);
-    }
-
-    .footer-logo-wrap h2 {
-      font-size: 32px;
-      color: #ffffff;
-      font-weight: 900;
-      letter-spacing: .2px;
-    }
-
-    .footer-brand h3 {
-      font-size: 40px;
-      line-height: 1.1;
-      margin-bottom: 12px;
-      color: #ffffff;
-      font-weight: 900;
-    }
-
-    .footer-offer {
-      font-size: 21px;
-      margin-bottom: 28px;
-      color: #d8ecff;
-      font-weight: 700;
-    }
-
-    .footer-about {
-      font-size: 16px;
-      line-height: 1.75;
-      max-width: 590px;
-      margin-bottom: 24px;
-      color: rgba(255, 255, 255, .9);
-    }
-
-    .subscribe-form {
-      display: flex;
-      gap: 14px;
-      max-width: 590px;
-      margin-bottom: 38px;
-      background: rgba(255, 255, 255, .12);
-      border: 1px solid rgba(255, 255, 255, .22);
-      border-radius: 18px;
-      padding: 10px;
-      backdrop-filter: blur(12px);
-    }
-
-    .subscribe-form input {
-      flex: 1;
-      height: 48px;
-      border: none;
-      background: transparent;
-      color: white;
-      padding: 0 12px;
-      font-size: 15px;
-      outline: none;
-      min-width: 0;
-    }
-
-    .subscribe-form input::placeholder {
-      color: rgba(255, 255, 255, .75);
-    }
-
-    .subscribe-form button {
-      min-width: 145px;
-      height: 48px;
-      border: none;
-      border-radius: 13px;
-      background: #ffffff;
-      color: #005bbb;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .social-icons a {
-      width: 42px;
-      height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: 900;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .14);
-      border: 1px solid rgba(255, 255, 255, .22);
-      transition: .3s;
-    }
-
-    .social-icons a:hover {
-      background: #ffffff;
-      color: #005bbb;
-      transform: translateY(-4px);
-    }
-
-    .footer-links {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .footer-links>div {
-      background: rgba(255, 255, 255, .11);
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 24px;
-      padding: 28px 24px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
-    }
-
-    .footer-links h4 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #ffffff;
-      font-weight: 900;
-    }
-
-    .footer-links a {
-      display: block;
-      text-decoration: none;
-      color: rgba(255, 255, 255, .88);
-      margin-bottom: 15px;
-      font-size: 15px;
-      transition: .25s;
-    }
-
-    .footer-links a:hover {
-      color: #ffffff;
-      transform: translateX(5px);
-    }
-
-    .footer-bottom {
-      position: relative;
-      z-index: 1;
-      max-width: 1350px;
-      margin: 42px auto 0;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255, 255, 255, .18);
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: center;
-      flex-wrap: wrap;
-      color: rgba(255, 255, 255, .82);
-      font-size: 13px;
-    }
-
-    .footer-bottom a {
-      color: rgba(255, 255, 255, .82);
-      text-decoration: none;
-      margin-left: 22px;
-    }
-
-    .footer-bottom a:hover {
-      color: #ffffff;
-    }
-
-    @media(max-width: 980px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 35px;
+      .hero-stats {
+        grid-template-columns: 1fr
       }
 
-      .footer-links {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media(max-width: 560px) {
-      .premium-footer {
-        padding: 55px 6% 28px;
-      }
-
-      .footer-logo-wrap {
-        align-items: flex-start;
-      }
-
-      .footer-logo-wrap img {
-        width: 72px;
-        height: 72px;
-      }
-
-      .footer-logo-wrap h2 {
-        font-size: 24px;
-      }
-
-      .footer-brand h3 {
-        font-size: 32px;
-      }
-
-      .footer-offer {
-        font-size: 18px;
+      .ingredient-list {
+        grid-template-columns: 1fr
       }
 
       .subscribe-form {
-        flex-direction: column;
+        flex-direction: column
       }
 
       .subscribe-form button {
-        width: 100%;
+        width: 100%
       }
 
       .footer-bottom {
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start
       }
 
       .footer-bottom a {
         margin-left: 0;
-        margin-right: 18px;
+        margin-right: 18px
+      }
+
+      .whatsapp {
+        right: 14px;
+        bottom: 14px;
+        padding: 13px 18px
       }
     }
+
+    @media(max-width:900px) {
+      .hero::before {
+        background-size: 420px;
+        opacity: 0.10;
+      }
+    }
+
+    @media(max-width:500px) {
+      .hero::before {
+        background-size: 260px;
+        opacity: 0.12;
+      }
+    }
+    /* =========================
+       PREMIUM TOP IMAGE SLIDER
+    ========================= */
+
+    .top-slider {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      background: #f7efe2;
+      position: relative;
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 68vh;
+      min-height: 420px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(134, 102, 61, .18);
+      box-shadow: 0 24px 70px rgba(55, 38, 22, .12);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 1s ease, transform 4s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(47, 33, 22, .45), rgba(47, 33, 22, .12), rgba(47, 33, 22, .32)),
+        linear-gradient(180deg, rgba(255, 248, 236, .18), rgba(0, 0, 0, .25));
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .slider-content {
+      position: absolute;
+      left: 8%;
+      bottom: 14%;
+      z-index: 3;
+      max-width: 620px;
+      color: #fffaf2;
+    }
+
+    .slider-content span {
+      display: inline-block;
+      background: rgba(255, 250, 242, .18);
+      border: 1px solid rgba(255, 255, 255, .28);
+      backdrop-filter: blur(14px);
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .slider-content h2 {
+      font-size: clamp(34px, 4.5vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 14px;
+      text-shadow: 0 12px 35px rgba(0, 0, 0, .28);
+    }
+
+    .slider-content p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255, 250, 242, .92);
+      margin-bottom: 24px;
+    }
+
+    .slider-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, #4f6f43, #82a75d);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 900;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, .25);
+    }
+
+    .slider-dots {
+      position: absolute;
+      right: 8%;
+      bottom: 12%;
+      z-index: 4;
+      display: flex;
+      gap: 10px;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .55);
+      border: 1px solid rgba(255, 255, 255, .7);
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .slider-dot.active {
+      width: 34px;
+      border-radius: 20px;
+      background: #fffaf2;
+    }
+
+    @media(max-width:900px) {
+      .slider {
+        height: 48vh;
+        min-height: 330px;
+      }
+
+      .slider-content {
+        left: 6%;
+        right: 6%;
+        bottom: 16%;
+        text-align: center;
+      }
+
+      .slider-dots {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 7%;
+      }
+    }
+
+    @media(max-width:500px) {
+      .slider {
+        height: 36vh;
+        min-height: 260px;
+      }
+
+      .slider-content h2 {
+        font-size: 30px;
+      }
+
+      .slider-content p {
+        display: none;
+      }
+
+      .slider-btn {
+        padding: 12px 22px;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- Popup Offer -->
   <div class="popup-overlay" id="popup">
     <div class="popup-box">
       <button class="close-popup" id="closePopup">×</button>
       <img src="offer-banner.png" alt="Mega Offer">
-      <a href="https://wa.me/916364343110" target="_blank" class="popup-btn">Order Now</a>
+      <a href="https://wa.me/916364343110" target="_blank" class="popup-btn">Order Now on WhatsApp</a>
     </div>
   </div>
-
 
   <header>
     <div class="logo">
@@ -782,34 +1319,97 @@
       <a href="#home">Home</a>
       <a href="#offers">Products</a>
       <a href="#features">Why Us</a>
-      <a href="#instagram">Instagram</a>
+      <a href="#ingredients">Natural Care</a>
+      <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <span>Hudood Products Available</span>
-      <h1>Organic Soaps, Toothpaste & Daily Care Offers</h1>
-      <p>Welcome to Salman Enterprises. Premium Hudood products available with Mega Offer.</p>
-      <a href="https://wa.me/916364343110" class="btn" target="_blank">Order on WhatsApp</a>
-      <a href="#offers" class="btn secondary">View Offers</a>
-    </div>
+  <!-- Premium Image Slider -->
+  <section class="top-slider">
+    <div class="slider">
 
-    <div class="hero-card">
-      <h2>Today's Mega Offer</h2>
-      <ul>
-        <li>Hudood Membership</li>
-        <li>100g SLS-Free Toothpaste</li>
-        <li>Quality Soap</li>
-        <li>Lucky Draw Prizes</li>
-      </ul>
+      <div class="slide active">
+        <img src="offer-banner.png" alt="Hudood Product Banner 1">
+      </div>
+
+      <div class="slide">
+        <img src="hudood-soap.jpeg" alt="Hudood Product Banner 2">
+      </div>
+
+      <div class="slide">
+        <img src="colgate.jpeg" alt="Hudood Product Banner 3">
+      </div>
+
+      <div class="slider-content">
+        <span>✨ Premium Hudood Offers</span>
+        <h2>Fresh Daily Care Products</h2>
+        <p>Explore Hudood soap, SLS-free toothpaste, membership benefits and mega offer packs.</p>
+        <a href="#offers" class="slider-btn">View Products</a>
+      </div>
+
+      <div class="slider-dots">
+        <button class="slider-dot active" aria-label="Slide 1"></button>
+        <button class="slider-dot" aria-label="Slide 2"></button>
+        <button class="slider-dot" aria-label="Slide 3"></button>
+      </div>
+
     </div>
   </section>
 
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <div class="premium-label">✨ Premium Hudood Daily Care</div>
+      <h1>Natural Care Products with a <span>Luxury</span> Shopping Feel</h1>
+      <p>
+        Welcome to Salman Enterprises. Discover Hudood soap, SLS-free toothpaste,
+        mega offer packs, lucky draw benefits and direct WhatsApp ordering with a premium organic brand experience.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://wa.me/916364343110" class="btn" target="_blank">Order on WhatsApp</a>
+        <a href="#offers" class="btn secondary">Explore Products</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-box">
+          <h3>₹156</h3>
+          <p>Mega Offer Pack</p>
+        </div>
+        <div class="stat-box">
+          <h3>Fast</h3>
+          <p>Local Delivery Support</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img src="offer-banner.png" alt="Hudood Offer">
+      <div class="hero-card-content">
+        <h2>Today's Mega Offer</h2>
+        <ul>
+          <li>Hudood Membership Included</li>
+          <li>100g SLS-Free Toothpaste</li>
+          <li>Hudood Quality Soap</li>
+          <li>Lucky Draw Prize Chance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="luxury-strip">
+    <div class="strip-track">
+      <span>HUDOOD PRODUCTS ✦ MEGA OFFER ✦ WHATSAPP ORDER ✦ LOCAL DELIVERY ✦ PREMIUM DAILY CARE ✦</span>
+      <span>HUDOOD PRODUCTS ✦ MEGA OFFER ✦ WHATSAPP ORDER ✦ LOCAL DELIVERY ✦ PREMIUM DAILY CARE ✦</span>
+    </div>
+  </div>
+
   <section id="offers">
-    <h2 class="title">Our Products & Offers</h2>
-    <p class="subtitle">Hudood Mega Offer available now.</p>
+    <div class="section-head">
+      <span class="eyebrow">Premium Collection</span>
+      <h2 class="title">Our Products & Offers</h2>
+      <p class="subtitle">Clean, elegant and premium product presentation inspired by modern organic care brands.</p>
+    </div>
 
     <div class="mega-offer">
       <img src="offer-banner.png" alt="Hudood Mega Offer">
@@ -822,74 +1422,163 @@
 
     <div class="offers">
       <div class="offer-card">
-        <img src="hudood-soap.jpeg" alt="">
+        <img src="hudood-soap.jpeg" alt="Hudood Quality Soap">
         <div class="offer-content">
           <h3>Hudood Quality Soap</h3>
-          <p>Fresh and clean daily skin care.</p>
-          <div class="price-row"><span class="badge">₹36 Value</span><a href="https://wa.me/916364343110"
-              class="order-small">Order Now</a></div>
+          <p>Fresh and clean daily skin care product with premium presentation.</p>
+          <div class="price-row">
+            <span class="badge">₹36 Value</span>
+            <a href="https://wa.me/916364343110" class="order-small">Order Now</a>
+          </div>
         </div>
       </div>
 
       <div class="offer-card">
-        <img src="colgate.jpeg" alt="">
+        <img src="colgate.jpeg" alt="SLS-Free Toothpaste">
         <div class="offer-content">
           <h3>SLS-Free Toothpaste</h3>
-          <p>Premium toothpaste included in Mega Offer.</p>
-          <div class="price-row"><span class="badge">₹70 Value</span><a href="https://wa.me/916364343110"
-              class="order-small">Order Now</a></div>
+          <p>Premium toothpaste included in the Hudood Mega Offer pack.</p>
+          <div class="price-row">
+            <span class="badge">₹70 Value</span>
+            <a href="https://wa.me/916364343110" class="order-small">Order Now</a>
+          </div>
         </div>
       </div>
 
       <div class="offer-card">
-        <img src="combo-pack.png" alt="">
+        <img src="combo-pack.png" alt="Hudood Membership">
         <div class="offer-content">
           <h3>Hudood Membership</h3>
-          <p>6 months membership validity.</p>
-          <div class="price-row"><span class="badge">₹50 Value</span><a href="https://wa.me/916364343110"
-              class="order-small">Order Now</a></div>
+          <p>Membership benefit included with the Hudood offer pack.</p>
+          <div class="price-row">
+            <span class="badge">₹50 Value</span>
+            <a href="https://wa.me/916364343110" class="order-small">Order Now</a>
+          </div>
         </div>
       </div>
 
       <div class="offer-card">
-        <img src="delivery.png" alt="">
+        <img src="delivery.png" alt="Delivery Available">
         <div class="offer-content">
           <h3>Delivery Available</h3>
-          <p>Fast local delivery available.</p>
-          <div class="price-row"><span class="badge">Quick Delivery</span><a href="https://wa.me/916364343110"
-              class="order-small">Ask Details</a></div>
+          <p>Fast local delivery and customer support available.</p>
+          <div class="price-row">
+            <span class="badge">Quick Delivery</span>
+            <a href="https://wa.me/916364343110" class="order-small">Ask Details</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="features" id="features">
-    <h2 class="title">Why Choose Us?</h2>
+    <div class="section-head">
+      <span class="eyebrow">Why Customers Choose Us</span>
+      <h2 class="title">Premium Service Benefits</h2>
+      <p class="subtitle">Everything is simple: view the offer, chat on WhatsApp and order directly.</p>
+    </div>
+
     <div class="feature-grid">
       <div class="feature-box">
+        <div class="feature-icon">₹</div>
         <h3>Mega Offer</h3>
-        <p>Full value pack at ₹156.</p>
+        <p>Full value pack available at only ₹156.</p>
       </div>
       <div class="feature-box">
+        <div class="feature-icon">🎁</div>
         <h3>Lucky Draw</h3>
-        <p>Chance to win scooter and fridge.</p>
+        <p>Chance to win scooter, fridge and exciting prizes.</p>
       </div>
       <div class="feature-box">
+        <div class="feature-icon">💬</div>
         <h3>WhatsApp Order</h3>
-        <p>Direct order through WhatsApp.</p>
+        <p>Direct ordering through WhatsApp with quick response.</p>
       </div>
       <div class="feature-box">
+        <div class="feature-icon">✓</div>
         <h3>Trusted Service</h3>
-        <p>Reliable and genuine products.</p>
+        <p>Reliable local support from Salman Enterprises.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ingredients" id="ingredients">
+    <div class="ingredient-wrap">
+      <div class="ingredient-image">
+        <img src="combo-pack.png" alt="Natural Hudood Care">
+      </div>
+      <div class="ingredient-text">
+        <span class="eyebrow">Natural Care Style</span>
+        <h2>Clean, Soft & Premium Product Experience</h2>
+        <p>
+          This section gives your website a premium organic brand feel like modern skincare websites.
+          It makes your Hudood products look more trusted, clean and high value.
+        </p>
+        <div class="ingredient-list">
+          <span>Fresh Daily Care</span>
+          <span>SLS-Free Toothpaste</span>
+          <span>Quality Soap</span>
+          <span>Membership Benefits</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="reviews">
+    <div class="section-head">
+      <span class="eyebrow">Customer Trust</span>
+      <h2 class="title">What Customers Like</h2>
+      <p class="subtitle">A premium website needs trust. These review cards make the brand look more professional.</p>
+    </div>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Good offer pack and easy ordering through WhatsApp. Product details are clear and simple.</p>
+        <h3>Happy Customer</h3>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Fast response and local delivery support. The Hudood mega offer is very useful.</p>
+        <h3>Local Buyer</h3>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Premium product presentation and trusted service from Salman Enterprises.</p>
+        <h3>Regular Customer</h3>
       </div>
     </div>
   </section>
 
   <section id="instagram">
     <div class="instagram-box">
+      <span class="eyebrow">Social Updates</span>
       <h2>Follow Hudood Official</h2>
-      <p>Stay connected for latest offers and updates.</p>
+      <p>Stay connected for latest offers, updates and product announcements.</p>
       <a href="https://www.instagram.com/hudood_official_/" class="instagram-btn" target="_blank">Open Instagram</a>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="section-head">
+      <span class="eyebrow">Questions</span>
+      <h2 class="title">Frequently Asked Questions</h2>
+      <p class="subtitle">Important customer doubts answered clearly.</p>
+    </div>
+
+    <div class="faq-grid">
+      <details>
+        <summary>How can I order Hudood products?</summary>
+        <p>You can order directly through WhatsApp by clicking any Order Now button on this website.</p>
+      </details>
+      <details>
+        <summary>Is delivery available?</summary>
+        <p>Yes, local delivery support is available. Contact Salman Enterprises on WhatsApp for details.</p>
+      </details>
+      <details>
+        <summary>What is included in the mega offer?</summary>
+        <p>The Hudood Mega Offer includes membership, SLS-Free Toothpaste, Quality Soap and lucky draw chance.</p>
+      </details>
     </div>
   </section>
 
@@ -917,8 +1606,7 @@
 
         <p class="footer-about">
           Be the first to access exclusive Hudood offers, quality daily care products,
-          membership updates and lucky draw news. Sign up today and stay connected
-          with Salman Enterprises.
+          membership updates and lucky draw news.
         </p>
 
         <form class="subscribe-form">
@@ -927,10 +1615,10 @@
         </form>
 
         <div class="social-icons">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="https://www.instagram.com/hudood_official_/" target="_blank" aria-label="Instagram">◎</a>
-          <a href="#" aria-label="YouTube">▶</a>
-          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#">f</a>
+          <a href="https://www.instagram.com/hudood_official_/" target="_blank">◎</a>
+          <a href="#">▶</a>
+          <a href="#">in</a>
         </div>
       </div>
 
@@ -941,12 +1629,10 @@
           <a href="#offers">SLS-Free Toothpaste</a>
           <a href="#offers">Membership</a>
           <a href="#offers">Mega Offer</a>
-          <a href="#offers">Delivery Available</a>
-          <a href="#contact">Order Details</a>
         </div>
 
         <div>
-          <h4>About us</h4>
+          <h4>About Us</h4>
           <a href="#home">Our Journey</a>
           <a href="#features">Why Choose Us</a>
           <a href="#instagram">Instagram</a>
@@ -959,7 +1645,6 @@
           <a href="https://wa.me/916364343110" target="_blank">WhatsApp Order</a>
           <a href="#offers">Products</a>
           <a href="#features">Lucky Draw</a>
-          <a href="#contact">Business Enquiries</a>
         </div>
       </div>
     </div>
@@ -973,13 +1658,11 @@
     </div>
   </footer>
 
-
   <script>
     const menuBtn = document.getElementById("menuBtn");
     const menu = document.getElementById("menu");
     const header = document.querySelector("header");
 
-    // Mobile Menu
     menuBtn.addEventListener("click", () => {
       menu.classList.toggle("active");
       menuBtn.innerHTML = menu.classList.contains("active") ? "✕" : "☰";
@@ -993,17 +1676,13 @@
       });
     });
 
-    // Popup
     const popup = document.getElementById("popup");
     const closePopup = document.getElementById("closePopup");
 
-    if (closePopup) {
-      closePopup.addEventListener("click", () => {
-        popup.style.display = "none";
-      });
-    }
+    closePopup.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
 
-    // Header hide on scroll down and show on scroll up
     let lastScrollTop = 0;
 
     window.addEventListener("scroll", () => {
@@ -1019,6 +1698,37 @@
 
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
+
+
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".slider-dot");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      dots.forEach(dot => dot.classList.remove("active"));
+
+      slides[index].classList.add("active");
+      dots[index].classList.add("active");
+      currentSlide = index;
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
+      });
+    });
+
+    setInterval(() => {
+      currentSlide = currentSlide + 1;
+
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      }
+
+      showSlide(currentSlide);
+    }, 3500);
+
   </script>
 
 </body>

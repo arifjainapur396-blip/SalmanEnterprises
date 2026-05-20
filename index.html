@@ -5,13 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salman Enterprises | Hudood Products</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", Arial, sans-serif
+      font-family: "Poppins", sans-serif
+    }
+
+    * {
+      font-family: "Poppins", sans-serif;
     }
 
     html {
@@ -49,7 +54,6 @@
       align-items: center;
       justify-content: space-between;
       background: rgba(255, 250, 241, .82);
-      backdrop-filter: blur(22px);
       border-bottom: 1px solid rgba(107, 76, 43, .15);
       box-shadow: 0 18px 45px rgba(55, 38, 22, .08);
       transition: .35s
@@ -142,8 +146,7 @@
       z-index: 1;
       pointer-events: none;
       filter:
-        grayscale(10%)
-        drop-shadow(0 0 35px rgba(255, 255, 255, .30));
+        grayscale(10%) drop-shadow(0 0 35px rgba(255, 255, 255, .30));
     }
 
     .hero::after {
@@ -258,7 +261,6 @@
       background: rgba(255, 250, 242, .76);
       border: 1px solid rgba(134, 102, 61, .18);
       box-shadow: 0 18px 38px rgba(76, 52, 28, .08);
-      backdrop-filter: blur(16px)
     }
 
     .stat-box h3 {
@@ -283,7 +285,6 @@
       background: rgba(255, 250, 242, .74);
       border: 1px solid rgba(134, 102, 61, .22);
       box-shadow: 0 32px 80px rgba(60, 42, 25, .2);
-      backdrop-filter: blur(20px);
       animation: floatCard 4.8s infinite alternate
     }
 
@@ -394,21 +395,6 @@
       line-height: 1.75;
       margin: 0 auto 50px;
       max-width: 760px
-    }
-
-    .mega-offer {
-      background: rgba(255, 250, 242, .9);
-      border-radius: 42px;
-      overflow: hidden;
-      max-width: 1450px;
-      margin: 0 auto 50px;
-      box-shadow: 0 28px 70px rgba(75, 55, 35, .16);
-      border: 1px solid rgba(134, 102, 61, .18)
-    }
-
-    .mega-offer img {
-      width: 100%;
-      display: block
     }
 
     .mega-content {
@@ -778,7 +764,6 @@
       justify-content: center;
       z-index: 99999;
       padding: 20px;
-      backdrop-filter: blur(8px)
     }
 
     .popup-box {
@@ -902,7 +887,6 @@
       border: 1px solid rgba(255, 255, 255, .22);
       border-radius: 20px;
       padding: 10px;
-      backdrop-filter: blur(12px)
     }
 
     .subscribe-form input {
@@ -966,7 +950,6 @@
       border: 1px solid rgba(255, 255, 255, .18);
       border-radius: 26px;
       padding: 30px 24px;
-      backdrop-filter: blur(12px)
     }
 
     .footer-links h4 {
@@ -1128,6 +1111,7 @@
         opacity: 0.12;
       }
     }
+
     /* =========================
        PREMIUM TOP IMAGE SLIDER
     ========================= */
@@ -1196,7 +1180,6 @@
       display: inline-block;
       background: rgba(255, 250, 242, .18);
       border: 1px solid rgba(255, 255, 255, .28);
-      backdrop-filter: blur(14px);
       padding: 10px 18px;
       border-radius: 50px;
       font-weight: 900;
@@ -1294,15 +1277,2732 @@
       }
     }
 
+
+    /* =========================================================
+       ULTRA PREMIUM UPGRADE V2 - Luxury Organic E-commerce Feel
+       ========================================================= */
+    :root {
+      --cream: #fff8ed;
+      --cream-2: #f7efe2;
+      --coffee: #2b1d13;
+      --coffee-2: #4a3322;
+      --gold: #d7ad63;
+      --gold-2: #f4d99b;
+      --green: #4f6f43;
+      --green-2: #8fba68;
+      --glass: rgba(255, 250, 242, .74);
+      --line: rgba(134, 102, 61, .18);
+      --shadow: 0 30px 90px rgba(54, 35, 20, .14);
+    }
+
+    ::selection {
+      background: var(--green);
+      color: #fff
+    }
+
+    ::-webkit-scrollbar {
+      width: 11px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1dfc4
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--green), var(--gold));
+      border-radius: 30px;
+      border: 2px solid #f1dfc4
+    }
+
+    body {
+      padding-top: 128px;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(215, 173, 99, .25), transparent 32%),
+        radial-gradient(circle at 92% 4%, rgba(79, 111, 67, .22), transparent 35%),
+        linear-gradient(135deg, #fff7e8, #f5e1bf 52%, #fffaf2);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .34;
+      background-image:
+        linear-gradient(rgba(75, 51, 34, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(75, 51, 34, .045) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    .premium-topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 38px;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: #fff9ee;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .35px;
+      background: linear-gradient(90deg, #2b1d13, #4f6f43, #8a6a3d, #2b1d13);
+      background-size: 240% 100%;
+      animation: topbarFlow 8s linear infinite;
+      box-shadow: 0 12px 30px rgba(43, 29, 19, .20);
+    }
+
+    .premium-topbar span {
+      opacity: .9
+    }
+
+    .premium-topbar a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .55)
+    }
+
+    @keyframes topbarFlow {
+      to {
+        background-position: 240% 0
+      }
+    }
+
+    header {
+      top: 38px;
+      border-radius: 0 0 26px 26px;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 0 0 26px 26px;
+      padding: 1px;
+      background: linear-gradient(90deg, rgba(215, 173, 99, .55), rgba(79, 111, 67, .25), rgba(255, 255, 255, .45));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .logo img {
+      animation: logoPulse 3.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoPulse {
+      from {
+        box-shadow: 0 12px 28px rgba(70, 48, 28, .18)
+      }
+
+      to {
+        box-shadow: 0 18px 45px rgba(79, 111, 67, .30)
+      }
+    }
+
+    .menu a {
+      padding: 10px 0;
+      transition: .3s ease
+    }
+
+    .menu a:hover {
+      color: var(--green);
+      transform: translateY(-2px)
+    }
+
+    .top-slider {
+      padding-top: 0;
+    }
+
+    .slider {
+      height: 76vh;
+      min-height: 560px;
+      border-radius: 0 0 54px 54px;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 38px;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .slider-content {
+      background: rgba(42, 29, 19, .18);
+      border: 1px solid rgba(255, 255, 255, .20);
+      padding: 28px;
+      border-radius: 34px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .20);
+    }
+
+    .slider-content span,
+    .premium-label,
+    .eyebrow {
+      position: relative;
+      overflow: hidden
+    }
+
+    .slider-content span::after,
+    .premium-label::after,
+    .eyebrow::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 42px;
+      left: -60px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .75), transparent);
+      transform: skewX(-18deg);
+      animation: shine 3.6s infinite;
+    }
+
+    @keyframes shine {
+
+      60%,
+      100% {
+        left: calc(100% + 70px)
+      }
+    }
+
+    .hero {
+      border-radius: 0 0 70px 70px;
+      margin-bottom: 18px;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(215, 173, 99, .22), transparent 34%),
+        radial-gradient(circle at 78% 18%, rgba(79, 111, 67, .20), transparent 36%),
+        linear-gradient(135deg, rgba(255, 250, 242, .94), rgba(247, 229, 199, .78));
+    }
+
+    .hero h1 {
+      background: linear-gradient(120deg, #2e2015 20%, #5f7f45 48%, #a87b39 72%, #2e2015);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: textSheen 8s ease-in-out infinite;
+    }
+
+    @keyframes textSheen {
+      50% {
+        background-position: 100% center
+      }
+    }
+
+    .hero p {
+      font-size: 19px
+    }
+
+    .btn,
+    .slider-btn,
+    .order-small,
+    .contact-box a,
+    .instagram-btn,
+    .popup-btn {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .btn::before,
+    .slider-btn::before,
+    .order-small::before,
+    .contact-box a::before,
+    .instagram-btn::before,
+    .popup-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .32), transparent);
+      transform: translateX(-120%) skewX(-22deg);
+      transition: .65s;
+    }
+
+    .btn:hover::before,
+    .slider-btn:hover::before,
+    .order-small:hover::before,
+    .contact-box a:hover::before,
+    .instagram-btn:hover::before,
+    .popup-btn:hover::before {
+      transform: translateX(120%) skewX(-22deg)
+    }
+
+    .hero-card,
+    .offer-card,
+    .feature-box,
+    .ingredient-image,
+    .review-card,
+    details,
+    .instagram-box,
+    .contact-box {
+      transform-style: preserve-3d;
+    }
+
+    .hero-card::before::before,
+    .offer-card::after,
+    .feature-box::before,
+    .review-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .75), rgba(215, 173, 99, .36), rgba(79, 111, 67, .22));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .offer-card,
+    .feature-box,
+    .review-card {
+      position: relative
+    }
+
+    .offer-card {
+      box-shadow: var(--shadow)
+    }
+
+    .offer-card:hover {
+      transform: translateY(-14px) rotateX(1.3deg);
+    }
+
+    .offer-card::after {
+      opacity: .9
+    }
+
+    .offer-content h3,
+    .feature-box h3,
+    .review-card h3 {
+      letter-spacing: -.35px
+    }
+
+    .ultra-promise {
+      padding: 42px 8% 0;
+      margin-top: -20px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .promise-grid {
+      max-width: 1350px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .promise-card {
+      background: rgba(255, 250, 242, .78);
+      border: 1px solid rgba(134, 102, 61, .18);
+      border-radius: 28px;
+      padding: 24px 20px;
+      box-shadow: 0 24px 55px rgba(75, 55, 35, .10);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: .35s ease;
+    }
+
+    .promise-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 70px rgba(75, 55, 35, .15)
+    }
+
+    .promise-card b {
+      display: block;
+      color: #2e2015;
+      font-size: 16px;
+      margin-bottom: 3px
+    }
+
+    .promise-card span {
+      font-size: 13px;
+      color: #77624d;
+      font-weight: 700;
+      line-height: 1.45
+    }
+
+    .promise-icon {
+      min-width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green), var(--gold));
+      color: #fff;
+      font-size: 23px;
+      box-shadow: 0 14px 28px rgba(79, 111, 67, .24);
+    }
+
+    .floating-order-card {
+      position: fixed;
+      left: 18px;
+      bottom: 20px;
+      z-index: 998;
+      width: min(315px, calc(100vw - 110px));
+      padding: 14px;
+      border-radius: 24px;
+      background: rgba(255, 250, 242, .86);
+      border: 1px solid rgba(134, 102, 61, .20);
+      box-shadow: 0 22px 55px rgba(43, 29, 19, .18);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #302116;
+      animation: miniFloat 4s ease-in-out infinite alternate;
+    }
+
+    .floating-order-card img {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid rgba(134, 102, 61, .22)
+    }
+
+    .floating-order-card strong {
+      display: block;
+      font-size: 14px
+    }
+
+    .floating-order-card small {
+      display: block;
+      color: #6f5e4b;
+      font-weight: 700;
+      margin-top: 3px
+    }
+
+    @keyframes miniFloat {
+      to {
+        transform: translateY(-8px)
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .85s ease, transform .85s ease
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(max-width:1050px) {
+      .promise-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .slider {
+        height: 58vh;
+        min-height: 430px
+      }
+    }
+
+    @media(max-width:900px) {
+      body {
+        padding-top: 118px
+      }
+
+      header {
+        top: 38px
+      }
+
+      .menu {
+        display: flex;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-14px);
+        pointer-events: none;
+        transition: .35s ease;
+      }
+
+      .menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto
+      }
+
+      .slider-content {
+        padding: 22px
+      }
+
+      .hero {
+        border-radius: 0 0 42px 42px
+      }
+    }
+
+    @media(max-width:620px) {
+      .premium-topbar {
+        font-size: 11px;
+        padding: 0 12px;
+        text-align: center;
+        gap: 7px
+      }
+
+      .premium-topbar span:nth-child(2) {
+        display: none
+      }
+
+      .promise-grid {
+        grid-template-columns: 1fr
+      }
+
+      .ultra-promise {
+        padding: 28px 6% 0
+      }
+
+      .floating-order-card {
+        display: none
+      }
+
+      .slider::before {
+        inset: 13px;
+        border-radius: 26px
+      }
+
+      .slider-content {
+        background: rgba(42, 29, 19, .12);
+        padding: 16px;
+        border-radius: 24px
+      }
+    }
+
+
+
+    /* =========================================================
+       ULTRA PREMIUM UPGRADE V3 - Cinematic Luxury Store Polish
+       ========================================================= */
+    :root {
+      --v3-dark: #1d120b;
+      --v3-cream: #fff9ef;
+      --v3-gold: #e6bd72;
+      --v3-green: #47683d;
+      --v3-shadow: 0 38px 110px rgba(40, 24, 13, .18);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(230, 189, 114, .34), transparent 31%),
+        radial-gradient(circle at 88% 8%, rgba(71, 104, 61, .30), transparent 35%),
+        radial-gradient(circle at 50% 55%, rgba(255, 255, 255, .55), transparent 42%),
+        linear-gradient(135deg, #fff8eb 0%, #f4ddba 48%, #fffdf7 100%);
+    }
+
+    .premium-topbar {
+      height: 42px;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      background: linear-gradient(90deg, #1d120b, #5c3a1d, #47683d, #b88334, #1d120b);
+      background-size: 320% 100%;
+    }
+
+    header {
+      top: 42px;
+      padding: 16px 8%;
+      background: rgba(255, 249, 239, .76);
+      box-shadow: 0 22px 60px rgba(46, 32, 21, .12)
+    }
+
+    body {
+      padding-top: 136px
+    }
+
+    .logo h2 {
+      background: linear-gradient(120deg, #2e2015, #7a5227, #47683d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -.7px;
+    }
+
+    .menu a {
+      border-radius: 999px;
+      padding: 10px 4px;
+    }
+
+    .menu a:hover {
+      filter: drop-shadow(0 12px 18px rgba(79, 111, 67, .20))
+    }
+
+    .slider {
+      min-height: 610px;
+      border-radius: 0 0 72px 72px;
+      box-shadow: 0 45px 120px rgba(39, 24, 12, .20);
+    }
+
+    .slider::after {
+      background:
+        radial-gradient(circle at 22% 40%, rgba(255, 255, 255, .12), transparent 25%),
+        linear-gradient(90deg, rgba(20, 12, 7, .68), rgba(20, 12, 7, .18), rgba(20, 12, 7, .50)),
+        linear-gradient(180deg, rgba(255, 248, 236, .10), rgba(0, 0, 0, .36));
+    }
+
+    .slider-content {
+      max-width: 690px;
+      padding: 34px;
+      border-radius: 38px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .17), rgba(255, 255, 255, .06));
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .30);
+    }
+
+    .slider-content h2 {
+      letter-spacing: -2.5px
+    }
+
+    .hero {
+      min-height: 96vh;
+      gap: 78px;
+      border-radius: 0 0 88px 88px;
+      box-shadow: inset 0 -1px 0 rgba(134, 102, 61, .18);
+    }
+
+    .hero::before {
+      opacity: .115;
+      background-size: min(760px, 80vw);
+      filter: grayscale(0) drop-shadow(0 20px 60px rgba(79, 111, 67, .22));
+      animation: watermarkBreathe 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes watermarkBreathe {
+      to {
+        transform: scale(1.045);
+        opacity: .155
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 5.8vw, 82px);
+      letter-spacing: -3px
+    }
+
+    .hero-card {
+      border-radius: 52px;
+      box-shadow: 0 42px 120px rgba(52, 34, 19, .25);
+    }
+
+    .hero-card img {
+      border-radius: 40px
+    }
+
+    .hero-card::after {
+      content: "Best Seller";
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      background: linear-gradient(135deg, #fff8ed, #e6bd72);
+      color: #2e2015;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(46, 32, 21, .18);
+    }
+
+    .v3-luxury-board {
+      padding: 44px 8% 0;
+      position: relative;
+      z-index: 6;
+    }
+
+    .v3-board-inner {
+      max-width: 1350px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      background: linear-gradient(135deg, rgba(255, 250, 242, .88), rgba(255, 255, 255, .62));
+      border: 1px solid rgba(134, 102, 61, .20);
+      border-radius: 42px;
+      padding: 24px;
+      box-shadow: var(--v3-shadow);
+    }
+
+    .v3-board-main {
+      padding: 30px;
+      border-radius: 32px;
+      background: radial-gradient(circle at 10% 0%, rgba(230, 189, 114, .24), transparent 36%), linear-gradient(135deg, rgba(255, 255, 255, .56), rgba(255, 255, 255, .20));
+      border: 1px solid rgba(134, 102, 61, .14);
+    }
+
+    .v3-board-main span {
+      color: #47683d;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 13px
+    }
+
+    .v3-board-main h2 {
+      font-size: clamp(28px, 3.3vw, 48px);
+      line-height: 1.08;
+      margin: 12px 0;
+      color: #2e2015;
+      letter-spacing: -1.6px
+    }
+
+    .v3-board-main p {
+      color: #6f5e4b;
+      line-height: 1.75;
+      max-width: 720px
+    }
+
+    .v3-board-side {
+      display: grid;
+      gap: 14px
+    }
+
+    .v3-mini-metric {
+      border-radius: 28px;
+      padding: 22px;
+      background: #fffaf2;
+      border: 1px solid rgba(134, 102, 61, .16);
+      box-shadow: 0 16px 40px rgba(75, 55, 35, .08);
+    }
+
+    .v3-mini-metric b {
+      display: block;
+      font-size: 30px;
+      color: #47683d;
+      margin-bottom: 3px
+    }
+
+    .v3-mini-metric small {
+      font-weight: 800;
+      color: #6f5e4b
+    }
+
+    .offers {
+      gap: 38px
+    }
+
+    .offer-card {
+      border-radius: 42px;
+      background: linear-gradient(145deg, rgba(255, 250, 242, .96), rgba(255, 255, 255, .75));
+      box-shadow: 0 28px 75px rgba(54, 35, 20, .14);
+    }
+
+    .offer-card img {
+      height: 290px
+    }
+
+    .offer-card::before {
+      background: linear-gradient(135deg, #fff8ed, #e6bd72);
+      color: #2e2015;
+      box-shadow: 0 12px 28px rgba(46, 32, 21, .16);
+    }
+
+    .offer-content {
+      padding: 32px
+    }
+
+    .badge {
+      background: linear-gradient(135deg, #efe0c7, #fff8ec);
+      border: 1px solid rgba(134, 102, 61, .16)
+    }
+
+    .feature-box,
+    .review-card,
+    details {
+      transition: transform .38s ease, box-shadow .38s ease, border-color .38s ease;
+    }
+
+    .feature-box:hover,
+    .review-card:hover,
+    details:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 76px rgba(75, 55, 35, .15);
+      border-color: rgba(230, 189, 114, .45);
+    }
+
+    .contact-box {
+      background:
+        radial-gradient(circle at 18% 10%, rgba(255, 255, 255, .24), transparent 32%),
+        radial-gradient(circle at 88% 18%, rgba(230, 189, 114, .28), transparent 34%),
+        linear-gradient(135deg, #2e2015, #47683d 58%, #8a6a3d);
+      box-shadow: 0 40px 110px rgba(45, 29, 16, .28);
+    }
+
+    .contact-box h2 {
+      letter-spacing: -1.3px
+    }
+
+    .whatsapp {
+      padding: 16px 24px;
+      box-shadow: 0 20px 50px rgba(37, 211, 102, .34);
+      animation: whatsPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes whatsPulse {
+      50% {
+        transform: translateY(-4px) scale(1.035)
+      }
+    }
+
+    .premium-footer {
+      border-radius: 72px 72px 0 0;
+      box-shadow: 0 -35px 100px rgba(39, 24, 12, .18);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 84px;
+      z-index: 997;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #2e2015, #8a6a3d);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      box-shadow: 0 18px 42px rgba(43, 29, 19, .24);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: .3s ease;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: none
+    }
+
+    @media(max-width:1050px) {
+      .v3-board-inner {
+        grid-template-columns: 1fr
+      }
+
+      .slider {
+        min-height: 470px
+      }
+    }
+
+    @media(max-width:900px) {
+      body {
+        padding-top: 122px
+      }
+
+      .slider {
+        border-radius: 0 0 44px 44px
+      }
+
+      .hero {
+        min-height: auto;
+        gap: 42px
+      }
+
+      .v3-luxury-board {
+        padding: 30px 6% 0
+      }
+
+      .menu {
+        top: 84px
+      }
+    }
+
+    @media(max-width:620px) {
+      .premium-topbar {
+        height: 38px
+      }
+
+      .v3-board-inner {
+        padding: 14px;
+        border-radius: 30px
+      }
+
+      .v3-board-main {
+        padding: 22px;
+        border-radius: 24px
+      }
+
+      .slider {
+        min-height: 330px
+      }
+
+      .hero h1 {
+        letter-spacing: -1.4px
+      }
+
+      .back-to-top {
+        right: 16px;
+        bottom: 76px;
+        width: 44px;
+        height: 44px
+      }
+    }
+
+
+
+    /* =========================================================
+       ULTRA PREMIUM UPGRADE V4 - Final Luxury Conversion Polish
+       Added: preloader, premium ambience, stronger mobile UX,
+       active nav feel, luxury trust strip, cinematic card shine,
+       smoother responsive product selling experience.
+       ========================================================= */
+    :root {
+      --aj-ink: #1b1009;
+      --aj-card: rgba(255, 250, 242, .82);
+      --aj-border: rgba(230, 189, 114, .32);
+      --aj-glow: 0 0 0 1px rgba(230, 189, 114, .20), 0 32px 90px rgba(41, 24, 12, .18);
+    }
+
+    html {
+      scroll-padding-top: 140px
+    }
+
+    body.loaded .premium-preloader {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none
+    }
+
+    .premium-preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 1000000;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 20% 18%, rgba(230, 189, 114, .28), transparent 34%), radial-gradient(circle at 78% 28%, rgba(71, 104, 61, .28), transparent 36%), linear-gradient(135deg, #1d120b, #3b2617 55%, #f1d39a);
+      transition: .75s ease
+    }
+
+    .preloader-card {
+      width: min(360px, 88vw);
+      text-align: center;
+      color: #fff9ef;
+      padding: 34px 26px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, .04));
+      border: 1px solid rgba(255, 255, 255, .22);
+      box-shadow: 0 35px 110px rgba(0, 0, 0, .36);
+    }
+
+    .preloader-card img {
+      width: 94px;
+      height: 94px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 4px solid rgba(255, 255, 255, .36);
+      margin-bottom: 18px;
+      animation: preLogo 1.6s ease-in-out infinite alternate
+    }
+
+    .preloader-card h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      letter-spacing: -.5px
+    }
+
+    .preloader-card p {
+      font-size: 13px;
+      opacity: .86;
+      font-weight: 700;
+      line-height: 1.55
+    }
+
+    .loader-line {
+      height: 5px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .20);
+      margin-top: 20px
+    }
+
+    .loader-line span {
+      display: block;
+      height: 100%;
+      width: 45%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #fff8ed, #e6bd72, #8fba68);
+      animation: loadMove 1.15s infinite ease-in-out
+    }
+
+    @keyframes preLogo {
+      to {
+        transform: translateY(-8px) scale(1.04);
+        box-shadow: 0 20px 55px rgba(230, 189, 114, .38)
+      }
+    }
+
+    @keyframes loadMove {
+      50% {
+        transform: translateX(125%)
+      }
+
+      100% {
+        transform: translateX(260%)
+      }
+    }
+
+    .ambient-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden
+    }
+
+    .ambient-orbs span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(6px);
+      opacity: .35;
+      animation: orbFloat 12s ease-in-out infinite alternate
+    }
+
+    .ambient-orbs span:nth-child(1) {
+      width: 260px;
+      height: 260px;
+      left: -80px;
+      top: 18%;
+      background: radial-gradient(circle, rgba(230, 189, 114, .42), transparent 68%)
+    }
+
+    .ambient-orbs span:nth-child(2) {
+      width: 320px;
+      height: 320px;
+      right: -100px;
+      top: 42%;
+      background: radial-gradient(circle, rgba(71, 104, 61, .36), transparent 68%);
+      animation-delay: 1.5s
+    }
+
+    .ambient-orbs span:nth-child(3) {
+      width: 220px;
+      height: 220px;
+      left: 38%;
+      bottom: -90px;
+      background: radial-gradient(circle, rgba(255, 255, 255, .52), transparent 68%);
+      animation-delay: 2.4s
+    }
+
+    @keyframes orbFloat {
+      to {
+        transform: translate3d(18px, -34px, 0) scale(1.08)
+      }
+    }
+
+    header.scrolled {
+      background: rgba(255, 249, 239, .88);
+      box-shadow: 0 26px 70px rgba(43, 29, 19, .16)
+    }
+
+    .menu a.active {
+      color: var(--green)
+    }
+
+    .menu a.active::after {
+      width: 100%
+    }
+
+    .btn,
+    .slider-btn,
+    .order-small,
+    .instagram-btn,
+    .contact-box a,
+    .popup-btn {
+      will-change: transform
+    }
+
+    .btn:active,
+    .slider-btn:active,
+    .order-small:active {
+      transform: scale(.97)
+    }
+
+    .hero-card,
+    .offer-card,
+    .ingredient-image,
+    .instagram-box,
+    .contact-box,
+    .v3-board-inner,
+    .promise-card {
+      outline: 1px solid rgba(255, 255, 255, .34);
+      outline-offset: -7px
+    }
+
+    .offer-card {
+      overflow: hidden
+    }
+
+    .offer-card .offer-content {
+      position: relative;
+      z-index: 2
+    }
+
+    .offer-card:hover img {
+      filter: saturate(1.12) contrast(1.03)
+    }
+
+    .premium-trust-ribbon {
+      padding: 34px 8%;
+      background: linear-gradient(90deg, #1d120b, #2e2015, #47683d, #8a6a3d);
+      color: #fff8ed;
+      position: relative;
+      overflow: hidden
+    }
+
+    .premium-trust-ribbon::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-100%);
+      animation: ribbonShine 5s infinite
+    }
+
+    @keyframes ribbonShine {
+
+      65%,
+      100% {
+        transform: translateX(100%)
+      }
+    }
+
+    .trust-ribbon-grid {
+      max-width: 1350px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      position: relative;
+      z-index: 1
+    }
+
+    .trust-ribbon-grid div {
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .09);
+      border-radius: 22px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .trust-ribbon-grid b {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+      color: #f4d99b
+    }
+
+    .trust-ribbon-grid span {
+      font-size: 13px;
+      font-weight: 800;
+      opacity: .88
+    }
+
+    .premium-final-cta {
+      padding: 85px 8%;
+      background: transparent
+    }
+
+    .final-cta-card {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      border-radius: 52px;
+      padding: 64px 30px;
+      color: #fff8ed;
+      background: radial-gradient(circle at 20% 12%, rgba(255, 255, 255, .20), transparent 32%), radial-gradient(circle at 82% 10%, rgba(230, 189, 114, .30), transparent 34%), linear-gradient(135deg, #1d120b, #47683d 58%, #9a6b2f);
+      box-shadow: 0 42px 120px rgba(43, 29, 19, .25);
+      border: 1px solid rgba(255, 255, 255, .20);
+      position: relative;
+      overflow: hidden
+    }
+
+    .final-cta-card::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 38px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      pointer-events: none
+    }
+
+    .final-cta-card h2 {
+      font-size: clamp(32px, 4.2vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      margin-bottom: 16px
+    }
+
+    .final-cta-card p {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      line-height: 1.75;
+      color: rgba(255, 248, 237, .90);
+      font-weight: 600
+    }
+
+    .final-cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2
+    }
+
+    .final-cta-actions a {
+      min-width: 190px
+    }
+
+    @media(max-width:900px) {
+      .trust-ribbon-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .menu a {
+        font-size: 16px;
+        padding: 12px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, .42);
+        width: 100%;
+        text-align: center
+      }
+
+      .menu a::after {
+        display: none
+      }
+
+      .menu a.active {
+        background: rgba(79, 111, 67, .12)
+      }
+    }
+
+    @media(max-width:520px) {
+      html {
+        scroll-padding-top: 118px
+      }
+
+      section {
+        padding-left: 5.5%;
+        padding-right: 5.5%
+      }
+
+      .trust-ribbon-grid {
+        grid-template-columns: 1fr
+      }
+
+      .premium-trust-ribbon {
+        padding: 26px 6%
+      }
+
+      .final-cta-card {
+        border-radius: 34px;
+        padding: 48px 18px
+      }
+
+      .final-cta-card::after {
+        inset: 10px;
+        border-radius: 25px
+      }
+
+      .preloader-card {
+        padding: 30px 20px
+      }
+
+      .slider-content span {
+        font-size: 12px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important
+      }
+    }
+
+
+
+    /* =========================================================
+       ULTRA PREMIUM UPGRADE V5 - Royal Conversion Edition
+       Added: animated hamburger, luxury product showcase,
+       stronger trust badges, premium gradient dividers,
+       better mobile menu, floating highlights, micro interactions.
+       ========================================================= */
+    :root {
+      --royal-dark: #170d07;
+      --royal-brown: #352114;
+      --royal-gold: #f0c778;
+      --royal-gold-soft: #fff0c7;
+      --royal-green: #3f6337;
+      --royal-mint: #9ccc74;
+      --royal-cream: #fffaf1;
+      --royal-glass: rgba(255, 250, 241, .78);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 10% 0%, rgba(240, 199, 120, .42), transparent 32%),
+        radial-gradient(circle at 90% 12%, rgba(63, 99, 55, .34), transparent 36%),
+        radial-gradient(circle at 55% 46%, rgba(255, 255, 255, .78), transparent 38%),
+        linear-gradient(135deg, #fff7e8 0%, #efd2a2 44%, #fffdf8 100%);
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(240, 199, 120, .22), transparent 32%),
+        radial-gradient(circle at 88% 10%, rgba(63, 99, 55, .18), transparent 36%),
+        linear-gradient(135deg, rgba(255, 248, 236, .96), rgba(246, 219, 176, .70));
+    }
+
+    .premium-topbar {
+      background: linear-gradient(90deg, #170d07, #4b2c17, #3f6337, #bf873a, #170d07);
+      background-size: 400% 100%;
+      box-shadow: 0 16px 40px rgba(23, 13, 7, .26);
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(255, 250, 241, .88), rgba(255, 255, 255, .68));
+      border-bottom: 1px solid rgba(240, 199, 120, .35);
+    }
+
+    .menu-btn {
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .64), rgba(255, 240, 199, .54));
+      border: 1px solid rgba(134, 102, 61, .20);
+      box-shadow: 0 12px 28px rgba(46, 32, 21, .10);
+      transition: .3s ease;
+      user-select: none;
+    }
+
+    .menu-btn.active {
+      transform: rotate(90deg) scale(.96);
+      background: linear-gradient(135deg, var(--royal-green), #8a6a3d);
+      color: #fffaf1;
+    }
+
+    .slider {
+      isolation: isolate;
+      border-radius: 0 0 90px 90px;
+    }
+
+    .slider::after {
+      background:
+        radial-gradient(circle at 20% 42%, rgba(240, 199, 120, .20), transparent 26%),
+        linear-gradient(90deg, rgba(14, 8, 4, .76), rgba(23, 13, 7, .24), rgba(14, 8, 4, .58)),
+        linear-gradient(180deg, rgba(255, 248, 236, .08), rgba(0, 0, 0, .42));
+    }
+
+    .slider-content {
+      border: 1px solid rgba(255, 255, 255, .30);
+      outline: 1px solid rgba(255, 255, 255, .18);
+      outline-offset: -8px;
+    }
+
+    .slider-content h2,
+    .hero h1,
+    .title {
+      text-wrap: balance;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::marker {
+      display: none
+    }
+
+    .hero::after {
+      box-shadow: 0 0 120px rgba(63, 99, 55, .24), 0 0 180px rgba(240, 199, 120, .18);
+    }
+
+    .hero-text::before {
+      content: "Limited Product Offer • Best Value";
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      color: #fffaf1;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: .45px;
+      background: linear-gradient(135deg, #170d07, #3f6337, #bf873a);
+      box-shadow: 0 16px 38px rgba(46, 32, 21, .18);
+    }
+
+    .premium-label {
+      box-shadow: 0 16px 38px rgba(75, 55, 35, .10), inset 0 1px 0 rgba(255, 255, 255, .72)
+    }
+
+    .hero-card {
+      overflow: hidden
+    }
+
+    .hero-card::before {
+      z-index: 0
+    }
+
+    .hero-card>* {
+      position: relative;
+      z-index: 1
+    }
+
+    .hero-card-content h2::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 4px;
+      border-radius: 999px;
+      margin-top: 10px;
+      background: linear-gradient(90deg, var(--royal-green), var(--royal-gold));
+    }
+
+    .royal-showcase {
+      padding: 92px 8%;
+      position: relative;
+    }
+
+    .royal-showcase::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(134, 102, 61, .35), transparent);
+    }
+
+    .showcase-shell {
+      max-width: 1350px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .showcase-image,
+    .showcase-content {
+      border-radius: 46px;
+      border: 1px solid rgba(134, 102, 61, .20);
+      background: linear-gradient(145deg, rgba(255, 250, 241, .88), rgba(255, 255, 255, .58));
+      box-shadow: 0 36px 100px rgba(45, 29, 16, .16);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .showcase-image {
+      padding: 18px;
+      min-height: 430px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .showcase-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 390px;
+      object-fit: cover;
+      border-radius: 34px;
+      filter: saturate(1.08) contrast(1.04)
+    }
+
+    .showcase-badge {
+      position: absolute;
+      left: 32px;
+      bottom: 32px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      color: #2e2015;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fffaf1, #f0c778);
+      box-shadow: 0 18px 44px rgba(46, 32, 21, .18);
+    }
+
+    .showcase-content {
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .showcase-content small {
+      color: var(--royal-green);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      margin-bottom: 10px
+    }
+
+    .showcase-content h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: 1.06;
+      color: #2e2015;
+      letter-spacing: -2px;
+      margin-bottom: 18px
+    }
+
+    .showcase-content p {
+      color: #6f5e4b;
+      line-height: 1.82;
+      margin-bottom: 24px;
+      font-weight: 600
+    }
+
+    .showcase-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 4px 0 28px
+    }
+
+    .showcase-list span {
+      padding: 15px 16px;
+      border-radius: 18px;
+      background: rgba(255, 250, 241, .86);
+      border: 1px solid rgba(134, 102, 61, .16);
+      font-weight: 900;
+      color: #443123;
+      box-shadow: 0 12px 28px rgba(75, 55, 35, .07)
+    }
+
+    .showcase-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .offer-card::before {
+      content: "Ultra Premium"
+    }
+
+    .offer-card:nth-child(1)::before {
+      content: "Best Soap"
+    }
+
+    .offer-card:nth-child(2)::before {
+      content: "SLS-Free"
+    }
+
+    .offer-card:nth-child(3)::before {
+      content: "Membership"
+    }
+
+    .offer-card:nth-child(4)::before {
+      content: "Delivery"
+    }
+
+    .offer-content h3 {
+      font-size: 26px
+    }
+
+    .offer-content p {
+      font-weight: 600
+    }
+
+    .price-row {
+      padding-top: 16px;
+      border-top: 1px solid rgba(134, 102, 61, .14)
+    }
+
+    .feature-icon {
+      position: relative;
+      overflow: hidden
+    }
+
+    .feature-icon::after {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .55), transparent);
+      transform: rotate(25deg) translateX(-100%);
+      animation: iconGlare 4s infinite
+    }
+
+    @keyframes iconGlare {
+
+      70%,
+      100% {
+        transform: rotate(25deg) translateX(100%)
+      }
+    }
+
+    .contact-box {
+      position: relative;
+      overflow: hidden
+    }
+
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-110%) skewX(-20deg);
+      animation: contactShine 5s infinite
+    }
+
+    .contact-box>* {
+      position: relative;
+      z-index: 1
+    }
+
+    @keyframes contactShine {
+
+      65%,
+      100% {
+        transform: translateX(110%) skewX(-20deg)
+      }
+    }
+
+    .whatsapp {
+      right: 22px;
+      bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, .26)
+    }
+
+    .whatsapp::before {
+      content: "💬 ";
+    }
+
+    .floating-order-card {
+      border-radius: 28px;
+      outline: 1px solid rgba(255, 255, 255, .46);
+      outline-offset: -6px
+    }
+
+    .premium-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+
+    .footer-container,
+    .footer-bottom {
+      position: relative;
+      z-index: 1
+    }
+
+    @media(max-width:980px) {
+      .showcase-shell {
+        grid-template-columns: 1fr
+      }
+
+      .showcase-image {
+        min-height: auto
+      }
+
+      .showcase-image img {
+        min-height: 300px
+      }
+
+      .slider {
+        border-radius: 0 0 52px 52px
+      }
+    }
+
+    @media(max-width:620px) {
+      .royal-showcase {
+        padding: 64px 6%
+      }
+
+      .showcase-content {
+        padding: 28px 20px;
+        border-radius: 32px
+      }
+
+      .showcase-image {
+        border-radius: 32px
+      }
+
+      .showcase-list {
+        grid-template-columns: 1fr
+      }
+
+      .showcase-actions .btn {
+        width: 100%
+      }
+
+      .slider {
+        border-radius: 0 0 36px 36px
+      }
+
+      .hero-text::before {
+        font-size: 12px
+      }
+
+      .menu-btn {
+        font-size: 30px
+      }
+
+      .whatsapp {
+        font-size: 0;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        padding: 0
+      }
+
+      .whatsapp::before {
+        font-size: 24px
+      }
+    }
+
+
+
+    /* =========================================================
+       ULTRA PREMIUM UPGRADE V6 - Billionaire Brand Experience
+       Added: luxury cursor glow, premium product timeline, sticky buy bar,
+       animated trust wall, gold glass depth, better mobile polish
+       ========================================================= */
+    :root {
+      --v6-ink: #170d07;
+      --v6-bronze: #b98236;
+      --v6-gold: #ffd88a;
+      --v6-cream: #fffaf1;
+      --v6-green: #3f6637;
+      --v6-mint: #a8d383;
+      --v6-line: rgba(137, 91, 39, .18);
+      --v6-deep-shadow: 0 48px 140px rgba(33, 19, 9, .20);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 18% -4%, rgba(255, 216, 138, .36), transparent 34%),
+        radial-gradient(circle at 84% 8%, rgba(63, 102, 55, .32), transparent 38%),
+        radial-gradient(circle at 50% 32%, rgba(255, 255, 255, .72), transparent 36%),
+        linear-gradient(135deg, #fff9ef 0%, #efd1a1 46%, #fffdf8 100%);
+    }
+
+    .premium-cursor-glow {
+      position: fixed;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      pointer-events: none;
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 216, 138, .20), rgba(63, 102, 55, .12), transparent 66%);
+      z-index: 2;
+      mix-blend-mode: multiply;
+      opacity: .7;
+      transition: opacity .25s ease;
+    }
+
+    .premium-topbar strong {
+      color: #ffe5a8;
+      text-shadow: 0 0 18px rgba(255, 216, 138, .35)
+    }
+
+    header.scrolled {
+      background: rgba(255, 250, 241, .88);
+      box-shadow: 0 24px 70px rgba(31, 18, 9, .16)
+    }
+
+    .slider-content h2,
+    .hero h1,
+    .title,
+    .showcase-content h2,
+    .v6-timeline-head h2,
+    .v6-final h2 {
+      text-wrap: balance;
+    }
+
+    .hero-actions .btn:first-child::after,
+    .slider-btn::after,
+    .order-small::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .7), transparent);
+      opacity: 0;
+      filter: blur(10px);
+      transition: .35s ease;
+      z-index: -2;
+    }
+
+    .hero-actions .btn:first-child:hover::after,
+    .slider-btn:hover::after,
+    .order-small:hover::after {
+      opacity: .8
+    }
+
+    .offer-card,
+    .feature-box,
+    .review-card,
+    .promise-card,
+    .v6-step,
+    .v6-trust-card {
+      will-change: transform;
+    }
+
+    .offer-card:hover .offer-content h3 {
+      color: var(--v6-green)
+    }
+
+    .offer-card img {
+      filter: saturate(1.12) contrast(1.03)
+    }
+
+    .stat-box h3,
+    .v3-mini-metric b {
+      filter: drop-shadow(0 10px 22px rgba(63, 102, 55, .18))
+    }
+
+    .v6-sticky-buy {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(120px);
+      z-index: 1001;
+      width: min(760px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px 12px 16px;
+      border-radius: 999px;
+      background: rgba(255, 250, 241, .88);
+      border: 1px solid rgba(137, 91, 39, .22);
+      box-shadow: 0 24px 80px rgba(31, 18, 9, .24);
+      transition: .45s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .v6-sticky-buy.show {
+      transform: translateX(-50%) translateY(0)
+    }
+
+    .v6-sticky-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0
+    }
+
+    .v6-sticky-left img {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid rgba(137, 91, 39, .20)
+    }
+
+    .v6-sticky-left b {
+      display: block;
+      color: #2e2015;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .v6-sticky-left span {
+      display: block;
+      color: #6f5e4b;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .v6-sticky-buy a {
+      text-decoration: none;
+      background: linear-gradient(135deg, #2e2015, #47683d, #b98236);
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 14px 32px rgba(63, 102, 55, .24);
+      white-space: nowrap
+    }
+
+    .v6-premium-timeline {
+      position: relative;
+      padding: 100px 8%;
+      overflow: hidden;
+    }
+
+    .v6-premium-timeline::before {
+      content: "";
+      position: absolute;
+      inset: 8% auto auto -180px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 216, 138, .34), transparent 70%);
+      pointer-events: none;
+    }
+
+    .v6-timeline-head {
+      max-width: 840px;
+      margin: 0 auto 48px;
+      text-align: center
+    }
+
+    .v6-timeline-head span {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(63, 102, 55, .10);
+      color: var(--v6-green);
+      font-weight: 900;
+      margin-bottom: 14px
+    }
+
+    .v6-timeline-head h2 {
+      font-size: clamp(34px, 4.4vw, 58px);
+      letter-spacing: -2px;
+      line-height: 1.05;
+      color: #2e2015;
+      margin-bottom: 14px
+    }
+
+    .v6-timeline-head p {
+      color: #705d49;
+      line-height: 1.8;
+      font-weight: 600
+    }
+
+    .v6-steps {
+      max-width: 1180px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      counter-reset: step
+    }
+
+    .v6-step {
+      position: relative;
+      min-height: 240px;
+      padding: 28px 22px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, rgba(255, 250, 241, .93), rgba(255, 255, 255, .62));
+      border: 1px solid var(--v6-line);
+      box-shadow: 0 28px 80px rgba(54, 35, 20, .12);
+      overflow: hidden;
+      transition: .38s ease;
+    }
+
+    .v6-step:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--v6-deep-shadow)
+    }
+
+    .v6-step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--v6-green), var(--v6-bronze));
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 24px;
+      box-shadow: 0 16px 34px rgba(63, 102, 55, .24)
+    }
+
+    .v6-step::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      bottom: -70px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 216, 138, .25), transparent 66%)
+    }
+
+    .v6-step h3 {
+      font-size: 21px;
+      color: #2e2015;
+      margin-bottom: 10px;
+      letter-spacing: -.5px
+    }
+
+    .v6-step p {
+      color: #6f5e4b;
+      line-height: 1.65;
+      font-weight: 600;
+      font-size: 14px
+    }
+
+    .v6-trust-wall {
+      padding: 90px 8%;
+      background: linear-gradient(135deg, rgba(46, 32, 21, .96), rgba(63, 102, 55, .88), rgba(137, 91, 39, .92));
+      color: #fff9ef;
+      border-radius: 72px;
+      margin: 20px 4% 80px;
+      box-shadow: 0 45px 120px rgba(39, 24, 12, .22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .v6-trust-wall::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 12% 18%, rgba(255, 216, 138, .22), transparent 28%), radial-gradient(circle at 86% 15%, rgba(255, 255, 255, .12), transparent 26%)
+    }
+
+    .v6-trust-inner {
+      position: relative;
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 34px;
+      align-items: center
+    }
+
+    .v6-trust-copy h2 {
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.07;
+      letter-spacing: -1.7px;
+      margin-bottom: 16px
+    }
+
+    .v6-trust-copy p {
+      color: rgba(255, 249, 239, .82);
+      line-height: 1.8;
+      font-weight: 600;
+      margin-bottom: 24px
+    }
+
+    .v6-trust-copy a {
+      display: inline-flex;
+      text-decoration: none;
+      color: #2e2015;
+      background: #fff8ed;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .18)
+    }
+
+    .v6-trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px
+    }
+
+    .v6-trust-card {
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .18);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+      transition: .35s ease
+    }
+
+    .v6-trust-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, .16)
+    }
+
+    .v6-trust-card b {
+      display: block;
+      font-size: 28px;
+      color: #ffe3a3;
+      margin-bottom: 6px
+    }
+
+    .v6-trust-card span {
+      font-weight: 800;
+      color: rgba(255, 249, 239, .86);
+      line-height: 1.55;
+      font-size: 14px
+    }
+
+    .v6-final {
+      padding: 0 8% 100px;
+    }
+
+    .v6-final-card {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+      padding: 68px 34px;
+      border-radius: 48px;
+      background: radial-gradient(circle at 18% 10%, rgba(255, 216, 138, .30), transparent 34%), linear-gradient(135deg, rgba(255, 250, 241, .94), rgba(255, 255, 255, .70));
+      border: 1px solid rgba(137, 91, 39, .18);
+      box-shadow: var(--v6-deep-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .v6-final-card::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(137, 91, 39, .14);
+      border-radius: 36px;
+      pointer-events: none
+    }
+
+    .v6-final h2 {
+      position: relative;
+      font-size: clamp(34px, 4.6vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: #2e2015;
+      margin-bottom: 14px
+    }
+
+    .v6-final p {
+      position: relative;
+      color: #705d49;
+      line-height: 1.8;
+      font-weight: 600;
+      max-width: 720px;
+      margin: 0 auto 28px
+    }
+
+    .v6-final-actions {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    @media(max-width:1050px) {
+      .v6-steps {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .v6-trust-inner {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:700px) {
+      .premium-cursor-glow {
+        display: none
+      }
+
+      .v6-sticky-buy {
+        bottom: 12px;
+        border-radius: 24px;
+        width: calc(100vw - 24px);
+        padding: 10px
+      }
+
+      .v6-sticky-left img {
+        width: 44px;
+        height: 44px
+      }
+
+      .v6-sticky-buy a {
+        padding: 12px 16px;
+        font-size: 13px
+      }
+
+      .v6-premium-timeline {
+        padding: 72px 6%
+      }
+
+      .v6-steps,
+      .v6-trust-grid {
+        grid-template-columns: 1fr
+      }
+
+      .v6-trust-wall {
+        margin: 10px 3% 60px;
+        border-radius: 42px;
+        padding: 68px 6%
+      }
+
+      .v6-final {
+        padding: 0 6% 80px
+      }
+
+      .v6-final-card {
+        padding: 54px 20px;
+        border-radius: 36px
+      }
+
+      .v6-final-card::before {
+        inset: 10px;
+        border-radius: 28px
+      }
+    }
+
+    @media(max-width:460px) {
+      .v6-sticky-left span {
+        display: none
+      }
+
+      .v6-sticky-left b {
+        font-size: 13px
+      }
+
+      .v6-sticky-buy a {
+        padding: 12px 13px
+      }
+
+      .v6-step {
+        min-height: auto
+      }
+
+      .v6-trust-card b {
+        font-size: 24px
+      }
+    }
+
+
+    /* =========================================================
+       ULTRA PREMIUM UPGRADE V7 - Platinum Luxury Conversion UI
+       ========================================================= */
+    :root {
+      --v7-platinum: #fffdf8;
+      --v7-ink: #160d07;
+      --v7-bronze: #b67a2f;
+      --v7-bronze-2: #ffdca3;
+      --v7-green: #3f6536;
+      --v7-mint: #b8d88e;
+      --v7-card: rgba(255, 253, 248, .78);
+      --v7-line: rgba(182, 122, 47, .24);
+      --v7-shadow: 0 46px 140px rgba(34, 20, 10, .20);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% -5%, rgba(255, 220, 163, .42), transparent 34%),
+        radial-gradient(circle at 85% 10%, rgba(63, 101, 54, .33), transparent 35%),
+        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, .72), transparent 43%),
+        linear-gradient(135deg, #fff7e7 0%, #f0d1a0 43%, #fffdf8 100%);
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at 8% 12%, rgba(182, 122, 47, .22), transparent 30%),
+        radial-gradient(circle at 92% 4%, rgba(63, 101, 54, .24), transparent 35%),
+        linear-gradient(135deg, #fff8ed, #fffdf8);
+    }
+
+    .premium-topbar {
+      background: linear-gradient(90deg, #160d07, #3f2715, #3f6536, #b67a2f, #160d07);
+      background-size: 360% 100%;
+      box-shadow: 0 18px 44px rgba(22, 13, 7, .24);
+    }
+
+    header {
+      background: rgba(255, 253, 248, .72);
+      border-bottom: 1px solid rgba(182, 122, 47, .20);
+    }
+
+    .logo img {
+      border-color: rgba(255, 220, 163, .95);
+      box-shadow: 0 18px 46px rgba(63, 101, 54, .24)
+    }
+
+    .menu a.active,
+    .menu a:hover {
+      color: var(--v7-green);
+    }
+
+    .menu a.active::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--v7-green), var(--v7-bronze));
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 7px rgba(63, 101, 54, .10);
+    }
+
+    .slider {
+      border-radius: 0 0 88px 88px;
+      min-height: 640px;
+      isolation: isolate
+    }
+
+    .slider::before {
+      inset: 30px;
+      border-radius: 50px;
+      border-color: rgba(255, 255, 255, .35)
+    }
+
+    .slider-content {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .24), rgba(255, 255, 255, .065));
+      border: 1px solid rgba(255, 255, 255, .30);
+      box-shadow: 0 38px 110px rgba(0, 0, 0, .30), inset 0 1px 0 rgba(255, 255, 255, .34);
+    }
+
+    .slider-content h2,
+    .title,
+    .hero h1 {
+      text-wrap: balance;
+    }
+
+    .v7-platinum-hero {
+      padding: 60px 8% 20px;
+      position: relative;
+      z-index: 7;
+    }
+
+    .v7-platinum-shell {
+      max-width: auto;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: stretch;
+      border-radius: auto;
+      padding: 26px;
+      background:
+        linear-gradient(135deg, rgba(255, 253, 248, .88), rgba(255, 255, 255, .52)),
+        radial-gradient(circle at 5% 0%, rgba(255, 220, 163, .32), transparent 36%);
+      border: 1px solid var(--v7-line);
+      box-shadow: var(--v7-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .v7-platinum-shell::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      right: -120px;
+      top: -130px;
+      background: radial-gradient(circle, rgba(255, 220, 163, .45), transparent 68%);
+      filter: blur(4px);
+      animation: v7Orb 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes v7Orb {
+      to {
+        transform: translate(-35px, 40px) scale(1.12)
+      }
+    }
+
+    .v7-copy,
+    .v7-visual {
+      position: relative;
+      z-index: 1;
+      border-radius: 40px
+    }
+
+    .v7-copy {
+      padding: 44px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .54), rgba(255, 255, 255, .18));
+      border: 1px solid rgba(182, 122, 47, .16);
+    }
+
+    .v7-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: rgba(63, 101, 54, .10);
+      border: 1px solid rgba(63, 101, 54, .18);
+      color: var(--v7-green);
+      font-weight: 950;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 18px;
+    }
+
+    .v7-copy h2 {
+      font-size: clamp(34px, 4.6vw, 66px);
+      line-height: 1.02;
+      letter-spacing: -2.6px;
+      color: var(--v7-ink);
+      margin-bottom: 18px;
+    }
+
+    .v7-copy h2 span {
+      background: linear-gradient(120deg, var(--v7-green), var(--v7-bronze), #2e2015);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .v7-copy p {
+      color: #695640;
+      line-height: 1.85;
+      font-size: 17px;
+      max-width: 720px;
+      margin-bottom: 28px
+    }
+
+    .v7-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px
+    }
+
+    .v7-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .v7-proof {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 253, 248, .72);
+      border: 1px solid rgba(182, 122, 47, .16);
+      box-shadow: 0 14px 34px rgba(75, 55, 35, .08);
+    }
+
+    .v7-proof b {
+      display: block;
+      color: var(--v7-green);
+      font-size: 25px;
+      line-height: 1;
+      margin-bottom: 8px
+    }
+
+    .v7-proof small {
+      color: #6b5a48;
+      font-weight: 800;
+      line-height: 1.35
+    }
+
+    .v7-visual {
+      min-height: 420px;
+      overflow: hidden;
+      background: #1d120b;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16), 0 28px 80px rgba(34, 20, 10, .18);
+    }
+
+    .v7-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.03);
+      filter: saturate(1.08) contrast(1.04)
+    }
+
+    .v7-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(22, 13, 7, .72)), linear-gradient(90deg, rgba(22, 13, 7, .20), transparent);
+    }
+
+    .v7-floating-tag {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 26px;
+      background: rgba(255, 253, 248, .86);
+      border: 1px solid rgba(255, 255, 255, .32);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .22);
+    }
+
+    .v7-floating-tag strong {
+      display: block;
+      color: #2e2015;
+      font-size: 18px
+    }
+
+    .v7-floating-tag span {
+      color: #6b5a48;
+      font-size: 13px;
+      font-weight: 800
+    }
+
+    .v7-price-pill {
+      min-width: max-content;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--v7-green), var(--v7-bronze));
+      color: #fff;
+      font-weight: 950
+    }
+
+    .v7-product-ribbon {
+      padding: 30px 8% 0;
+    }
+
+    .v7-ribbon-grid {
+      max-width: 1350px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .v7-ribbon-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 170px;
+      padding: 24px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(255, 253, 248, .90), rgba(255, 255, 255, .56));
+      border: 1px solid rgba(182, 122, 47, .18);
+      box-shadow: 0 24px 58px rgba(54, 35, 20, .11);
+      transition: .38s ease;
+    }
+
+    .v7-ribbon-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 34px 85px rgba(54, 35, 20, .17)
+    }
+
+    .v7-ribbon-card::after {
+      content: "";
+      position: absolute;
+      right: -42px;
+      bottom: -42px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(63, 101, 54, .20), transparent 68%)
+    }
+
+    .v7-ribbon-card i {
+      font-style: normal;
+      font-size: 30px;
+      display: block;
+      margin-bottom: 16px
+    }
+
+    .v7-ribbon-card h3 {
+      color: #2e2015;
+      font-size: 20px;
+      margin-bottom: 8px;
+      letter-spacing: -.4px
+    }
+
+    .v7-ribbon-card p {
+      color: #6f5e4b;
+      line-height: 1.62;
+      font-size: 14px;
+      font-weight: 650
+    }
+
+    .hero-card,
+    .offer-card,
+    .feature-box,
+    .review-card,
+    .ingredient-image,
+    .contact-box,
+    .instagram-box,
+    .v6-step,
+    .v6-trust-card {
+      box-shadow: 0 36px 100px rgba(54, 35, 20, .15);
+    }
+
+    .offer-card:hover img {
+      transform: scale(1.08) rotate(.7deg)
+    }
+
+    .btn,
+    .slider-btn,
+    .order-small,
+    .popup-btn,
+    .instagram-btn,
+    .contact-box a {
+      letter-spacing: .2px;
+      transform: translateZ(0);
+    }
+
+    .whatsapp {
+      right: 22px;
+      bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, .25)
+    }
+
+    .v6-sticky-buy {
+      border-top: 1px solid rgba(255, 220, 163, .18);
+      box-shadow: 0 -24px 70px rgba(22, 13, 7, .20)
+    }
+
+    @media(max-width:1050px) {
+      .v7-platinum-shell {
+        grid-template-columns: 1fr
+      }
+
+      .v7-visual {
+        min-height: 360px
+      }
+
+      .v7-ribbon-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:900px) {
+      .slider {
+        min-height: 440px;
+        border-radius: 0 0 52px 52px
+      }
+
+      .v7-platinum-hero {
+        padding: 38px 6% 12px
+      }
+
+      .v7-copy {
+        padding: 30px
+      }
+
+      .v7-copy h2 {
+        letter-spacing: -1.5px
+      }
+
+      .v7-proof-grid {
+        grid-template-columns: 1fr
+      }
+
+      .v7-ribbon-grid {
+        grid-template-columns: 1fr
+      }
+
+      .menu a.active::before {
+        display: none
+      }
+    }
+
+    @media(max-width:520px) {
+      .slider {
+        min-height: 340px
+      }
+
+      .v7-platinum-shell {
+        padding: 14px;
+        border-radius: 34px
+      }
+
+      .v7-copy,
+      .v7-visual {
+        border-radius: 26px
+      }
+
+      .v7-copy {
+        padding: 22px
+      }
+
+      .v7-copy p {
+        font-size: 15px
+      }
+
+      .v7-actions .btn {
+        width: 100%
+      }
+
+      .v7-floating-tag {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .v7-product-ribbon {
+        padding: 22px 6% 0
+      }
+    }
+
+    /* =========================================================
+       NO BLUR BOX PATCH - keeps design premium, removes only blur glass boxes
+       ========================================================= */
+    header,
+    .stat-box,
+    .hero-card,
+    .popup-overlay,
+    .subscribe-form,
+    .footer-links>div,
+    .slider-content span,
+    .promise-card,
+    .floating-order-card,
+    .v3-board-inner,
+    .preloader-card,
+    .trust-ribbon-grid>div,
+    .showcase-card,
+    .v6-sticky-buy,
+    .v6-step,
+    .v7-card,
+    .v7-floating-tag {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .slider-content {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .slider-content span {
+      background: rgba(255, 250, 242, .18) !important;
+      border: 1px solid rgba(255, 255, 255, .28) !important;
+    }
   </style>
 </head>
 
 <body>
 
+  <div class="premium-cursor-glow" id="premiumCursorGlow" aria-hidden="true"></div>
+
+  <div class="premium-preloader" aria-label="Loading Salman Enterprises website">
+    <div class="preloader-card">
+      <img src="logo.png" alt="Salman Enterprises Logo">
+      <h3>Salman Enterprises</h3>
+      <p>Preparing your ultra premium Hudood shopping experience...</p>
+      <div class="loader-line"><span></span></div>
+    </div>
+  </div>
+
+  <div class="ambient-orbs" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+
+  <div class="premium-topbar">
+    <span>✨Today's Product Offer</span>
+    <span>•</span>
+    <a href="https://wa.me/916364343110" target="_blank">Order Now: 6364343110</a>
+  </div>
+
   <div class="popup-overlay" id="popup">
     <div class="popup-box">
       <button class="close-popup" id="closePopup">×</button>
-      <img src="offer-banner.png" alt="Mega Offer">
+      <img src="offer-banner.png" alt="Product Offer">
       <a href="https://wa.me/916364343110" target="_blank" class="popup-btn">Order Now on WhatsApp</a>
     </div>
   </div>
@@ -1341,11 +4041,22 @@
         <img src="colgate.jpeg" alt="Hudood Product Banner 3">
       </div>
 
-      <div class="slider-content">
-        <span>✨ Premium Hudood Offers</span>
-        <h2>Fresh Daily Care Products</h2>
-        <p>Explore Hudood soap, SLS-free toothpaste, membership benefits and mega offer packs.</p>
-        <a href="#offers" class="slider-btn">View Products</a>
+      <div class="slider-content premium-slider-box">
+        <div class="slider-badge">✨ Premium Hudood Offers</div>
+
+        <h2>
+          Fresh Daily <span>Care Products</span>
+        </h2>
+
+        <p>Natural • Pure • Trusted daily care products with premium quality and easy WhatsApp ordering.</p>
+
+        <div class="slider-features">
+          <span>🌿 Natural</span>
+          <span>🛡️ Safe</span>
+          <span>✨ Premium</span>
+        </div>
+
+        <a href="#offers" class="slider-btn premium-slider-btn">View Products →</a>
       </div>
 
       <div class="slider-dots">
@@ -1357,13 +4068,120 @@
     </div>
   </section>
 
-  <section class="hero" id="home">
+
+
+  <section class="v7-platinum-hero reveal" aria-label="V7 platinum premium Hudood selling section">
+    <div class="v7-platinum-shell">
+      <div class="v7-copy">
+        <div class="v7-kicker">💎 Platinum Premium Store Experience</div>
+        <h2>Hudood products presented like a <span>luxury daily care brand.</span></h2>
+        <p>
+          This V7 upgrade adds a stronger premium selling area, platinum glass design, clear product value,
+          trust-focused cards and a smooth WhatsApp order path that looks modern on mobile and computer.
+        </p>
+        <div class="v7-actions">
+          <a href="https://wa.me/916364343110" target="_blank" class="btn">Order Product Offer</a>
+          <a href="#offers" class="btn secondary">View Product Value</a>
+        </div>
+        <div class="v7-proof-grid">
+          <div class="v7-proof"><b>Best Value</b><small>Complete Product Pack</small></div>
+          <div class="v7-proof"><b>4-in-1</b><small>Membership + Soap + Toothpaste + Lucky Draw</small></div>
+          <div class="v7-proof"><b>Fast</b><small>Direct WhatsApp Customer Support</small></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="v7-product-ribbon reveal" aria-label="Premium Hudood value highlights">
+    <div class="v7-ribbon-grid">
+      <div class="v7-ribbon-card"><i>🌿</i>
+        <h3>Organic Style Look</h3>
+        <p>Soft cream, green and gold visuals make the website feel clean and premium.</p>
+      </div>
+      <div class="v7-ribbon-card"><i>🛍️</i>
+        <h3>Better Product Selling</h3>
+        <p>Offer value is shown clearly so customers understand the pack quickly.</p>
+      </div>
+      <div class="v7-ribbon-card"><i>💬</i>
+        <h3>WhatsApp Focus</h3>
+        <p>Direct order buttons guide every visitor to message Salman Enterprises instantly.</p>
+      </div>
+      <div class="v7-ribbon-card"><i>📱</i>
+        <h3>Mobile Premium</h3>
+        <p>Responsive cards, smooth spacing and clear buttons work beautifully on phone screens.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ultra-promise reveal" aria-label="Premium service highlights">
+    <div class="promise-grid">
+      <div class="promise-card">
+        <div class="promise-icon">⚡</div>
+        <div><b>Fast WhatsApp Order</b><span>Quick response and simple direct ordering.</span></div>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon">🌿</div>
+        <div><b>Daily Care Products</b><span>Clean product presentation for trusted shopping.</span></div>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon">🎁</div>
+        <div><b>Product Pack</b><span>Membership, soap, toothpaste and lucky draw.</span></div>
+      </div>
+      <div class="promise-card">
+        <div class="promise-icon">🚚</div>
+        <div><b>Local Delivery</b><span>Delivery support available for nearby customers.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="v3-luxury-board reveal" aria-label="Ultra premium brand panel">
+    <div class="v3-board-inner">
+      <div class="v3-board-main">
+        <span>Luxury Daily Care Store</span>
+        <h2>More premium look, stronger trust, and better product selling design.</h2>
+        <p>This upgraded section gives the website a high-end brand feel with glass cards, golden highlights, clean
+          product value, and a direct WhatsApp ordering journey for customers.</p>
+      </div>
+      <div class="v3-board-side">
+        <div class="v3-mini-metric"><b>Best Value</b><small>Hudood Products Pack</small></div>
+        <div class="v3-mini-metric"><b>4-in-1</b><small>Membership, Soap, Toothpaste & Lucky Draw</small></div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="royal-showcase reveal" aria-label="Ultra premium Hudood showcase">
+    <div class="showcase-shell">
+      <div class="showcase-content">
+        <small>Royal Premium Upgrade</small>
+        <h2>Luxury product selling section made for better customer trust.</h2>
+        <p>
+          This new premium showcase highlights your Hudood offer like a professional e-commerce brand:
+          clear value, beautiful glass design, strong trust feeling and direct WhatsApp order action.
+        </p>
+        <div class="showcase-list">
+          <span>✓ Premium Offer Look</span>
+          <span>✓ Better Product Focus</span>
+          <span>✓ WhatsApp Order Flow</span>
+          <span>✓ Mobile Friendly Design</span>
+        </div>
+        <div class="showcase-actions">
+          <a href="https://wa.me/916364343110" class="btn" target="_blank">Order This Pack</a>
+          <a href="#offers" class="btn secondary">See All Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero reveal" id="home">
     <div class="hero-text">
       <div class="premium-label">✨ Premium Hudood Daily Care</div>
       <h1>Natural Care Products with a <span>Luxury</span> Shopping Feel</h1>
       <p>
         Welcome to Salman Enterprises. Discover Hudood soap, SLS-free toothpaste,
-        mega offer packs, lucky draw benefits and direct WhatsApp ordering with a premium organic brand experience.
+        product offer packs, lucky draw benefits and direct WhatsApp ordering with a premium organic brand experience.
       </p>
 
       <div class="hero-actions">
@@ -1373,8 +4191,8 @@
 
       <div class="hero-stats">
         <div class="stat-box">
-          <h3>₹156</h3>
-          <p>Mega Offer Pack</p>
+          <h3>Best Value</h3>
+          <p>Product Pack</p>
         </div>
         <div class="stat-box">
           <h3>Fast</h3>
@@ -1386,7 +4204,7 @@
     <div class="hero-card">
       <img src="offer-banner.png" alt="Hudood Offer">
       <div class="hero-card-content">
-        <h2>Today's Mega Offer</h2>
+        <h2>Today's Product Offer</h2>
         <ul>
           <li>Hudood Membership Included</li>
           <li>100g SLS-Free Toothpaste</li>
@@ -1399,25 +4217,55 @@
 
   <div class="luxury-strip">
     <div class="strip-track">
-      <span>HUDOOD PRODUCTS ✦ MEGA OFFER ✦ WHATSAPP ORDER ✦ LOCAL DELIVERY ✦ PREMIUM DAILY CARE ✦</span>
-      <span>HUDOOD PRODUCTS ✦ MEGA OFFER ✦ WHATSAPP ORDER ✦ LOCAL DELIVERY ✦ PREMIUM DAILY CARE ✦</span>
+      <span>HUDOOD PRODUCTS ✦ PRODUCT OFFER ✦ WHATSAPP ORDER ✦ LOCAL DELIVERY ✦ PREMIUM DAILY CARE ✦</span>
+      <span>HUDOOD PRODUCTS ✦ PRODUCT OFFER ✦ WHATSAPP ORDER ✦ LOCAL DELIVERY ✦ PREMIUM DAILY CARE ✦</span>
     </div>
   </div>
 
-  <section id="offers">
+  <section class="v6-premium-timeline reveal" aria-label="Premium order process">
+    <div class="v6-timeline-head">
+      <span>Ultra Premium Shopping Flow</span>
+      <h2>Simple order journey with luxury brand trust.</h2>
+      <p>Customers can understand the offer quickly, view product value, contact on WhatsApp and place an order without
+        confusion.</p>
+    </div>
+    <div class="v6-steps">
+      <div class="v6-step">
+        <h3>View Product Offer</h3>
+        <p>Clear product images, offer price and benefit details make the pack easy to understand.</p>
+      </div>
+      <div class="v6-step">
+        <h3>Check Product Value</h3>
+        <p>Soap, toothpaste, membership and lucky draw benefits are shown in premium cards.</p>
+      </div>
+      <div class="v6-step">
+        <h3>Order on WhatsApp</h3>
+        <p>Every important button opens WhatsApp directly for quick customer communication.</p>
+      </div>
+      <div class="v6-step">
+        <h3>Get Delivery Support</h3>
+        <p>Customers can ask about local delivery, availability and offer details instantly.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="premium-trust-ribbon reveal" aria-label="Hudood trust highlights">
+    <div class="trust-ribbon-grid">
+      <div><b>100%</b><span>Direct WhatsApp Support</span></div>
+      <div><b>Best Value</b><span>Clear Product Offer Price</span></div>
+      <div><b>4-in-1</b><span>Soap, Toothpaste, Membership & Draw</span></div>
+      <div><b>Local</b><span>Vijayapur Delivery Support</span></div>
+    </div>
+  </section>
+
+  <section class="reveal" id="offers">
     <div class="section-head">
       <span class="eyebrow">Premium Collection</span>
       <h2 class="title">Our Products & Offers</h2>
       <p class="subtitle">Clean, elegant and premium product presentation inspired by modern organic care brands.</p>
-    </div>
-
-    <div class="mega-offer">
-      <img src="offer-banner.png" alt="Hudood Mega Offer">
-      <div class="mega-content">
-        <h3>Hudood Mega Offer - ₹156</h3>
-        <p>Hudood Membership, SLS-Free Toothpaste, Quality Soap and Lucky Draw chance.</p>
-        <a href="https://wa.me/916364343110" class="btn" target="_blank">Order Mega Offer</a>
-      </div>
     </div>
 
     <div class="offers">
@@ -1437,7 +4285,7 @@
         <img src="colgate.jpeg" alt="SLS-Free Toothpaste">
         <div class="offer-content">
           <h3>SLS-Free Toothpaste</h3>
-          <p>Premium toothpaste included in the Hudood Mega Offer pack.</p>
+          <p>Premium toothpaste included in the Hudood Products pack.</p>
           <div class="price-row">
             <span class="badge">₹70 Value</span>
             <a href="https://wa.me/916364343110" class="order-small">Order Now</a>
@@ -1471,7 +4319,7 @@
     </div>
   </section>
 
-  <section class="features" id="features">
+  <section class="reveal features" id="features">
     <div class="section-head">
       <span class="eyebrow">Why Customers Choose Us</span>
       <h2 class="title">Premium Service Benefits</h2>
@@ -1481,8 +4329,8 @@
     <div class="feature-grid">
       <div class="feature-box">
         <div class="feature-icon">₹</div>
-        <h3>Mega Offer</h3>
-        <p>Full value pack available at only ₹156.</p>
+        <h3>Product Offer</h3>
+        <p>Full value pack available at only Best Value.</p>
       </div>
       <div class="feature-box">
         <div class="feature-icon">🎁</div>
@@ -1502,7 +4350,7 @@
     </div>
   </section>
 
-  <section class="ingredients" id="ingredients">
+  <section class="reveal ingredients" id="ingredients">
     <div class="ingredient-wrap">
       <div class="ingredient-image">
         <img src="combo-pack.png" alt="Natural Hudood Care">
@@ -1524,7 +4372,27 @@
     </div>
   </section>
 
-  <section class="testimonials" id="reviews">
+
+  <section class="v6-trust-wall reveal" aria-label="Premium trust highlights">
+    <div class="v6-trust-inner">
+      <div class="v6-trust-copy">
+        <h2>Built to look trusted, premium and ready for sales.</h2>
+        <p>This V6 section adds a strong luxury brand feeling with golden highlights, glass depth and quick order focus.
+        </p>
+        <a href="https://wa.me/916364343110" target="_blank">Chat on WhatsApp</a>
+      </div>
+      <div class="v6-trust-grid">
+        <div class="v6-trust-card"><b>Best Value</b><span>Product offer pack presented with clear product value.</span>
+        </div>
+        <div class="v6-trust-card"><b>4-in-1</b><span>Membership, soap, toothpaste and lucky draw benefits.</span></div>
+        <div class="v6-trust-card"><b>Fast</b><span>Direct WhatsApp enquiry and local customer support.</span></div>
+        <div class="v6-trust-card"><b>Premium</b><span>Modern organic care design for stronger customer
+            confidence.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal testimonials" id="reviews">
     <div class="section-head">
       <span class="eyebrow">Customer Trust</span>
       <h2 class="title">What Customers Like</h2>
@@ -1539,7 +4407,7 @@
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <p>Fast response and local delivery support. The Hudood mega offer is very useful.</p>
+        <p>Fast response and local delivery support. The Hudood product offer is very useful.</p>
         <h3>Local Buyer</h3>
       </div>
       <div class="review-card">
@@ -1550,7 +4418,7 @@
     </div>
   </section>
 
-  <section id="instagram">
+  <section class="reveal" id="instagram">
     <div class="instagram-box">
       <span class="eyebrow">Social Updates</span>
       <h2>Follow Hudood Official</h2>
@@ -1559,7 +4427,7 @@
     </div>
   </section>
 
-  <section class="faq">
+  <section class="reveal faq">
     <div class="section-head">
       <span class="eyebrow">Questions</span>
       <h2 class="title">Frequently Asked Questions</h2>
@@ -1576,13 +4444,27 @@
         <p>Yes, local delivery support is available. Contact Salman Enterprises on WhatsApp for details.</p>
       </details>
       <details>
-        <summary>What is included in the mega offer?</summary>
-        <p>The Hudood Mega Offer includes membership, SLS-Free Toothpaste, Quality Soap and lucky draw chance.</p>
+        <summary>What is included in the product offer?</summary>
+        <p>The Hudood Products includes membership, SLS-Free Toothpaste, Quality Soap and lucky draw chance.</p>
       </details>
     </div>
   </section>
 
-  <section id="contact">
+
+
+  <section class="premium-final-cta reveal" aria-label="Final ordering call to action">
+    <div class="final-cta-card">
+      <h2>Ready to Order Hudood Products?</h2>
+      <p>Give customers one clean final action: tap WhatsApp, ask product details, and place the order directly with
+        Salman Enterprises.</p>
+      <div class="final-cta-actions">
+        <a href="https://wa.me/916364343110" class="btn" target="_blank">Order on WhatsApp</a>
+        <a href="#offers" class="btn secondary">View Products Again</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal" id="contact">
     <div class="contact-box">
       <h2>Contact Salman Enterprises</h2>
       <p><strong>Phone:</strong> 6364343110</p>
@@ -1591,7 +4473,36 @@
     </div>
   </section>
 
+  <a href="https://wa.me/916364343110" class="floating-order-card" target="_blank"
+    aria-label="Order Product Offer on WhatsApp">
+    <img src="offer-banner.png" alt="Product Offer">
+    <span><strong>Hudood Product Offer</strong><small>Tap to order on WhatsApp</small></span>
+  </a>
+
   <a href="https://wa.me/916364343110" class="whatsapp" target="_blank">WhatsApp</a>
+
+  <div class="v6-sticky-buy" id="v6StickyBuy" aria-label="Sticky quick order bar">
+    <div class="v6-sticky-left">
+      <img src="offer-banner.png" alt="Hudood Products">
+      <div><b>Hudood Products</b><span>Order directly on WhatsApp</span></div>
+    </div>
+    <a href="https://wa.me/916364343110" target="_blank">Order Now</a>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+
+  <section class="v6-final reveal" aria-label="Final premium call to action">
+    <div class="v6-final-card">
+      <h2>Ready to order Hudood Products?</h2>
+      <p>Tap WhatsApp, ask product details, confirm availability and place your order directly with Salman Enterprises.
+      </p>
+      <div class="v6-final-actions">
+        <a href="https://wa.me/916364343110" class="btn" target="_blank">Order Now on WhatsApp</a>
+        <a href="#offers" class="btn secondary">See Products</a>
+      </div>
+    </div>
+  </section>
 
   <footer class="premium-footer">
     <div class="footer-container">
@@ -1602,7 +4513,7 @@
         </div>
 
         <h3>Subscribe to Save!</h3>
-        <p class="footer-offer">Get Hudood mega offers, product updates and WhatsApp order support.</p>
+        <p class="footer-offer">Get Hudood product offers, product updates and WhatsApp order support.</p>
 
         <p class="footer-about">
           Be the first to access exclusive Hudood offers, quality daily care products,
@@ -1628,7 +4539,7 @@
           <a href="#offers">Hudood Soap</a>
           <a href="#offers">SLS-Free Toothpaste</a>
           <a href="#offers">Membership</a>
-          <a href="#offers">Mega Offer</a>
+          <a href="#offers">Product Offer</a>
         </div>
 
         <div>
@@ -1728,6 +4639,179 @@
 
       showSlide(currentSlide);
     }, 3500);
+
+
+    // Ultra premium scroll reveal animation
+    const revealItems = document.querySelectorAll(".reveal, .offer-card, .feature-box, .review-card, details");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => {
+      item.classList.add("reveal");
+      revealObserver.observe(item);
+    });
+
+    // Premium subscribe action
+    const subscribeForm = document.querySelector(".subscribe-form");
+    if (subscribeForm) {
+      subscribeForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = subscribeForm.querySelector("input").value.trim();
+        if (!email) return;
+        const message = encodeURIComponent("Hello Salman Enterprises, I want Hudood product updates. My email is: " + email);
+        window.open("https://wa.me/916364343110?text=" + message, "_blank");
+        subscribeForm.reset();
+      });
+    }
+
+
+
+    // Ultra Premium V3: back-to-top + soft 3D product tilt
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 520) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    document.querySelectorAll(".offer-card, .hero-card, .feature-box").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        if (window.innerWidth < 900) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateY = ((x / rect.width) - 0.5) * 8;
+        const rotateX = ((0.5 - y / rect.height)) * 8;
+        card.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
+    });
+
+
+    // Ultra Premium V5: preloader, active nav, sticky polish
+    window.addEventListener("load", () => {
+      setTimeout(() => document.body.classList.add("loaded"), 450);
+    });
+
+    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+    const pageSections = [...navLinks]
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    function updateActiveNav() {
+      const y = window.scrollY + 170;
+      let current = pageSections[0]?.id;
+      pageSections.forEach(sec => {
+        if (sec.offsetTop <= y) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+      header.classList.toggle('scrolled', window.scrollY > 24);
+    }
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        menu.classList.remove('active');
+        menuBtn.innerHTML = '☰';
+        if (popup) popup.style.display = 'none';
+      }
+    });
+
+
+
+    // Ultra Premium V5: animated menu button + smoother menu closing
+    const closeMobileMenu = () => {
+      if (!menu || !menuBtn) return;
+      menu.classList.remove('active');
+      menuBtn.classList.remove('active');
+      menuBtn.innerHTML = '☰';
+    };
+
+    if (menuBtn && menu) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = menu.classList.contains('active');
+        menuBtn.classList.toggle('active', !isOpen);
+      });
+    }
+
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.querySelectorAll('.showcase-image, .showcase-content, .v3-board-inner').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 900) return;
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - .5) * 10;
+        const y = (.5 - (e.clientY - rect.top) / rect.height) * 10;
+        card.style.transform = `perspective(900px) rotateX(${y}deg) rotateY(${x}deg)`;
+      });
+      card.addEventListener('mouseleave', () => card.style.transform = '');
+    });
+
+
+
+    // Ultra Premium V6: cursor glow + sticky conversion bar
+    const premiumCursorGlow = document.getElementById('premiumCursorGlow');
+    if (premiumCursorGlow) {
+      window.addEventListener('pointermove', (e) => {
+        premiumCursorGlow.style.left = e.clientX + 'px';
+        premiumCursorGlow.style.top = e.clientY + 'px';
+      }, { passive: true });
+      document.addEventListener('mouseleave', () => premiumCursorGlow.style.opacity = '0');
+      document.addEventListener('mouseenter', () => premiumCursorGlow.style.opacity = '.7');
+    }
+
+    const v6StickyBuy = document.getElementById('v6StickyBuy');
+    function updateV6StickyBuy() {
+      if (!v6StickyBuy) return;
+      v6StickyBuy.classList.toggle('show', window.scrollY > 760);
+    }
+    window.addEventListener('scroll', updateV6StickyBuy, { passive: true });
+    updateV6StickyBuy();
+
+    // Premium WhatsApp message for order links without changing existing structure
+    document.querySelectorAll('a[href="https://wa.me/916364343110"]').forEach(link => {
+      if (link.dataset.v6Ready) return;
+      link.dataset.v6Ready = 'true';
+      link.href = 'https://wa.me/916364343110?text=' + encodeURIComponent('Hello Salman Enterprises, I want to order Hudood Product Offer. Please send details.');
+    });
+
+
+    // Ultra Premium V7: stronger interactive platinum cards
+    document.querySelectorAll('.v7-platinum-shell, .v7-ribbon-card, .v7-visual').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 900) return;
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - .5) * 7;
+        const y = (.5 - (e.clientY - rect.top) / rect.height) * 7;
+        card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
+      });
+      card.addEventListener('mouseleave', () => card.style.transform = '');
+    });
+
+    // V7 polished WhatsApp message
+    document.querySelectorAll('a[href^="https://wa.me/916364343110"]').forEach(link => {
+      if (link.dataset.v7Ready) return;
+      link.dataset.v7Ready = 'true';
+      if (!link.href.includes('text=')) {
+        link.href = 'https://wa.me/916364343110?text=' + encodeURIComponent('Hello Salman Enterprises, I want to order the Hudood Product Offer. Please send full details.');
+      }
+    });
+
 
   </script>
 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spicy Eats - Live Admin Dashboard</title>
+  <style>
+    :root {
+      --dark: #2f3542;
+      --light: #f1f2f6;
+      --white: #ffffff;
+      --primary: #ff4757;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      padding: 2rem;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: 1.8rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-clear {
+      background: #747d8c;
+    }
+
+    .table-container {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th,
+    td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--light);
+    }
+
+    th {
+      background: #e4e7eb;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    .status-badge {
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: #ffeaa7;
+      color: #d63031;
+    }
+
+    .no-orders {
+      padding: 3rem;
+      text-align: center;
+      color: #777;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard-header">
+    <h1>🖥️ Live Operations Order Log Dashboard</h1>
+    <div>
+      <button class="btn" onclick="loadDashboardOrders()">🔄 Refresh Board</button>
+      <button class="btn btn-clear" onclick="clearDashboardLogs()">🗑️ Clear All Logs</button>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Timestamp</th>
+          <th>Customer Details</th>
+          <th>Items Summary</th>
+          <th>Total Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="dashboard-table-rows">
+        <!-- Live Incoming Rows Render Automatically -->
+      </tbody>
+    </table>
+    <div id="no-orders-msg" class="no-orders" style="display: none;">No incoming client orders found in log systems.
+    </div>
+  </div>
+
+  <script>
+    const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycby0zVPvE7N5Oiod0hYfDJjKODKnvATfJBL0TNPxprELUvAk4qZz99QejdZSwdeBsyg/exec";
+
+    let isSignUpMode = false;
+    let globalUsersList = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Safely check if lucide exists before running
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+      loadDashboardOrders();
+    });
+
+    function renderOrders(orders) {
+      const rowContainer = document.getElementById("dashboard-table-rows");
+      const emptyMsg = document.getElementById("no-orders-msg");
+
+      if (!orders || orders.length === 0) {
+        rowContainer.innerHTML = "";
+        emptyMsg.style.display = "block";
+        return;
+      }
+
+      emptyMsg.style.display = "none";
+      rowContainer.innerHTML = orders.map(order => {
+        // Ensure items is parsed safely if it comes as a string representation
+        let itemsArray = [];
+        try {
+          itemsArray = typeof order.items === 'string' ? JSON.parse(order.items) : (order.items || []);
+        } catch(e) {
+          itemsArray = [];
+        }
+
+        const itemsList = itemsArray.length > 0 
+          ? itemsArray.map(i => `${i.name || i.itemName} <strong>(x${i.qty || i.quantity || 1})</strong>`).join("<br>")
+          : "No items parsed";
+
+        // Fallback structures for safety depending on your Sheets column format
+        const customerName = order.customer?.name || order.customerName || "N/A";
+        const customerPhone = order.customer?.phone || order.customerPhone || "N/A";
+        const customerAddress = order.customer?.address || order.customerAddress || "N/A";
+
+        return `
+          <tr>
+            <td><strong>${order.id || order.orderId || 'N/A'}</strong></td>
+            <td style="font-size:0.9rem; color:#555;">${order.date || order.timestamp || 'N/A'}</td>
+            <td>
+              <strong>${customerName}</strong><br>
+              <span style="font-size:0.85rem; color:#666;">📞 ${customerPhone}</span><br>
+              <span style="font-size:0.85rem; color:#666;">📍 ${customerAddress}</span>
+            </td>
+            <td style="font-size:0.9rem;">${itemsList}</td>
+            <td style="font-weight:bold; color:var(--primary)">₹${order.total || order.totalPrice || 0}</td>
+            <td><span class="status-badge">${order.status || 'Pending'}</span></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function loadDashboardOrders() {
+      // 1. Fetch live data from the Google Apps Script API
+      fetch(GOOGLE_SHEET_API)
+        .then(response => response.json())
+        .then(data => {
+          // If the API returns orders wrapped in an object property (e.g., data.orders), handle it here
+          const liveOrders = Array.isArray(data) ? data : (data.orders || []);
+          
+          // Cache the live response to localStorage as an alternative fallback backup
+          localStorage.setItem("se_dashboard_orders", JSON.stringify(liveOrders));
+          
+          renderOrders(liveOrders);
+        })
+        .catch(error => {
+          console.warn("Failed fetching from Google Sheet API, using localStorage backup instead:", error);
+          // 2. Fallback to local storage if API is offline or restricted by CORS
+          const fallbackOrders = JSON.parse(localStorage.getItem("se_dashboard_orders") || "[]");
+          renderOrders(fallbackOrders);
+        });
+    }
+
+    function clearDashboardLogs() {
+      if (confirm("Are you sure you want to permanently delete all tracked dashboard logs?")) {
+        localStorage.removeItem("se_dashboard_orders");
+        renderOrders([]);
+      }
+    }
+
+    // Auto update live look every 3 seconds
+    setInterval(loadDashboardOrders, 3000);
+    window.onload = loadDashboardOrders;
+  </script>
+</body>
+
+</html>

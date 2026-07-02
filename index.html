@@ -2,500 +2,269 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Salman Enterprises | Premium Hudood Products</title>
-  <meta name="description" content="Premium Hudood products with trusted quality, fast delivery across India, and 24/7 customer support." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght=600;700;800&family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hudood Premium Store</title>
+
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Lucide Icons Library CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    /* ─── CSS VARIABLES ─── */
     :root {
-      --radius: 0.625rem;
-      --background: oklch(0.985 0.005 95);
-      --foreground: oklch(0.22 0.04 160);
-      --card: oklch(1 0 0);
-      --card-foreground: oklch(0.22 0.04 160);
-      --primary: oklch(0.32 0.08 160);
-      --primary-foreground: oklch(0.97 0.02 90);
-      --primary-glow: oklch(0.48 0.12 162);
-      --secondary: oklch(0.95 0.02 90);
-      --secondary-foreground: oklch(0.22 0.04 160);
-      --muted: oklch(0.95 0.01 100);
-      --muted-foreground: oklch(0.5 0.02 160);
-      --accent: oklch(0.78 0.13 85);
-      --gold: oklch(0.78 0.13 85);
-      --gold-soft: oklch(0.88 0.09 90);
-      --destructive: oklch(0.577 0.245 27.325);
-      --border: oklch(0.9 0.02 100);
-      --input: oklch(0.9 0.02 100);
-      --ring: oklch(0.48 0.12 162);
-      --gradient-primary: linear-gradient(135deg, oklch(0.32 0.08 160), oklch(0.48 0.12 162));
-      --gradient-gold: linear-gradient(135deg, oklch(0.78 0.13 85), oklch(0.88 0.09 90));
-      --gradient-hero: linear-gradient(135deg, oklch(0.22 0.06 160) 0%, oklch(0.32 0.08 160) 60%, oklch(0.42 0.1 162) 100%);
-      --shadow-elegant: 0 20px 50px -20px color-mix(in oklab, oklch(0.32 0.08 160) 35%, transparent);
-      --shadow-gold: 0 12px 30px -12px color-mix(in oklab, oklch(0.78 0.13 85) 50%, transparent);
-      --font-display: "Playfair Display", Georgia, serif;
-      --font-body: "Poppins", system-ui, sans-serif;
+      --primary: #101010;
+      --primary-foreground: #ffffff;
+      --gold: #d4af37;
+      --gold-hover: #bfa030;
+      --background: #ffffff;
+      --muted: #f5f5f7;
+      --muted-foreground: #6e6e73;
+      --border: #e5e5ea;
+      --radius: 12px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    /* ─── RESET & BASE ─── */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
+    * {
       margin: 0;
       padding: 0;
-      border-color: var(--border);
-    }
-
-    html {
-      scroll-behavior: smooth;
+      box-sizing: border-box;
+      font-family: var(--font-sans);
     }
 
     body {
       background-color: var(--background);
-      color: var(--foreground);
-      font-family: var(--font-body);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
+      color: var(--primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    body.nav-open,
-    body.cart-open {
-      overflow: hidden;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-family: var(--font-display);
-      letter-spacing: -0.02em;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      cursor: pointer;
-      font-family: inherit;
-      background: none;
-      border: none;
-      touch-action: manipulation;
-    }
-
-    input,
-    textarea,
-    select {
-      font-family: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* ─── UTILITIES ─── */
+    /* Global Container Utility */
     .container {
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.25rem;
+      padding: 0 1.5rem;
     }
 
-    .text-gold {
-      color: var(--gold);
-    }
-
-    .bg-primary {
+    /* Top Promo Ribbon */
+    .promo-ribbon {
       background-color: var(--primary);
-    }
-
-    .bg-card {
-      background-color: var(--card);
-    }
-
-    .bg-muted {
-      background-color: var(--muted);
-    }
-
-    .text-primary {
-      color: var(--primary);
-    }
-
-    .text-muted {
-      color: var(--muted-foreground);
-    }
-
-    .border {
-      border: 1px solid var(--border);
-    }
-
-    .rounded-full {
-      border-radius: 9999px;
-    }
-
-    .rounded-2xl {
-      border-radius: 1rem;
-    }
-
-    .rounded-3xl {
-      border-radius: 1.5rem;
-    }
-
-    .rounded-xl {
-      border-radius: 0.75rem;
-    }
-
-    .rounded-lg {
-      border-radius: 0.5rem;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .flex {
-      display: flex;
-    }
-
-    .grid {
-      display: grid;
-    }
-
-    .relative {
-      position: relative;
-    }
-
-    .absolute {
-      position: absolute;
-    }
-
-    .fixed {
-      position: fixed;
-    }
-
-    .sticky {
-      position: sticky;
-    }
-
-    .overflow-hidden {
-      overflow: hidden;
-    }
-
-    .transition {
-      transition: all 0.2s ease;
-    }
-
-    /* ─── TOPBAR ─── */
-    .topbar {
-      background: var(--primary);
       color: var(--gold);
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-align: center;
-    }
-
-    /* ─── HEADER ─── */
-    .header {
+      padding: 0.6rem 1rem;
       position: sticky;
       top: 0;
-      z-index: 40;
-      backdrop-filter: blur(12px);
-      background: color-mix(in oklab, var(--background) 95%, transparent);
-      border-bottom: 1px solid var(--border);
+      z-index: 50;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
-    .header-inner {
+    /* Main Global Header Navigation */
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 29px;
+      z-index: 40;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 0;
-      gap: 1rem;
+      height: 4.5rem;
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-shrink: 1;
-      min-width: 0;
-    }
-
-    .logo {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .logo-main {
-      font-family: var(--font-display);
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
-      font-weight: 800;
+    .brand {
+      font-size: 1.4rem;
+      font-weight: 900;
       color: var(--primary);
-    }
-
-    .logo-sub {
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .nav {
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
       display: flex;
-      gap: 1.25rem;
       align-items: center;
+      gap: 0.25rem;
+      text-decoration: none;
     }
 
-    .nav a {
-      font-size: 0.85rem;
+    .brand span {
+      color: var(--gold);
+    }
+
+    .desktop-nav {
+      display: flex;
+      items: center;
+      gap: 2rem;
+    }
+
+    .desktop-nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-size: 0.9rem;
       font-weight: 500;
       transition: color 0.2s;
-      white-space: nowrap;
+      position: relative;
     }
 
-    .nav a:hover {
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
       color: var(--gold);
     }
 
-    .header-actions {
+    .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      flex-shrink: 0;
+      gap: 0.85rem;
     }
 
-    .header-actions button,
-    .header-actions a {
+    .icon-btn {
       background: none;
       border: none;
       cursor: pointer;
-      color: var(--foreground);
-      transition: color 0.2s;
+      color: var(--primary);
       position: relative;
+      width: 2.25rem;
+      height: 2.25rem;
       display: flex;
       align-items: center;
-      padding: 0.35rem;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.2s, color 0.2s;
     }
 
-    .header-actions button:hover,
-    .header-actions a:hover {
+    .icon-btn:hover {
+      background-color: var(--muted);
       color: var(--gold);
-    }
-
-    .btn-auth-toggle {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.4rem 0.75rem;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: background 0.2s;
-      white-space: nowrap;
-    }
-
-    .btn-auth-toggle.logged-out {
-      background: var(--primary);
-      color: var(--primary-foreground);
-    }
-
-    .btn-auth-toggle.logged-in {
-      background: var(--destructive);
-      color: white;
     }
 
     .badge {
       position: absolute;
-      top: -2px;
-      right: -4px;
-      font-size: 0.55rem;
-      background: var(--gold);
+      top: 2px;
+      right: 2px;
+      background-color: var(--gold);
       color: var(--primary);
-      border-radius: 9999px;
-      padding: 1px 4px;
-      font-weight: 700;
-    }
-
-    .menu-btn {
+      font-size: 0.65rem;
+      font-weight: 800;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
       display: none;
+      align-items: center;
+      justify-content: center;
     }
 
-    .search-bar {
-      border-top: 1px solid var(--border);
-      padding: 0.75rem 0;
+    /* Login Authentication Switch Controller UI Styling */
+    .btn-auth-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+
+    .btn-auth-toggle.logged-out {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .btn-auth-toggle.logged-out:hover {
+      background-color: #222;
+    }
+
+    .btn-auth-toggle.logged-in {
+      background-color: var(--muted);
+      color: #c92a2a;
+      border-color: #ffc9c9;
+    }
+
+    .btn-auth-toggle.logged-in:hover {
+      background-color: #fff5f5;
+    }
+
+    /* Mobile Header Menu Hamburger Toggle Animation Styling */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 20px;
+      height: 14px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      transition: all 0.2s;
+      border-radius: 1px;
+    }
+
+    /* Dropdown Dynamic Global Search Panel Overlay */
+    .search-panel {
+      display: none;
+      border-bottom: 1px solid var(--border);
+      background-color: var(--background);
+      padding: 1rem 0;
+      animation: slideDown 0.2s ease-out;
+    }
+
+    .search-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.7rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      background: var(--muted);
+    }
+
+    .search-container input:focus {
+      border-color: var(--gold);
       background: var(--background);
     }
 
-    .search-bar input {
-      width: 100%;
-      padding: 0.6rem 1rem;
-      border-radius: 0.5rem;
-      border: 1px solid var(--border);
-      background: var(--muted);
-      outline: none;
-      font-size: 0.9rem;
-    }
-
-    /* ─── MOBILE NAVIGATION OVERLAY ─── */
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: var(--card);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 100;
-    }
-
-    .mobile-nav.open {
-      transform: translateX(0);
-    }
-
-    .mobile-nav-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .mobile-nav a {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--foreground);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
-    }
-
-    /* ─── HERO & SLIDER ─── */
-    .hero {
-      background: var(--gradient-hero);
-      position: relative;
-      overflow: hidden;
-      padding: 3rem 0;
-    }
-
-    .hero::before {
-      content: "";
+    .search-container .search-icon {
       position: absolute;
-      inset: 0;
-      opacity: 0.15;
-      background: radial-gradient(circle at 20% 20%, var(--gold) 0%, transparent 40%);
+      left: 1rem;
+      color: var(--muted-foreground);
       pointer-events: none;
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .hero-text {
-      color: var(--primary-foreground);
-      z-index: 2;
-    }
-
-    .label-chip {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      font-weight: 600;
-      color: var(--gold);
-      border: 1px solid color-mix(in oklab, var(--gold) 40%, transparent);
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 em {
-      color: var(--gold);
-      font-style: italic;
-    }
-
-    .hero p {
-      font-size: 0.95rem;
-      color: color-mix(in oklab, var(--primary-foreground) 80%, transparent);
-      margin-bottom: 2rem;
-      max-width: 32rem;
-    }
-
-    .hero-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn-gold {
-      display: inline-block;
-      padding: 0.875rem 1.75rem;
-      border-radius: 9999px;
-      background: var(--gradient-gold);
-      color: var(--primary);
-      font-weight: 600;
-      box-shadow: var(--shadow-gold);
-      transition: transform 0.2s;
-      text-align: center;
-    }
-
-    .btn-gold:hover {
-      transform: scale(1.05);
-    }
-
-    .btn-outline {
-      display: inline-block;
-      padding: 0.875rem 1.75rem;
-      border-radius: 9999px;
-      border: 1px solid color-mix(in oklab, var(--primary-foreground) 30%, transparent);
-      color: var(--primary-foreground);
-      font-weight: 500;
-      transition: background 0.2s;
-      text-align: center;
-    }
-
-    .btn-outline:hover {
-      background: color-mix(in oklab, var(--primary-foreground) 10%, transparent);
-    }
-
-    .slider-container {
+    /* Hero Slideshow/Carousel Framework Section Styling */
+    .hero-slider {
       position: relative;
-      width: 100%;
-      height: 420px;
+      height: calc(85vh - 7.5rem);
+      min-height: 450px;
+      background-color: #0c0c0c;
       overflow: hidden;
-      border-radius: 1.5rem;
-      box-shadow: var(--shadow-elegant);
-      border: 1px solid color-mix(in oklab, var(--border) 20%, transparent);
-      z-index: 2;
-    }
-
-    .slider-wrapper {
-      width: 100%;
-      height: 100%;
-      position: relative;
     }
 
     .slide {
@@ -505,222 +274,226 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 0.6s ease-in-out;
+      visibility: hidden;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
       display: flex;
       align-items: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0.2) 100%);
     }
 
     .slide.active {
       opacity: 1;
-      z-index: 1;
+      visibility: visible;
     }
 
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .slide-overlay {
+    .slide-content {
       position: relative;
-      z-index: 2;
-      padding: 2.5rem;
-      background: linear-gradient(90deg, rgba(15, 23, 20, 0.85) 0%, rgba(15, 23, 20, 0.2) 100%);
-      color: #fff;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      z-index: 10;
+      color: white;
+      max-width: 620px;
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .slide-overlay h2 {
-      font-size: 1.75rem;
+    .slide-badge {
+      color: var(--gold);
       font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--gold-soft);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      display: inline-block;
     }
 
-    .slide-overlay p {
-      font-size: 0.9rem;
-      opacity: 0.85;
-      max-width: 420px;
+    .slide-content h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
     }
 
-    .slider-btn {
+    .slide-content p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .slider-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      width: 40px;
-      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: white;
+      border: none;
+      width: 3rem;
+      height: 3rem;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      cursor: pointer;
+      z-index: 20;
       transition: all 0.2s;
-      z-index: 3;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .slider-btn:hover {
-      background: #fff;
+    .slider-arrow:hover {
+      background: var(--gold);
       color: var(--primary);
+      border-color: var(--gold);
     }
 
-    .prev-btn {
-      left: 1.25rem;
+    .slider-arrow.prev {
+      left: 1.5rem;
     }
 
-    .next-btn {
-      right: 1.25rem;
+    .slider-arrow.next {
+      right: 1.5rem;
     }
 
-    .slider-indicators {
+    .slider-dots {
       position: absolute;
-      bottom: 1.25rem;
-      left: 2.5rem;
-      z-index: 3;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
       display: flex;
       gap: 0.5rem;
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.35);
+      width: 2rem;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
+      border-radius: 2px;
     }
 
     .dot.active {
       background: var(--gold);
-      width: 22px;
-      border-radius: 9999px;
-    }
-
-    /* ─── FEATURES STRIP ─── */
-    .features-strip {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--card);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem 0;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .feature-icon {
       width: 3rem;
-      height: 3rem;
-      border-radius: 9999px;
-      background: var(--gold-soft);
-      display: grid;
-      place-items: center;
+    }
+
+    /* Core Application Action CTAs Layout Styling */
+    .btn-primary {
+      background-color: var(--gold);
       color: var(--primary);
-      flex-shrink: 0;
-    }
-
-    .feature-icon svg {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-
-    .feature-title {
-      font-weight: 600;
-    }
-
-    .feature-sub {
-      font-size: 0.8rem;
-      color: var(--muted-foreground);
-    }
-
-    /* ─── SECTION HEADING ─── */
-    .section-heading {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(1.75rem, 4vw, 3rem);
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
       font-weight: 700;
-      margin-top: 0.75rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(214, 175, 55, 0.3);
     }
 
-    .divider {
-      width: 5rem;
-      height: 4px;
-      background: var(--gradient-gold);
-      margin: 1.25rem auto 0;
-      border-radius: 9999px;
+    .btn-primary:hover {
+      background-color: var(--gold-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(214, 175, 55, 0.4);
     }
 
-    /* ─── PRODUCTS ─── */
-    .products-section {
-      padding: 5rem 0;
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      border: 2px solid white;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background-color: white;
+      color: var(--primary);
+    }
+
+    /* Showcase Products Grid Presentation Layout Architecture */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted-foreground);
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
     }
 
     .product-card {
-      background: var(--card);
-      border-radius: 1rem;
-      overflow: hidden;
+      background: var(--background);
+      border-radius: var(--radius);
       border: 1px solid var(--border);
-      transition: all 0.3s;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     .product-card:hover {
-      box-shadow: var(--shadow-elegant);
       transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      border-color: rgba(0, 0, 0, 0.1);
     }
 
     .product-img {
-      aspect-ratio: 4/3;
-      background: #f3f4f6;
-      display: grid;
-      place-items: center;
       position: relative;
+      background: var(--muted);
+      width: 100%;
+      aspect-ratio: 1/1;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .product-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s;
+      transition: transform 0.5s ease;
     }
 
     .product-card:hover .product-img img {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     .product-badge {
@@ -729,632 +502,125 @@
       left: 1rem;
       background: var(--primary);
       color: var(--primary-foreground);
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 0.2rem 0.75rem;
-      border-radius: 9999px;
-      z-index: 1;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
     }
 
     .product-body {
-      padding: 1.5rem;
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
     .product-body h3 {
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
+      color: var(--primary);
     }
 
     .product-desc {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--muted-foreground);
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: 2.25rem;
     }
 
     .product-stars {
-      font-size: 0.85rem;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      margin-top: auto;
+      color: #ffbc0b;
+      font-size: 0.8rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
     }
 
     .product-stars span {
       color: var(--muted-foreground);
+      font-size: 0.75rem;
+      font-weight: 500;
     }
 
     .product-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
     }
 
     .product-price {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--primary);
     }
 
     .btn-add {
-      padding: 0.5rem 1.25rem;
-      border-radius: 9999px;
-      background: var(--primary);
+      background-color: var(--primary);
       color: var(--primary-foreground);
-      font-size: 0.85rem;
+      border: none;
+      padding: 0.6rem 1.1rem;
+      border-radius: 8px;
       font-weight: 600;
-      transition: background 0.2s, color 0.2s;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
     .btn-add:hover {
-      background: var(--primary-glow);
+      background-color: var(--gold);
+      color: var(--primary);
     }
 
     .no-results {
-      grid-column: 1/-1;
+      grid-column: 1 / -1;
       text-align: center;
+      padding: 3rem;
       color: var(--muted-foreground);
-      padding: 2.5rem;
+      font-style: italic;
     }
 
-    /* ─── CATEGORIES ─── */
-    .categories-section {
-      background: var(--muted);
-      padding: 5rem 0;
-    }
-
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .category-card {
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
-
-    .category-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-4px);
-    }
-
-    .category-icon {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 1rem;
-      background: var(--gradient-primary);
-      display: grid;
-      place-items: center;
-      color: var(--primary-foreground);
-      margin: 0 auto 1.25rem;
-    }
-
-    .category-icon svg {
-      width: 1.75rem;
-      height: 1.75rem;
-    }
-
-    .category-card h3 {
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-
-    .category-card p {
-      font-size: 0.85rem;
-      color: var(--muted-foreground);
-      margin-top: 0.25rem;
-    }
-
-    /* ─── ABOUT ─── */
-    .about-section {
-      padding: 5rem 0;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .about-img {
-      aspect-ratio: 4/5;
-      border-radius: 1.5rem;
-      background: var(--gradient-primary);
-      position: relative;
-      overflow: hidden;
-      min-height: 350px;
-    }
-
-    .about-img-icon {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      color: color-mix(in oklab, var(--primary-foreground) 20%, transparent);
-    }
-
-    .about-img-icon svg {
-      width: 8rem;
-      height: 8rem;
-    }
-
-    .about-badge {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      right: 1.5rem;
-      background: var(--gold);
-      color: var(--primary);
-      padding: 1.25rem;
-      border-radius: 1rem;
-      box-shadow: var(--shadow-gold);
-    }
-
-    .about-badge .big {
-      font-size: 1.75rem;
-      font-weight: 800;
-    }
-
-    .about-badge .small {
-      font-size: 0.875rem;
-    }
-
-    .about-text p {
-      color: var(--muted-foreground);
-      margin-bottom: 1rem;
-    }
-
-    .about-checklist {
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .check-dot {
-      width: 1.5rem;
-      height: 1.5rem;
-      border-radius: 9999px;
-      background: var(--gold);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .check-dot svg {
-      width: 1rem;
-      height: 1rem;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 0.75rem 1.75rem;
-      border-radius: 9999px;
-      background: var(--primary);
-      color: var(--primary-foreground);
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-glow);
-    }
-
-    /* ─── WHY US ─── */
-    .why-section {
-      background: var(--muted);
-      padding: 5rem 0;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .why-card {
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 1.75rem;
-      border: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .why-icon {
-      width: 3.5rem;
-      height: 3.5rem;
-      border-radius: 0.75rem;
-      background: var(--gradient-gold);
-      display: grid;
-      place-items: center;
-      color: var(--primary);
-      margin: 0 auto 1rem;
-    }
-
-    .why-icon svg {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-
-    .why-card h3 {
-      font-weight: 700;
-      font-size: 1.05rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .why-card p {
-      font-size: 0.85rem;
-      color: var(--muted-foreground);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-    }
-
-    .stat-card {
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-
-    .stat-num {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      color: var(--primary);
-      font-family: var(--font-display);
-    }
-
-    .stat-label {
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-      margin-top: 0.5rem;
-    }
-
-    /* ─── REVIEWS ─── */
-    .reviews-section {
-      padding: 5rem 0;
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .review-card {
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 1.75rem;
-      border: 1px solid var(--border);
-      position: relative;
-    }
-
-    .review-quote {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      color: var(--gold-soft);
-    }
-
-    .review-quote svg {
-      width: 2rem;
-      height: 2rem;
-    }
-
-    .review-stars {
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-
-    .review-text {
-      color: var(--muted-foreground);
-      margin-bottom: 1.25rem;
-      font-size: 0.9rem;
-    }
-
-    .review-footer {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .review-avatar {
-      width: 2.75rem;
-      height: 2.75rem;
-      border-radius: 9999px;
-      background: var(--gradient-primary);
-      color: var(--primary-foreground);
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .review-name {
-      font-weight: 600;
-      font-size: 0.875rem;
-    }
-
-    .review-label {
-      font-size: 0.75rem;
-      color: var(--muted-foreground);
-    }
-
-    /* ─── NEWSLETTER ─── */
-    .newsletter-section {
-      padding: 0 0 5rem;
-    }
-
-    .newsletter-box {
-      border-radius: 1.5rem;
-      padding: 3rem 1.5rem;
-      text-align: center;
-      color: var(--primary-foreground);
-      background: var(--gradient-primary);
-    }
-
-    .newsletter-box h2 {
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
-      font-weight: 700;
-      margin-top: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .newsletter-box p {
-      color: color-mix(in oklab, var(--primary-foreground) 80%, transparent);
-      margin-bottom: 2rem;
-      max-width: 32rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .newsletter-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      max-width: 28rem;
-      margin: 0 auto;
-    }
-
-    .newsletter-form input {
-      width: 100%;
-      padding: 0.75rem 1.25rem;
-      border-radius: 9999px;
-      border: none;
-      background: var(--background);
-      color: var(--foreground);
-      outline: none;
-      font-size: 0.9rem;
-    }
-
-    /* ─── CONTACT ─── */
-    .contact-section {
-      background: var(--muted);
-      padding: 5rem 0;
-    }
-
-    .contact-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .contact-card {
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-
-    .contact-icon {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 9999px;
-      background: var(--gradient-primary);
-      color: var(--primary-foreground);
-      display: grid;
-      place-items: center;
-      margin: 0 auto 0.75rem;
-    }
-
-    .contact-icon svg {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-
-    .contact-card h3 {
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .contact-card p {
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-
-    .contact-form {
-      max-width: 42rem;
-      margin: 0 auto;
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 2rem;
-      border: 1px solid var(--border);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-      border: 1px solid var(--border);
-      background: var(--background);
-      font-size: 0.9rem;
-      outline: none;
-    }
-
-    /* ─── FOOTER ─── */
-    .footer {
-      background: var(--primary);
-      color: var(--primary-foreground);
-      padding: 4rem 0 1.5rem;
-      border-top: 1px solid color-mix(in oklab, var(--border) 10%, transparent);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 800;
-    }
-
-    .footer-logo span {
-      color: var(--gold);
-    }
-
-    .footer-desc {
-      font-size: 0.875rem;
-      color: color-mix(in oklab, var(--primary-foreground) 70%, transparent);
-      margin-top: 1rem;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
-    }
-
-    .social-btn {
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 9999px;
-      background: color-mix(in oklab, var(--primary-foreground) 10%, transparent);
-      display: grid;
-      place-items: center;
-      transition: all 0.2s;
-      color: var(--gold); /* UPDATED: Ensures the rendered Lucide icons display in branded gold */
-    }
-
-    .footer-col h4 {
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--gold);
-      font-size: 1rem;
-    }
-
-    .footer-col ul {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .footer-col ul li a {
-      font-size: 0.875rem;
-      color: color-mix(in oklab, var(--primary-foreground) 70%, transparent);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid color-mix(in oklab, var(--primary-foreground) 10%, transparent);
-      padding-top: 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: color-mix(in oklab, var(--primary-foreground) 50%, transparent);
-    }
-
-    /* ─── BACK TO TOP ─── */
-    #back-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--primary);
-      color: var(--primary-foreground);
-      width: 3rem;
-      height: 3rem;
-      border-radius: 9999px;
-      display: grid;
-      place-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
-      z-index: 30;
-    }
-
-    #back-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* ─── CART SLIDEOUT ─── */
+    /* Slide-Over Dynamic Overlay Shopping Cart Panel Template Styling */
     .cart-overlay {
       position: fixed;
       inset: 0;
-      z-index: 50;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 100;
+      opacity: 0;
       visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cart-overlay.open {
+      opacity: 1;
       visibility: visible;
-    }
-
-    .cart-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(4px);
     }
 
     .cart-panel {
       position: absolute;
       top: 0;
       right: 0;
-      bottom: 0;
+      height: 100%;
       width: 100%;
       max-width: 440px;
-      background: var(--card);
+      background: var(--background);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
       display: flex;
       flex-direction: column;
       transform: translateX(100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cart-overlay.open .cart-panel {
@@ -1367,6 +633,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .cart-header h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
     }
 
     .cart-body {
@@ -1382,146 +654,520 @@
       text-align: center;
       color: var(--muted-foreground);
       margin: auto 0;
+      font-size: 0.9rem;
     }
 
     .cart-item {
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding-bottom: 1rem;
+      padding-bottom: 1.25rem;
       border-bottom: 1px solid var(--border);
+      position: relative;
     }
 
     .cart-item-img {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 0.5rem;
+      width: 4.5rem;
+      height: 4.5rem;
       background: var(--muted);
+      border-radius: 8px;
       overflow: hidden;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+
+    .cart-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .cart-item-info {
       flex-grow: 1;
     }
 
+    .cart-item-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--primary);
+    }
+
+    .cart-item-price {
+      font-size: 0.85rem;
+      color: var(--muted-foreground);
+      font-weight: 500;
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: var(--muted-foreground);
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .cart-item-remove:hover {
+      background: var(--muted);
+      color: #c92a2a;
+    }
+
+    /* Modern Checkout Integrated Form Framework fields */
     .checkout-form-container {
       background: var(--muted);
-      border-radius: 0.75rem;
+      border: 1px solid var(--border);
       padding: 1.25rem;
+      border-radius: var(--radius);
+      margin-top: auto;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
 
+    .checkout-form-container h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--primary);
+      border-left: 3px solid var(--gold);
+      padding-left: 0.5rem;
+    }
+
+    .checkout-form-container input,
+    .checkout-form-container textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+      background: var(--background);
+      transition: border-color 0.2s;
+    }
+
+    .checkout-form-container input:focus,
+    .checkout-form-container textarea:focus {
+      border-color: var(--gold);
+    }
+
     .cart-footer {
       padding: 1.5rem;
       border-top: 1px solid var(--border);
+      background: var(--background);
+    }
+
+    .cart-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      font-weight: 800;
     }
 
     .btn-dashboard-order {
       width: 100%;
-      padding: 0.85rem;
-      border-radius: 9999px;
       background: var(--primary);
       color: var(--primary-foreground);
-      font-weight: 600;
+      border: none;
+      padding: 1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    /* ─── OFFER MODAL ─── */
+    .btn-dashboard-order:hover {
+      background: var(--gold);
+      color: var(--primary);
+    }
+
+    .btn-disabled {
+      width: 100%;
+      background: var(--border);
+      color: var(--muted-foreground);
+      border: none;
+      padding: 1rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: not-allowed;
+      text-align: center;
+    }
+
+    /* Marketing Promotional Offer Modal Popup Layout Rules */
     .offer-modal {
       position: fixed;
       inset: 0;
-      z-index: 100;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
       visibility: hidden;
-      display: grid;
-      place-items: center;
-      padding: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 1.5rem;
     }
 
     .offer-modal.active {
+      opacity: 1;
       visibility: visible;
     }
 
-    .offer-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 23, 20, 0.7);
-      backdrop-filter: blur(8px);
-    }
-
-    .offer-content {
-      position: relative;
-      background: var(--gradient-hero);
-      color: var(--primary-foreground);
-      max-width: 500px;
+    .offer-box {
+      background: var(--background);
       width: 100%;
-      border-radius: 1.5rem;
-      padding: 3rem 2rem;
-      text-align: center;
-      transform: scale(0.85);
-      transition: all 0.3s ease;
-      z-index: 2;
+      max-width: 500px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .offer-modal.active .offer-content {
+    .offer-modal.active .offer-box {
       transform: scale(1);
     }
 
-    .offer-close {
+    .offer-banner-img {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #101010 0%, #2a2a2a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .offer-banner-img h3 {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .offer-close-btn {
       position: absolute;
       top: 1rem;
       right: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
       color: white;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
     }
 
-    .offer-badge {
-      font-size: 2.5rem;
-      font-weight: 800;
+    .offer-close-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .offer-body {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .offer-body p {
+      color: var(--muted-foreground);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .offer-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .offer-btn:hover {
+      background: var(--gold);
+      color: var(--primary);
+    }
+
+    /* Footer Navigation Hub Infrastructure */
+    footer {
+      background-color: var(--primary);
+      color: white;
+      padding: 4rem 0 2rem 0;
+      margin-top: auto;
+      border-top: 3px solid var(--gold);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-left: 2px solid var(--gold);
+      padding-left: 0.6rem;
+    }
+
+    .footer-col p {
+      color: var(--muted-foreground);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--muted-foreground);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
       color: var(--gold);
-      font-family: var(--font-display);
     }
 
-    /* ─── MOBILE RESPONSIVENESS OVERRIDES ─── */
-    @media (max-width: 1024px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .newsletter-form input {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      color: white;
+      font-size: 0.85rem;
+      flex-grow: 1;
+      outline: none;
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--gold);
+    }
+
+    .newsletter-form button {
+      background: var(--gold);
+      color: var(--primary);
+      border: none;
+      padding: 0 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--gold-hover);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1a1a1a;
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      sm-flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted-foreground);
+    }
+
+    .social-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      color: var(--muted-foreground);
+      transition: color 0.2s;
+    }
+
+    .social-link:hover {
+      color: var(--gold);
+    }
+
+    /* Utility Back To Top Scroll Assist Button */
+    .back-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary);
+      color: white;
+      border: 1px solid #2a2a2a;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-top:hover {
+      background: var(--gold);
+      color: var(--primary);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* Lucide Custom Icon Spin Keyframe */
+    .lucide-spin {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
       }
 
-      .hero p {
-        margin: 0 auto 2rem;
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Standard Animation Interpolation Keyframes */
+    @keyframes slideDown {
+      from {
+        transform: translateY(-10px);
+        opacity: 0;
       }
 
-      .hero-btns {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Layout Responsive Viewport Media Adjustments */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .desktop-nav {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 4.5rem;
+        left: 0;
+        background: var(--background);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1.25rem;
+        transform: translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      }
+
+      .desktop-nav.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .slide-content h2 {
+        font-size: 2.25rem;
+      }
+
+      .slider-arrow {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .slider-arrow.prev {
+        left: 0.75rem;
+      }
+
+      .slider-arrow.next {
+        right: 0.75rem;
+      }
+
+      body.nav-open {
+        overflow: hidden;
+      }
+
+      .btn-secondary {
+        margin-left: 0;
+        margin-top: 0.75rem;
+        display: flex;
         justify-content: center;
       }
 
-      .slider-container {
-        height: 320px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav {
-        display: none;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .newsletter-form {
-        border-radius: 1rem;
+      .slide-content {
+        padding: 0 1rem;
       }
     }
   </style>
@@ -1529,438 +1175,181 @@
 
 <body>
 
-  <!-- TOP BAR -->
-  <div class="topbar">✨ Free Secure Delivery Across India on Orders Above ₹999! ✨</div>
+  <!-- Top Promo Ribbon -->
+  <div class="promo-ribbon">
+    ✨ Free Express Delivery on Orders Over ₹999 — Shop the Collection Now!
+  </div>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header-inner">
-      <div class="logo-container">
-        <a href="#" class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-          <span class="logo-main">SALMAN</span>
-          <span class="logo-sub">ENTERPRISES</span>
-        </a>
-        <img src="logo.png" alt="Logo" style="height: 32px; width: auto; object-fit: contain;" />
+  <!-- Main Global Header Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="flex items-center gap-4">
+        <button class="menu-toggle" id="menu-toggle-btn" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="brand">Hudood<span>.</span></a>
       </div>
 
-      <nav class="nav">
-        <a href="#products">Collection</a>
-        <a href="#categories">Categories</a>
-        <a href="#about">Our Identity</a>
-        <a href="#why-us">Why Choose Us</a>
-        <a href="#contact">Contact</a>
+      <nav class="desktop-nav" id="mobile-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="#products" onclick="toggleMenu()">Products</a>
+        <a href="Status.html">Order Status</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
       </nav>
 
-      <div class="header-actions">
-        <button id="header-auth-btn" class="btn-auth-toggle logged-out" onclick="handleAuthAction()" aria-label="Toggle Account Authentication">
+      <div class="nav-actions">
+        <!-- Authentication Toggle Button Control UI -->
+        <button id="header-auth-btn" class="btn-auth-toggle logged-out" onclick="handleAuthAction()">
           <i data-lucide="log-in" style="width:14px;height:14px"></i>
           <span>Login</span>
         </button>
-        <button onclick="toggleSearch()" aria-label="Search Panel"><i data-lucide="search" style="width:18px;height:18px"></i></button>
-        <button onclick="addWishlist()" aria-label="Wishlist"><i data-lucide="heart" style="width:18px;height:18px"></i><span class="badge" id="wishlist-badge" style="display:none">0</span></button>
-        <button onclick="openCart()" aria-label="Cart Overview"><i data-lucide="shopping-bag" style="width:18px;height:18px"></i><span class="badge" id="cart-badge" style="display:none">0</span></button>
-        <button class="menu-btn" onclick="toggleMenu()" aria-label="Mobile Menu Controller"><i id="menu-icon" data-lucide="menu" style="width:18px;height:18px"></i></button>
-      </div>
-    </div>
 
-    <div class="search-bar container" id="search-bar" style="display: none;">
-      <input type="text" id="search-input" placeholder="Search premium catalog items..." oninput="filterProducts()" />
-    </div>
-
-    <!-- FULL SCREEN MOBILE OVERLAY MENU -->
-    <div class="mobile-nav" id="mobile-nav">
-      <div class="mobile-nav-header">
-        <div class="logo">
-          <span class="logo-main">SALMAN</span>
-          <span class="logo-sub">ENTERPRISES</span>
-        </div>
-        <button onclick="toggleMenu()"><i data-lucide="x" style="width:24px;height:24px"></i></button>
+        <button class="icon-btn" onclick="toggleSearch()" aria-label="Search Collection">
+          <i data-lucide="search" style="width:20px;height:20px"></i>
+        </button>
+        <button class="icon-btn" onclick="addWishlist()" aria-label="View Wishlist">
+          <i data-lucide="heart" style="width:20px;height:20px"></i>
+          <span class="badge" id="wishlist-badge">0</span>
+        </button>
+        <button class="icon-btn" onclick="openCart()" aria-label="Open Shopping Cart">
+          <i data-lucide="shopping-cart" style="width:20px;height:20px"></i>
+          <span class="badge" id="cart-badge">0</span>
+        </button>
       </div>
-      <a href="#products" onclick="toggleMenu()">Collection</a>
-      <a href="#categories" onclick="toggleMenu()">Categories</a>
-      <a href="#about" onclick="toggleMenu()">Our Identity</a>
-      <a href="#why-us" onclick="toggleMenu()">Why Choose Us</a>
-      <a href="#contact" onclick="toggleMenu()">Contact</a>
     </div>
   </header>
 
-  <!-- INTEGRATED SLIDER HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <span class="label-chip">TRUSTED & PREMIUM HUCOOD WHOLESALER</span>
-        <h1>Purity & Excellence in <em>Every Single Product</em></h1>
-        <p>We supply top-tier consumer products built on trust, premium verification, and nationwide bulk logistical chains directly to your business hub.</p>
-        <div class="hero-btns">
-          <button onclick="scrollToCollection()" class="btn-gold">Explore Collection</button>
-          <a href="#contact" class="btn-outline">Bulk Inquiry</a>
-        </div>
-      </div>
-
-      <div class="slider-container">
-        <div class="slider-wrapper">
-          <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?q=80&width=600&auto=format&fit=crop" alt="Premium Wholesale Stacks" />
-            <div class="slide-overlay">
-              <h2>Direct Wholesale Channels</h2>
-              <p>Maximize margins by tapping straight into the primary import distribution channels.</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&width=600&auto=format&fit=crop" alt="Secure Logistics Operations" />
-            <div class="slide-overlay">
-              <h2>Guaranteed Supply Chains</h2>
-              <p>Never run out of retail stock with our highly efficient pan-India delivery logistics loops.</p>
-            </div>
-          </div>
-          <div class="slide">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&width=600&auto=format&fit=crop" alt="Premium Retail Products" />
-            <div class="slide-overlay">
-              <h2>Verified High-Grade Purity</h2>
-              <p>Every inbound lot passes rigorous qualitative parameter thresholds before boxing.</p>
-            </div>
-          </div>
-        </div>
-        <button class="slider-btn prev-btn" onclick="moveSlide(-1)" aria-label="Previous Slide"><i data-lucide="chevron-left"></i></button>
-        <button class="slider-btn next-btn" onclick="moveSlide(1)" aria-label="Next Slide"><i data-lucide="chevron-right"></i></button>
-        <div class="slider-indicators">
-          <span class="dot active" onclick="currentSlide(0)"></span>
-          <span class="dot" onclick="currentSlide(1)"></span>
-          <span class="dot" onclick="currentSlide(2)"></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES STRIP -->
-  <section class="features-strip">
-    <div class="container features-grid">
-      <div class="feature-item">
-        <div class="feature-icon"><i data-lucide="shield-check"></i></div>
-        <div>
-          <div class="feature-title">100% Certified</div>
-          <div class="feature-sub">Pure Genuine Output</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon"><i data-lucide="truck"></i></div>
-        <div>
-          <div class="feature-title">Secure Shipping</div>
-          <div class="feature-sub">Reliable Tracked Networks</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon"><i data-lucide="badge-percent"></i></div>
-        <div>
-          <div class="feature-title">Wholesale Rates</div>
-          <div class="feature-sub">Unbeatable Bulk Margins</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon"><i data-lucide="headphones"></i></div>
-        <div>
-          <div class="feature-title">24/7 Priority Help</div>
-          <div class="feature-sub">Dedicated Account Support</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTS SECTION -->
-  <section class="products-section" id="products">
+  <!-- Dropdown Search Panel Overlay -->
+  <div class="search-panel" id="search-bar">
     <div class="container">
-      <div class="section-heading">
-        <span class="section-label">CURATED COLLECTION</span>
-        <h2>Our Premium Wholesale Catalog</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="products-grid" id="products-grid"></div>
-    </div>
-  </section>
-
-  <!-- CATEGORIES -->
-  <section class="categories-section" id="categories">
-    <div class="container">
-      <div class="section-heading">
-        <span class="section-label">PRODUCT SEGMENTS</span>
-        <h2>Explore Strategic Supply Segments</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="categories-grid">
-        <div class="category-card">
-          <div class="category-icon"><i data-lucide="sparkles"></i></div>
-          <h3>Daily Essentials</h3>
-          <p>High velocity retail merchandise goods.</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon"><i data-lucide="package"></i></div>
-          <h3>Bulk Materials</h3>
-          <p>Raw foundational structural volume lines.</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon"><i data-lucide="leaf"></i></div>
-          <h3>Organic Extracts</h3>
-          <p>Pure verified natural compounds.</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon"><i data-lucide="layers"></i></div>
-          <h3>Custom Formulas</h3>
-          <p>Tailor packaged brand solutions.</p>
-        </div>
+      <div class="search-container">
+        <i data-lucide="search" class="search-icon" style="width:18px;height:18px"></i>
+        <input type="text" id="search-input" placeholder="Search premium cosmetics, essentials, or healthcare items..."
+          oninput="filterProducts()">
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ABOUT -->
-  <section class="about-section" id="about">
-    <div class="container about-grid">
-      <div class="about-img">
-        <div class="about-img-icon"><i data-lucide="award"></i></div>
-        <div class="about-badge">
-          <div class="big">25+ Years</div>
-          <div class="small">Of Uncompromising Supply Integrity</div>
-        </div>
-      </div>
-      <div class="about-text">
-        <span class="section-label" style="text-align:left; display:block;">OUR IDENTITY</span>
-        <h2 style="font-size:2.25rem; margin-top:0.5rem; margin-bottom:1.5rem;">The Benchmark of Quality Distribution</h2>
-        <p>Salman Enterprises has anchored commercial retail spaces with reliable premium wholesale products for over two decades. We emphasize chemical verification, predictable fulfillment metrics, and strict adherence to pricing parameters.</p>
-        <p>Whether you manage localized small grocery lines or command macro-distribution enterprise clusters, our framework scales to match your baseline transaction quotas elegantly.</p>
-        <div class="about-checklist">
-          <div class="check-item">
-            <div class="check-dot"><i data-lucide="check"></i></div><span>Rigorous laboratory batch authentication certificates.</span>
-          </div>
-          <div class="check-item">
-            <div class="check-dot"><i data-lucide="check"></i></div><span>Real-time tracking notifications for intra-state freight.</span>
-          </div>
-          <div class="check-item">
-            <div class="check-dot"><i data-lucide="check"></i></div><span>Transparent, variable bulk tier discount structures.</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary">Connect with Our Team</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY CHOOSE US -->
-  <section class="why-section" id="why-us">
-    <div class="container">
-      <div class="section-heading">
-        <span class="section-label">OPERATIONAL ADVANTAGE</span>
-        <h2>Engineered for Business Scaling</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon"><i data-lucide="clock"></i></div>
-          <h3>99.4% On-Time Rates</h3>
-          <p>Our logistical tracking systems maximize scheduling accuracy across all state lines.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon"><i data-lucide="coins"></i></div>
-          <h3>Competitive Margins</h3>
-          <p>Direct integration bypasses typical broker inflation loops entirely.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon"><i data-lucide="thumbs-up"></i></div>
-          <h3>Rigorous Audit Checks</h3>
-          <p>Every shipment sample is verified against stringent clarity guidelines.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-icon"><i data-lucide="refresh-cw"></i></div>
-          <h3>Seamless Returns</h3>
-          <p>Discrepancies in inventory balances are corrected via immediate restock windows.</p>
-        </div>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-num">15k+</div>
-          <div class="stat-label">B2B Merchants Served</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">250+</div>
-          <div class="stat-label">Product Standard Skus</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Authenticity Verified</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">24h</div>
-          <div class="stat-label">Average Processing Window</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- REVIEWS -->
-  <section class="reviews-section">
-    <div class="container">
-      <div class="section-heading">
-        <span class="section-label">PARTNER FEEDBACK</span>
-        <h2>The Voice of Our Distributors</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-quote"><i data-lucide="quote"></i></div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"The consistency of Salman Enterprises' product supply has been a cornerstone of our retail expansion across Karnataka. Exceptional execution clarity."</p>
-          <div class="review-footer">
-            <div class="review-avatar">AR</div>
-            <div>
-              <div class="review-name">Abdul Rahman</div>
-              <div class="review-label">Proprietor, AR Marts</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-quote"><i data-lucide="quote"></i></div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Their secure digital inventory logging eliminates the billing confusion common with old-school vendors. Clean, structural, and dependable transactional pipelines."</p>
-          <div class="review-footer">
-            <div class="review-avatar">MK</div>
-            <div>
-              <div class="review-name">Mohammed Khan</div>
-              <div class="review-label">Logistics Director, SafeFreight</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="review-quote"><i data-lucide="quote"></i></div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Pure wholesale products, prompt documentation dispatch, and pricing adjustments that empower our final customer margin sheets. Recommended highly."</p>
-          <div class="review-footer">
-            <div class="review-avatar">SK</div>
-            <div>
-              <div class="review-name">Siddharth K.</div>
-              <div class="review-label">Procurement Head, ValueRetail</div>
-            </div>
+  <!-- Hero Slideshow/Carousel Section -->
+  <section class="hero-slider">
+    <!-- Slide One -->
+    <div class="slide active"
+      style="background-image: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1600&q=80');">
+      <div class="container">
+        <div class="slide-content">
+          <span class="slide-badge">Exclusive Premium Launch</span>
+          <h2>Redefining Your Everyday Essentials</h2>
+          <p>Explore Hudood's curated line of premium daily health and hygiene selections designed to enhance quality,
+            care, and everyday well-being.</p>
+          <div class="flex flex-col sm:flex-row">
+            <button class="btn-primary" onclick="scrollToCollection()">
+              Shop Essentials <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+            </button>
+            <a href="Status.html" class="btn-secondary">Track Orders</a>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- NEWSLETTER -->
-  <section class="newsletter-section">
-    <div class="container">
-      <div class="newsletter-box">
-        <span class="label-chip" style="color:var(--primary); background:var(--gold); border:none;">SUPPLY TELEGRAM</span>
-        <h2>Stay Apprised of Inbound Stock Drops</h2>
-        <p>Subscribe to secure instantaneous structural lists regarding upcoming price shifts and seasonal inventory lot clearances.</p>
-        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-          <input type="email" placeholder="Enter corporate email address..." required aria-label="Email Input" />
-          <button type="submit" class="btn-gold" style="box-shadow:none;">Subscribe Now</button>
-        </form>
+    <!-- Slide Two -->
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=1600&q=80');">
+      <div class="container">
+        <div class="slide-content">
+          <span class="slide-badge">Trusted Healthcare Formulations</span>
+          <h2>Pure Protection. Uncompromised Quality.</h2>
+          <p>Crafted using verified ingredients and rigorous care standards. Elevate your self-care routines with
+            guaranteed premium cosmetic essentials.</p>
+          <div class="flex flex-col sm:flex-row">
+            <button class="btn-primary" onclick="scrollToCollection()">
+              Explore Catalog <i data-lucide="shopping-bag" style="width:16px;height:16px"></i>
+            </button>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Slide Navigating Arrows -->
+    <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous Slide">
+      <i data-lucide="chevron-left" style="width:20px;height:20px"></i>
+    </button>
+    <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next Slide">
+      <i data-lucide="chevron-right" style="width:20px;height:20px"></i>
+    </button>
+
+    <!-- Carousel Linear Indicator Dots -->
+    <div class="slider-dots">
+      <button class="dot active" onclick="currentSlide(0)" aria-label="Slide 1"></button>
+      <button class="dot" onclick="currentSlide(1)" aria-label="Slide 2"></button>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="section-heading">
-        <span class="section-label">COMMERCIAL DESK</span>
-        <h2>Initiate Procurement Account Setup</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="contact-cards">
-        <div class="contact-card">
-          <div class="contact-icon"><i data-lucide="map-pin"></i></div>
-          <h3>Location HQ</h3>
-          <p>Karnataka, India</p>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon"><i data-lucide="phone"></i></div>
-          <h3>Direct Phone</h3>
-          <p>+91 98765 43210</p>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon"><i data-lucide="mail"></i></div>
-          <h3>Email Terminal</h3>
-          <p>info@salmanenterprises.com</p>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon"><i data-lucide="clock"></i></div>
-          <h3>Desk Hours</h3>
-          <p>09:00 AM – 06:00 PM</p>
-        </div>
-      </div>
+  <!-- Showcase Products Core Catalog Section -->
+  <main class="container flex-grow" style="padding-top: 4rem;" id="products">
+    <h2 class="section-title">The Hudood Collection</h2>
+    <p class="section-subtitle">Experience unmatched luxury in every item. Explore catalog listings filtered across
+      verified performance tiers.</p>
 
-      <form class="contact-form" onsubmit="sendMessage(event)">
-        <div class="form-row">
-          <input type="text" placeholder="Your Name" required aria-label="Name Field" />
-          <input type="email" placeholder="Your Business Email" required aria-label="Email Field" />
+    <div class="products-grid" id="products-grid">
+      <!-- Dynamic Javascript Layout Pipeline Insertion Node -->
+    </div>
+  </main>
+
+  <!-- Contact & Communication Portal Section -->
+  <section id="contact" style="background: var(--muted); padding: 5rem 0; border-top: 1px solid var(--border);">
+    <div class="container" style="max-width: 800px;">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle" style="margin-bottom: 2.5rem;">Have inquiries regarding wholesale distribution or bulk
+        tracking? Drop us an electronic note instantly.</p>
+
+      <form onsubmit="sendMessage(e)"
+        style="display:flex; flex-direction:column; gap:1.25rem; background:var(--background); padding:2.5rem; border-radius:20px; border:1px solid var(--border);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <label style="font-size:0.8rem; font-weight:700; color:var(--primary);">Your Name</label>
+            <input type="text" placeholder="John Doe" required
+              style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:8px; outline:none; font-size:0.9rem;">
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <label style="font-size:0.8rem; font-weight:700; color:var(--primary);">Phone Number</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required
+              style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:8px; outline:none; font-size:0.9rem;">
+          </div>
         </div>
-        <input type="text" placeholder="Subject Focus" required aria-label="Subject Field" />
-        <textarea placeholder="Outline your bulk payload/distribution capacity specifications here..." rows="5" required aria-label="Message Body"></textarea>
-        <button type="submit" class="btn-primary" style="justify-self: center; min-width: 200px;">Transmit Secure Query</button>
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <label style="font-size:0.8rem; font-weight:700; color:var(--primary);">Message Content</label>
+          <textarea rows="4" placeholder="How can our logistics fulfillment desk support you today?" required
+            style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:8px; outline:none; font-size:0.9rem; resize:none;"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="justify-content:center; margin-top:0.5rem;">Send Message <i
+            data-lucide="send" style="width:16px;height:16px;"></i></button>
       </form>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">SALMAN <span>ENTERPRISES</span></div>
-          <p class="footer-desc">Providing stable, premium product wholesaling architecture across subcontinental merchant lines with unyielding procedural transparency.</p>
-          <div class="footer-socials">
-            <a href="#" class="social-btn" aria-label="LinkedIn Profile Connection"><i data-lucide="linkedin"></i></a>
-            <a href="#" class="social-btn" aria-label="Twitter Feed Link"><i data-lucide="twitter"></i></a>
-            <a href="#" class="social-btn" aria-label="Facebook Terminal Presence"><i data-lucide="facebook"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Fulfillment</h4>
-          <ul>
-            <li><a href="#products">Premium Catalog</a></li>
-            <li><a href="#categories">Logistical Segments</a></li>
-            <li><a href="#why-us">Pricing Formulas</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Enterprise Info</h4>
-          <ul>
-            <li><a href="#about">Corporate Identity</a></li>
-            <li><a href="#why-us">Fulfillment Metrics</a></li>
-            <li><a href="#contact">Compliance Desk</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact Desk</h4>
-          <ul>
-            <li>📍 Karnataka, India</li>
-            <li>📞 +91 98765 43210</li>
-            <li>✉ info@salmanenterprises.com</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">© <span id="year"></span> Salman Enterprises. All Rights Reserved.</div>
-    </div>
-  </footer>
-
-  <!-- BACK TO TOP BUTTON -->
-  <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-    <i data-lucide="arrow-up" style="width:20px;height:20px"></i>
-  </button>
-
-  <!-- CART OVERLAY SLIDEOUT PANEL -->
-  <div class="cart-overlay" id="cart-overlay" role="dialog" aria-modal="true">
-    <div class="cart-backdrop" onclick="closeCart()"></div>
+  <!-- Slide-Over Dynamic Overlay Shopping Cart Panel Template Layout -->
+  <div class="cart-overlay" id="cart-overlay" onclick="if(event.target===this) closeCart()">
     <div class="cart-panel">
       <div class="cart-header">
         <h3 id="cart-title">Your Cart (0)</h3>
-        <button onclick="closeCart()" aria-label="Close Panel"><i data-lucide="x" style="width:20px;height:20px"></i></button>
+        <button class="icon-btn" onclick="closeCart()" aria-label="Close Shopping Cart Dashboard">
+          <i data-lucide="x" style="width:22px;height:22px"></i>
+        </button>
       </div>
+
+      <!-- Cart Item Records Dynamic Scroller Body Element Node Container -->
       <div class="cart-body" id="cart-body">
         <p class="cart-empty">Your cart is empty.</p>
       </div>
+
+      <!-- Live Order Tracking Updates Sub-Panel Node Area Component Layer -->
+      <div style="padding: 0 1.5rem;" id="cart-live-tracking-panel"></div>
+
       <div class="cart-footer">
-        <div class="cart-total"><span>Total</span><span id="cart-total">₹0</span></div>
+        <div class="cart-summary">
+          <span>Estimated Total:</span>
+          <span id="cart-total" style="color:var(--gold)">₹0</span>
+        </div>
         <div id="cart-actions">
           <button class="btn-disabled" disabled>Your cart is empty</button>
         </div>
@@ -1968,21 +1357,83 @@
     </div>
   </div>
 
-  <!-- OFFER BANNER POPUP MODAL -->
-  <div class="offer-modal" id="offer-banner-modal" role="dialog" aria-modal="true">
-    <div class="offer-backdrop" onclick="closeOfferModal()"></div>
-    <div class="offer-content">
-      <button class="offer-close" onclick="closeOfferModal()" aria-label="Close Offer Banner"><i data-lucide="x" style="width:20px;height:20px"></i></button>
-      <span class="offer-tag">EXCLUSIVE INBOUND DISCOUNT</span>
-      <h3>Monsoon Distributor Deal</h3>
-      <p>Secure premium batch pricing metrics on all inbound daily catalog essentials ordered before the end of this calendar cycle.</p>
-      <div class="offer-badge">Flat 12% Off</div>
-      <button class="btn-gold" style="width:100%; border:none;" onclick="handleOfferBannerAction()">Activate Coupon Voucher</button>
+  <!-- Marketing Promotional Offer Modal Popup Layout Container Layer Frame -->
+  <div class="offer-modal" id="offer-banner-modal" onclick="if(event.target===this) closeOfferModal()">
+    <div class="offer-box">
+      <div class="offer-banner-img">
+        <button class="offer-close-btn" onclick="closeOfferModal()" aria-label="Dismiss Modal Banner">
+          <i data-lucide="x" style="width:14px;height:14px"></i>
+        </button>
+        <span
+          style="font-size:0.65rem; font-weight:800; letter-spacing:0.2em; color:var(--gold); text-transform:uppercase; margin-bottom:0.25rem;">Limited
+          Window Offer</span>
+        <h3>Festive Special Pricing</h3>
+        <p style="color:rgba(255,255,255,0.7); font-size:0.8rem; margin:0;">Unlock premium savings across luxury health
+          cosmetic lines</p>
+      </div>
+      <div class="offer-body">
+        <p>Act now and instantly claim up to <strong>15% Off</strong> flat deduction credits compiled straight into
+          current checkout pipelines. Free delivery thresholds auto-applied!</p>
+        <button class="offer-btn" onclick="handleOfferBannerAction()">Claim Offer & Browse Items</button>
+      </div>
     </div>
   </div>
 
+  <!-- Footer Navigation Hub Infrastructure -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="brand" style="color: white; margin-bottom: 1rem;">Hudood<span>.</span></a>
+        <p>Curating absolute perfection across luxury daily cosmetics, lifestyle essentials, and premium skincare
+          formulations since inception.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home Showcase</a></li>
+          <li><a href="#products">Product Collection</a></li>
+          <li><a href="Status.html">Order Status Dashboard</a></li>
+          <li><a href="#contact">Contact Support Desk</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate Office</h4>
+        <p style="margin-bottom: 0.5rem; color: #fff;">Hudood Enterprises Private Ltd.</p>
+        <p>Fulfillment Hub Complex, Phase 2 Block-B<br>Bengaluru, Karnataka, India</p>
+        <p style="margin-top: 0.5rem;">Support Desk Line: corporate@hudoodstore.in</p>
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Keep tracked with periodic premium drops, logistics dispatches, and exclusive seasonal codes.</p>
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+          <input type="email" placeholder="name@domain.com" required aria-label="Email Address Field">
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>&copy; <span id="year"></span> Hudood Store Inc. All rights reserved across territories.</div>
+      <div class="social-row">
+        <a href="#" class="social-link" aria-label="Facebook Profile Connect"><i data-lucide="facebook"
+            style="width:16px;height:16px"></i></a>
+        <a href="#" class="social-link" aria-label="Instagram Collection Feed"><i data-lucide="instagram"
+            style="width:16px;height:16px"></i></a>
+        <a href="#" class="social-link" aria-label="Twitter Official Support Feed"><i data-lucide="twitter"
+            style="width:16px;height:16px"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll-Assist Contextual Utilities Anchor Target -->
+  <button class="back-top" id="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    aria-label="Scroll Back To Top">
+    <i data-lucide="arrow-up" style="width:18px;height:18px"></i>
+  </button>
+
   <!-- APPLICATION CONTROLLER SCRIPT CODE -->
   <script>
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzZMw9ynnLtdgID3KUTyHYkw5wt7ljUuFmyfbO4EKVc3fDwxP5bkxExz-EAozgVUixu/exec";
+
     const products = [
       { name: "Hudood Product One", price: 499, badge: "BEST SELLER", reviews: 245, desc: "Premium quality product with trusted performance.", image: "colgate.jpeg" },
       { name: "Hudood Product Two", price: 699, badge: "SALE", reviews: 180, desc: "High quality product for everyday use.", image: "hudood-soap.jpeg" },
@@ -2003,8 +1454,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       checkLoginStatus();
-      
-      // FIX: Added here so all icons render seamlessly right as the page structural dependencies load
       lucide.createIcons();
 
       setInterval(() => {
@@ -2017,6 +1466,22 @@
           if (bannerModal) bannerModal.classList.add("active");
         }
       }, 2000);
+    });
+
+    /* ─── AUTOMATIC LOGIN SYNCHRONIZATION LISTENERS ─── */
+    // Sync login immediately if changed in another tab/window
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'isLoggedIn' || e.key === 'loggedInUserPhone') {
+        checkLoginStatus();
+        if (document.getElementById("cart-overlay").classList.contains("open")) {
+          updateCartUI();
+        }
+      }
+    });
+
+    // Re-verify login status whenever the user switches back to this tab
+    window.addEventListener('focus', () => {
+      checkLoginStatus();
     });
 
     function showSlide(index) {
@@ -2046,15 +1511,17 @@
     function checkLoginStatus() {
       const authBtn = document.getElementById("header-auth-btn");
       const userAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+      const userPhone = localStorage.getItem("loggedInUserPhone");
 
-      if (userAuthenticated) {
+      if (userAuthenticated && userPhone) {
         authBtn.className = "btn-auth-toggle logged-in";
-        authBtn.innerHTML = `<i data-lucide="log-out" style="width:14px;height:14px"></i><span>Logout</span>`;
+        authBtn.innerHTML = `<i data-lucide="log-out" style="width:14px;height:14px"></i><span>Logout (${userPhone})</span>`;
       } else {
         authBtn.className = "btn-auth-toggle logged-out";
         authBtn.innerHTML = `<i data-lucide="log-in" style="width:14px;height:14px"></i><span>Login</span>`;
       }
       lucide.createIcons();
+      renderLiveTrackingCartPanel();
     }
 
     function handleAuthAction() {
@@ -2062,11 +1529,88 @@
       if (!userAuthenticated) {
         window.location.href = "login.html";
       } else {
-        localStorage.clear();
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("loggedInUserPhone");
         sessionStorage.removeItem("admin_authenticated");
         alert("Logged out successfully.");
         checkLoginStatus();
+        if (document.getElementById("cart-overlay").classList.contains("open")) {
+          updateCartUI();
+        }
       }
+    }
+
+    /* ─── LIVE TRACKER COMPONENT SUBROUTINE ─── */
+    function renderLiveTrackingCartPanel() {
+      const userAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+      const userPhone = localStorage.getItem("loggedInUserPhone");
+      const trackingContainer = document.getElementById("cart-live-tracking-panel");
+
+      if (!trackingContainer) return;
+
+      if (!userAuthenticated || !userPhone) {
+        trackingContainer.innerHTML = `
+          <div style="background:var(--muted); border:1px dashed var(--border); padding:1rem; border-radius:var(--radius); text-align:center; font-size:0.8rem; color:var(--muted-foreground); margin-top:0.5rem;">
+            <i data-lucide="lock" style="width:16px;height:16px;margin:0 auto 0.25rem; display:block; color:var(--gold);"></i>
+            <span><button onclick="handleAuthAction()" style="color:var(--primary); font-weight:700; text-decoration:underline; background:none; border:none; padding:0; cursor:pointer;">Login</button> to view live tracking updates for your orders.</span>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      trackingContainer.innerHTML = `
+        <div style="text-align:center; padding:1rem; font-size:0.8rem; color:var(--muted-foreground);">
+          <i data-lucide="loader" style="width:16px;height:16px;" class="lucide-spin"></i> Loading recent orders...
+        </div>
+      `;
+      if (window.lucide) lucide.createIcons();
+
+      fetch(`${GOOGLE_SHEET_URL}?search=${encodeURIComponent(userPhone)}`)
+        .then(res => res.json())
+        .then(orders => {
+          if (!orders || orders.length === 0 || orders.error) {
+            trackingContainer.innerHTML = `
+              <div style="background:var(--muted); border:1px solid var(--border); padding:0.85rem; border-radius:var(--radius); font-size:0.8rem; margin-top:0.5rem; color:var(--muted-foreground);">
+                <i data-lucide="package-minus" style="width:14px;height:14px; vertical-align:middle; margin-right:4px;"></i> No active orders found under registration: ${userPhone}.
+              </div>
+            `;
+            if (window.lucide) lucide.createIcons();
+            return;
+          }
+
+          trackingContainer.innerHTML = `
+            <div style="margin-top:0.5rem; border-top:1px solid var(--border); padding-top:1rem;">
+              <h4 style="font-size:0.85rem; font-weight:700; margin-bottom:0.5rem; display:flex; justify-content:space-between; align-items:center;">
+                <span>Live Order Updates</span>
+                <a href="Status.html" style="font-size:0.75rem; color:var(--gold); font-weight:600;">Full Dashboard →</a>
+              </h4>
+              <div style="display:flex; flex-direction:column; gap:0.5rem; max-height:160px; overflow-y:auto; padding-right:4px;">
+                ${orders.map(order => `
+                  <div style="background:var(--muted); border:1px solid var(--border); padding:0.65rem; border-radius:6px; display:flex; justify-content:space-between; align-items:center; font-size:0.75rem;">
+                    <div style="max-width: 70%;">
+                      <strong style="color:var(--primary); display:block;">${escapeStr(order.id)}</strong>
+                      <span style="font-size:0.65rem; color:var(--muted-foreground); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeStr(order.items)}</span>
+                    </div>
+                    <span style="background:var(--primary); color:var(--primary-foreground); padding:0.2rem 0.5rem; border-radius:4px; font-weight:700; font-size:0.6rem; text-transform:uppercase; white-space:nowrap;">
+                      ${escapeStr(order.status)}
+                    </span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+          if (window.lucide) lucide.createIcons();
+        })
+        .catch(err => {
+          console.error(err);
+          trackingContainer.innerHTML = "";
+        });
+    }
+
+    function escapeStr(str) {
+      if (!str) return "";
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
     function closeOfferModal() {
@@ -2089,7 +1633,7 @@
       const grid = document.getElementById("products-grid");
       if (!grid) return;
       if (list.length === 0) { grid.innerHTML = '<p class="no-results">No products match your search query filters.</p>'; return; }
-      
+
       grid.innerHTML = list.map((p, index) => `
       <article class="product-card">
         <div class="product-img">
@@ -2107,13 +1651,13 @@
         </div>
       </article>`).join("");
     }
-    
+
     function triggerAddToCart(index) {
       if (products[index]) {
         addToCart(products[index]);
       }
     }
-    
+
     renderProducts(products);
 
     function toggleSearch() {
@@ -2121,7 +1665,7 @@
       document.getElementById("search-bar").style.display = searchOpen ? "block" : "none";
       if (searchOpen) document.getElementById("search-input").focus();
     }
-    
+
     function filterProducts() {
       const q = document.getElementById("search-input").value.toLowerCase();
       renderProducts(products.filter(p => p.name.toLowerCase().includes(q)));
@@ -2170,13 +1714,13 @@
       cartItems = cartItems.filter(i => i.name !== name);
       updateCartUI();
     }
-    
+
     function openCart() {
       document.getElementById("cart-overlay").classList.add("open");
       document.body.classList.add("cart-open");
       updateCartUI();
     }
-    
+
     function closeCart() {
       document.getElementById("cart-overlay").classList.remove("open");
       document.body.classList.remove("cart-open");
@@ -2209,11 +1753,12 @@
           </button>
         </div>`).join("");
 
+        const savedPhone = localStorage.getItem("loggedInUserPhone") || "";
         let formHtml = `
         <div class="checkout-form-container">
           <h4>Delivery Details</h4>
           <input type="text" id="cust-name" placeholder="Full Name" required />
-          <input type="tel" id="cust-phone" placeholder="Phone Number" required />
+          <input type="tel" id="cust-phone" placeholder="Phone Number" value="${savedPhone}" required />
           <textarea id="cust-address" placeholder="Complete Address" rows="2" required></textarea>
         </div>`;
 
@@ -2232,19 +1777,20 @@
         actions.innerHTML = `<button class="btn-disabled" disabled>Your cart is empty</button>`;
       }
       lucide.createIcons();
+      renderLiveTrackingCartPanel();
     }
 
     function getFormDetails() {
       const nameEl = document.getElementById("cust-name");
       const phoneEl = document.getElementById("cust-phone");
       const addressEl = document.getElementById("cust-address");
-      
+
       if (!nameEl || !phoneEl || !addressEl) return null;
-      
+
       const name = nameEl.value.trim();
       const phone = phoneEl.value.trim();
       const address = addressEl.value.trim();
-      
+
       if (!name || !phone || !address) { alert("Please complete your Name, Phone Number, and Address."); return null; }
       return { name, phone, address };
     }
@@ -2253,7 +1799,6 @@
       const details = getFormDetails();
       if (!details) return;
 
-      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby0zVPvE7N5Oiod0hYfDJjKODKnvATfJBL0TNPxprELUvAk4qZz99QejdZSwdeBsyg/exec";
       const orderId = "SE-" + Date.now().toString().slice(-6);
 
       const newOrder = {

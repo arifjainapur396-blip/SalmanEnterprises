@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,70 +26,392 @@
       --font-body: "Poppins", system-ui, sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background-color: var(--background); color: var(--foreground); font-family: var(--font-body); min-height: 100vh; display: flex; flex-direction: column; }
-    
-    /* ─── AUTH VIEWER SCREEN ─── */
-    .auth-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; }
-    .auth-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.5rem; width: 100%; max-width: 440px; padding: 2.5rem; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05); }
-    .auth-header { text-align: center; margin-bottom: 2rem; }
-    .auth-header h1 { font-size: 1.75rem; font-weight: 700; color: var(--primary); }
-    .auth-header p { font-size: 0.875rem; color: #666; margin-top: 0.25rem; }
-    
-    .form-group { margin-bottom: 1.25rem; position: relative; }
-    .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.5rem; }
-    .input-wrapper { position: relative; display: flex; align-items: center; }
-    .input-wrapper svg { position: absolute; left: 1rem; color: #888; width: 18px; height: 18px; }
-    .input-wrapper input { width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border: 1px solid var(--border); border-radius: var(--radius); outline: none; font-size: 0.9rem; background: var(--muted); transition: border 0.2s; }
-    .input-wrapper input:focus { border-color: var(--primary); }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    .btn-submit { width: 100%; padding: 0.875rem; border: none; border-radius: var(--radius); background: var(--primary); color: var(--primary-foreground); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: opacity 0.2s; margin-top: 0.5rem; }
-    .btn-submit:hover { opacity: 0.9; }
-    
-    .auth-toggle { text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: #555; }
-    .auth-toggle span { color: var(--primary); font-weight: 600; cursor: pointer; text-decoration: underline; }
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── AUTH VIEWER SCREEN ─── */
+    .auth-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .auth-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      width: 100%;
+      max-width: 440px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .auth-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .auth-header p {
+      font-size: 0.875rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper svg {
+      position: absolute;
+      left: 1rem;
+      color: #888;
+      width: 18px;
+      height: 18px;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      outline: none;
+      font-size: 0.9rem;
+      background: var(--muted);
+      transition: border 0.2s;
+    }
+
+    .input-wrapper input:focus {
+      border-color: var(--primary);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.875rem;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: var(--primary-foreground);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.9;
+    }
+
+    .auth-toggle {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: #555;
+    }
+
+    .auth-toggle span {
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+    }
 
     /* ─── DASHBOARD PANEL SCREEN ─── */
-    .dashboard-wrapper { display: none; flex-direction: column; min-height: 100vh; }
-    .dash-sidebar { width: 260px; background: var(--primary); color: var(--primary-foreground); padding: 2rem 1.5rem; display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; left: 0; }
-    .dash-logo { font-size: 1.25rem; font-weight: 700; margin-bottom: 3rem; letter-spacing: 0.05em; }
-    .dash-logo span { color: var(--gold); }
-    .dash-menu { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
-    .dash-menu-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border-radius: var(--radius); cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: background 0.2s; }
-    .dash-menu-item:hover, .dash-menu-item.active { background: rgba(255,255,255,0.1); }
-    .btn-logout { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border-radius: var(--radius); color: #ffa3a3; cursor: pointer; font-size: 0.9rem; font-weight: 500; margin-top: auto; }
+    .dashboard-wrapper {
+      display: none;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-    .dash-content { margin-left: 260px; padding: 2.5rem; flex: 1; }
-    .dash-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
-    .dash-header-bar h2 { font-size: 1.5rem; font-weight: 700; }
-    
-    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
-    .stat-box { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; display: flex; align-items: center; gap: 1.25rem; }
-    .stat-icon { width: 3rem; height: 3rem; border-radius: 50%; background: var(--gold-soft); color: var(--primary); display: grid; place-items: center; }
-    .stat-info div { font-size: 0.8rem; color: #666; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
-    .stat-info h3 { font-size: 1.75rem; font-weight: 700; color: var(--primary); margin-top: 0.1rem; }
+    .dash-sidebar {
+      width: 260px;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
 
-    .panel-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
-    .panel-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
-    
-    .data-table-wrapper { overflow-x: auto; }
-    .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; min-width: 750px; }
-    .data-table th { padding: 1rem; background: var(--muted); font-weight: 600; border-bottom: 2px solid var(--border); }
-    .data-table td { padding: 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .dash-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      letter-spacing: 0.05em;
+    }
 
-    .badge-role { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
-    .role-admin { background: #ffe4e6; color: var(--destructive); }
-    .role-customer { background: #e0f2fe; color: #0369a1; }
+    .dash-logo span {
+      color: var(--gold);
+    }
+
+    .dash-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .dash-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .dash-menu-item:hover,
+    .dash-menu-item.active {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-logout {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      color: #ffa3a3;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: auto;
+    }
+
+    .dash-content {
+      margin-left: 260px;
+      padding: 2.5rem;
+      flex: 1;
+    }
+
+    .dash-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dash-header-bar h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .stat-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+    }
+
+    .stat-info div {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-info h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 0.1rem;
+    }
+
+    .panel-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+    }
+
+    .panel-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .data-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+      min-width: 750px;
+    }
+
+    .data-table th {
+      padding: 1rem;
+      background: var(--muted);
+      font-weight: 600;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .badge-role {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .role-admin {
+      background: #ffe4e6;
+      color: var(--destructive);
+    }
+
+    .role-customer {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
 
     /* ─── ADMIN TERMINAL STYLING ─── */
-    .status-badge-pending { background: #fef3c7; color: #d97706; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; }
-    .status-badge-processing { background: #e0f2fe; color: #0284c7; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; }
-    .status-badge-cancelled { background: #fee2e2; color: #dc2626; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; }
-    .status-select { padding: 0.3rem 0.5rem; border-radius: 4px; border: 1px solid var(--border); background: white; font-size: 0.8rem; font-weight: 500; cursor: pointer; }
-    .order-items-list { font-size: 0.8rem; margin-top: 0.25rem; color: #666; line-height: 1.4; }
-    
-    .excel-sync-bar { display: flex; align-items: center; justify-content: space-between; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1rem 1.5rem; border-radius: var(--radius); margin-bottom: 1.5rem; color: #166534; font-size: 0.875rem; font-weight: 500; }
-    .btn-sync { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: #166534; color: #fff; border-radius: 0.5rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; }
+    .status-badge-pending {
+      background: #fef3c7;
+      color: #d97706;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .status-badge-processing {
+      background: #e0f2fe;
+      color: #0284c7;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .status-badge-cancelled {
+      background: #fee2e2;
+      color: #dc2626;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .status-select {
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: white;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .order-items-list {
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .excel-sync-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      color: #166534;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .btn-sync {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #166534;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
 
     .btn-return-home {
       position: absolute;
@@ -107,20 +430,52 @@
       border-radius: 20px;
       transition: all 0.2s ease;
     }
-    .btn-return-home:hover { background: var(--muted); }
 
-    .dashboard-view-section { display: none; }
-    .dashboard-view-section.active { display: block; }
+    .btn-return-home:hover {
+      background: var(--muted);
+    }
+
+    .dashboard-view-section {
+      display: none;
+    }
+
+    .dashboard-view-section.active {
+      display: block;
+    }
 
     @media (max-width: 900px) {
-      .dash-sidebar { width: 70px; padding: 2rem 0.5rem; align-items: center; }
-      .dash-logo, .dash-menu-item span, .btn-logout span { display: none; }
-      .dash-content { margin-left: 70px; padding: 1.5rem; }
-      .stats-row { grid-template-columns: 1fr; }
-      .btn-return-home { position: relative; top: 0; left: 0; margin-bottom: 1rem; display: inline-flex; }
+      .dash-sidebar {
+        width: 70px;
+        padding: 2rem 0.5rem;
+        align-items: center;
+      }
+
+      .dash-logo,
+      .dash-menu-item span,
+      .btn-logout span {
+        display: none;
+      }
+
+      .dash-content {
+        margin-left: 70px;
+        padding: 1.5rem;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-return-home {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 1rem;
+        display: inline-flex;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <a href="index.html" class="btn-return-home" id="home-return-link">
@@ -134,7 +489,7 @@
         <h1 id="auth-title">Account Login</h1>
         <p id="auth-subtitle">Log in to unlock ordering privileges or view data records</p>
       </div>
-      
+
       <form id="auth-form" onsubmit="handleAuthSubmit(event)">
         <div class="form-group" id="name-group" style="display: none;">
           <label>Full Name</label>
@@ -190,10 +545,14 @@
     <aside class="dash-sidebar">
       <div class="dash-logo">SALMAN <span>ADMIN</span></div>
       <nav class="dash-menu">
-        <div id="tab-menu-users" class="dash-menu-item active" onclick="switchDashboardTab('users')"><i data-lucide="users"></i><span>Users Registry</span></div>
-        <div id="tab-menu-orders" class="dash-menu-item" onclick="window.open('dashboard.html', '_self')"><i data-lucide="shopping-bag"></i><span>WhatsApp Orders</span></div>
-        <div class="dash-menu-item" onclick="window.open('index.html', '_self')"><i data-lucide="store"></i><span>Go to Storefront</span></div>
-        <div class="dash-menu-item" onclick="window.open('https://docs.google.com/spreadsheets/', '_blank')"><i data-lucide="file-spreadsheet"></i><span>Open Excel Matrix</span></div>
+        <div id="tab-menu-users" class="dash-menu-item active" onclick="switchDashboardTab('users')"><i
+            data-lucide="users"></i><span>Users Registry</span></div>
+        <div id="tab-menu-orders" class="dash-menu-item" onclick="window.open('dashboard.html', '_self')"><i
+            data-lucide="shopping-bag"></i><span>WhatsApp Orders</span></div>
+        <div class="dash-menu-item" onclick="window.open('index.html', '_self')"><i data-lucide="store"></i><span>Go to
+            Storefront</span></div>
+        <div class="dash-menu-item" onclick="window.open('https://docs.google.com/spreadsheets/', '_blank')"><i
+            data-lucide="file-spreadsheet"></i><span>Open Excel Matrix</span></div>
       </nav>
       <div class="btn-logout" onclick="logoutSession()"><i data-lucide="log-out"></i><span>Exit Session</span></div>
     </aside>
@@ -202,9 +561,12 @@
       <div class="dash-header-bar">
         <div>
           <h2>System Control Dashboard</h2>
-          <p style="color: #666; font-size: 0.85rem; margin-top: 0.15rem;">Real-time execution platform & database sync controller</p>
+          <p style="color: #666; font-size: 0.85rem; margin-top: 0.15rem;">Real-time execution platform & database sync
+            controller</p>
         </div>
-        <div style="font-size: 0.9rem; font-weight: 500; background: #e5e7eb; padding: 0.5rem 1rem; border-radius: 20px;" id="user-display-tag">
+        <div
+          style="font-size: 0.9rem; font-weight: 500; background: #e5e7eb; padding: 0.5rem 1rem; border-radius: 20px;"
+          id="user-display-tag">
           Role: Admin Account
         </div>
       </div>
@@ -214,15 +576,24 @@
         <div class="stats-row">
           <div class="stat-box">
             <div class="stat-icon"><i data-lucide="users"></i></div>
-            <div class="stat-info"><div>Total Accounts</div><h3 id="stat-total-users">0</h3></div>
+            <div class="stat-info">
+              <div>Total Accounts</div>
+              <h3 id="stat-total-users">0</h3>
+            </div>
           </div>
           <div class="stat-box">
             <div class="stat-icon" style="background:#e0f2fe; color:#0369a1;"><i data-lucide="shield-check"></i></div>
-            <div class="stat-info"><div>Admin Cleared</div><h3 id="stat-admin-count">0</h3></div>
+            <div class="stat-info">
+              <div>Admin Cleared</div>
+              <h3 id="stat-admin-count">0</h3>
+            </div>
           </div>
           <div class="stat-box">
             <div class="stat-icon" style="background:#f0fdf4; color:#166534;"><i data-lucide="database"></i></div>
-            <div class="stat-info"><div>Excel Rows Active</div><h3 id="stat-excel-rows">0</h3></div>
+            <div class="stat-info">
+              <div>Excel Rows Active</div>
+              <h3 id="stat-excel-rows">0</h3>
+            </div>
           </div>
         </div>
 
@@ -231,7 +602,8 @@
             <i data-lucide="refresh-cw" style="width:18px; height:18px"></i>
             <span>Direct Excel/Google Sheet bidirectional webhook interface link activated successfully.</span>
           </div>
-          <button class="btn-sync" onclick="syncWithCloudExcel()"><i data-lucide="download"></i>Export Excel CSV</button>
+          <button class="btn-sync" onclick="syncWithCloudExcel()"><i data-lucide="download"></i>Export Excel
+            CSV</button>
         </div>
 
         <div class="panel-card">
@@ -250,7 +622,9 @@
                 </tr>
               </thead>
               <tbody id="user-table-rows">
-                <tr><td colspan="7" style="text-align:center;">Loading cloud rows ledger data...</td></tr>
+                <tr>
+                  <td colspan="7" style="text-align:center;">Loading cloud rows ledger data...</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -274,7 +648,8 @@
               </thead>
               <tbody id="admin-orders-table-rows">
                 <tr>
-                  <td colspan="5" style="text-align:center; padding:2rem; color:#666;">No outbound payload requests logged inside LocalStorage yet.</td>
+                  <td colspan="5" style="text-align:center; padding:2rem; color:#666;">No outbound payload requests
+                    logged inside LocalStorage yet.</td>
                 </tr>
               </tbody>
             </table>
@@ -286,7 +661,7 @@
   </div>
 
   <script>
-    const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbypg9ZqDsjB5hGvr5kjW5LVZBUlpNO6nPDkd5Qpai-BlQewdUJ_5FHDFYud4Rpc7kOYDw/exec"; 
+    const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbypg9ZqDsjB5hGvr5kjW5LVZBUlpNO6nPDkd5Qpai-BlQewdUJ_5FHDFYud4Rpc7kOYDw/exec";
 
     let isSignUpMode = false;
     let globalUsersList = [];
@@ -299,13 +674,13 @@
     function checkExistingSession() {
       const loggedIn = localStorage.getItem("isLoggedIn") === "true";
       const currentRole = localStorage.getItem("userRole") || "";
-      
+
       if (loggedIn && (currentRole.toLowerCase().includes("admin") || currentRole.toLowerCase().includes("administrator"))) {
         document.getElementById("home-return-link").style.display = "none";
         document.getElementById("auth-screen").style.display = "none";
         document.getElementById("dashboard-screen").style.display = "flex";
         document.getElementById("user-display-tag").textContent = `Role: ${currentRole}`;
-        
+
         fetch(`${GOOGLE_SHEET_API}?action=get_admin_data`)
           .then(res => res.json())
           .then(sheetData => {
@@ -324,10 +699,10 @@
       document.querySelectorAll('.dash-menu-item').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.dashboard-view-section').forEach(el => el.classList.remove('active'));
 
-      if(targetTab === 'users') {
+      if (targetTab === 'users') {
         document.getElementById('tab-menu-users').classList.add('active');
         document.getElementById('panel-section-users').classList.add('active');
-      } else if(targetTab === 'orders') {
+      } else if (targetTab === 'orders') {
         document.getElementById('tab-menu-orders').classList.add('active');
         document.getElementById('panel-section-orders').classList.add('active');
         renderAdminOrders();
@@ -340,7 +715,7 @@
       const sub = document.getElementById("auth-subtitle");
       const btn = document.getElementById("auth-btn");
       const toggleText = document.getElementById("toggle-text");
-      
+
       const nameGroup = document.getElementById("name-group");
       const phoneGroup = document.getElementById("phone-group");
       const cityGroup = document.getElementById("city-group");
@@ -374,33 +749,33 @@
 
       if (isSignUpMode) {
         document.getElementById("auth-btn").textContent = "Saving to Google Sheet...";
-        
+
         fetch(GOOGLE_SHEET_API, {
           method: "POST",
           body: JSON.stringify({
             action: "signup", name: name, email: email, password: password, phone: phone, city: city
           })
         })
-        .then(res => res.json())
-        .then(response => {
-          alert(response.message);
-          if (response.success) {
+          .then(res => res.json())
+          .then(response => {
+            alert(response.message);
+            if (response.success) {
+              toggleAuthMode();
+              document.getElementById("auth-form").reset();
+            }
+            document.getElementById("auth-btn").textContent = "Sign Up and Sync";
+          })
+          .catch(err => {
+            alert("Simulation: Data successfully registered locally into arrays!");
             toggleAuthMode();
-            document.getElementById("auth-form").reset();
-          }
-          document.getElementById("auth-btn").textContent = "Sign Up and Sync";
-        })
-        .catch(err => {
-          alert("Simulation: Data successfully registered locally into arrays!");
-          toggleAuthMode();
-        });
+          });
 
       } else {
         document.getElementById("auth-btn").textContent = "Verifying Credentials...";
 
         if (email === "admin" && password === "admin") {
           alert("Success! Logged in as: Headman Admin");
-          
+
           localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("userName", "Admin");
           localStorage.setItem("userRole", "Admin");
@@ -425,20 +800,20 @@
           lucide.createIcons();
           return;
         }
-        
+
         fetch(`${GOOGLE_SHEET_API}?action=get_admin_data`)
           .then(res => res.json())
           .then(sheetData => {
             globalUsersList = sheetData.users || [];
-            
-            const matchedUser = globalUsersList.find(u => 
-              u.email && u.email.toString().toLowerCase() === email.toLowerCase() && 
+
+            const matchedUser = globalUsersList.find(u =>
+              u.email && u.email.toString().toLowerCase() === email.toLowerCase() &&
               u.password && u.password.toString() === password.toString()
             );
-            
+
             if (matchedUser) {
               alert(`Success! Logged in as: ${matchedUser.name || 'User'}`);
-              
+
               localStorage.setItem("isLoggedIn", "true");
               localStorage.setItem("userName", matchedUser.name || "User");
               localStorage.setItem("userRole", matchedUser.role || "Customer");
@@ -474,14 +849,14 @@
     function updateDashboardData(usersList) {
       document.getElementById("stat-total-users").textContent = usersList.length;
       document.getElementById("stat-excel-rows").textContent = usersList.length;
-      
+
       const adminCount = usersList.filter(u => u.role && u.role.toString().toLowerCase().includes("admin")).length;
       document.getElementById("stat-admin-count").textContent = adminCount;
 
       const tbody = document.getElementById("user-table-rows");
-      if(!tbody) return;
+      if (!tbody) return;
 
-      if(usersList.length === 0) {
+      if (usersList.length === 0) {
         tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:#888;">No online spreadsheet logs connected. Displaying core server framework.</td></tr>`;
         return;
       }
@@ -508,7 +883,7 @@
       const rowsContainer = document.getElementById("admin-orders-table-rows");
       const raw = localStorage.getItem("se_dashboard_orders");
       const orders = raw ? JSON.parse(raw) : [];
-      
+
       if (orders.length === 0) {
         rowsContainer.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:2rem; color:#666;">No customer payload requests logged inside LocalStorage yet.</td></tr>`;
         return;
@@ -564,7 +939,7 @@
     }
 
     function syncWithCloudExcel() {
-      if(globalUsersList.length === 0) {
+      if (globalUsersList.length === 0) {
         alert("No active backend table data currently pulled to local session to export.");
         return;
       }
@@ -582,4 +957,5 @@
     }
   </script>
 </body>
+
 </html>

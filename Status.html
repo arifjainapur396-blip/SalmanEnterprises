@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Order Status Tracker | Salman Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght=600;700;800&family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    /* ─── PREMIUM BRAND DESIGN SYSTEM ─── */
+    :root {
+      --radius: 0.625rem;
+      --background: oklch(0.985 0.005 95);
+      --foreground: oklch(0.22 0.04 160);
+      --card: oklch(1 0 0);
+      --card-foreground: oklch(0.22 0.04 160);
+      --primary: oklch(0.32 0.08 160);
+      --primary-foreground: oklch(0.97 0.02 90);
+      --secondary: oklch(0.95 0.02 90);
+      --muted-foreground: oklch(0.5 0.02 160);
+      --gold: oklch(0.78 0.13 85);
+      --border: oklch(0.9 0.02 100);
+      --destructive: oklch(0.577 0.245 27.325);
+      --gradient-primary: linear-gradient(135deg, oklch(0.32 0.08 160), oklch(0.48 0.12 162));
+      --font-display: "Playfair Display", Georgia, serif;
+      --font-body: "Poppins", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--background); color: var(--foreground); font-family: var(--font-body); -webkit-font-smoothing: antialiased; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; padding-top: 5rem;}
+
+    .container { max-width: 750px; width: 100%; margin: 0 auto; padding: 2rem 1.25rem; }
+
+    /* ─── HEADER BAR ─── */
+    header { background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; right: 0; z-index: 50; }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 5rem; }
+    .logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+    .logo-main { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; }
+    .logo-sub { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gold); font-weight: 600; margin-top: 0.15rem; }
+    
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.25rem; border-radius: 9999px; border: 1px solid var(--border); background: var(--card); text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--primary); transition: all 0.2s; }
+    .btn-back:hover { background-color: var(--secondary); border-color: var(--primary); }
+
+    /* ─── TRACKER FORM PANEL ─── */
+    .search-panel { background: var(--card); border-radius: 1rem; padding: 2.25rem 1.75rem; border: 1px solid var(--border); box-shadow: 0 10px 30px -15px rgba(0,0,0,0.03); margin-bottom: 2rem; text-align: center;}
+    .panel-title { font-family: var(--font-display); font-size: 1.65rem; color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+    .panel-desc { font-size: 0.88rem; color: var(--muted-foreground); margin-bottom: 1.5rem; }
+
+    /* Login Status Badge on Front Page */
+    .login-status-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .status-online { background: oklch(0.94 0.06 160); color: oklch(0.42 0.14 150); }
+    .status-offline { background: oklch(0.96 0.04 90); color: oklch(0.55 0.12 80); }
+
+    .inline-login-form { display: flex; max-width: 450px; margin: 0 auto; gap: 0.5rem; width: 100%; }
+    .inline-input { flex: 1; padding: 0.75rem 1rem; border-radius: 0.5rem; border: 1px solid var(--border); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    .inline-input:focus { border-color: var(--primary); }
+    .btn-submit { background: var(--primary); color: var(--primary-foreground); border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: background 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-submit:hover { background: oklch(0.25 0.06 160); }
+    .btn-logout { background: var(--destructive); color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; font-size: 0.8rem; transition: opacity 0.2s; margin-top: 0.5rem;}
+    .btn-logout:hover { opacity: 0.9; }
+
+    /* ─── LIVE RESULTS ORDER CARDS ─── */
+    .results-heading { font-family: var(--font-display); font-size: 1.35rem; margin-bottom: 1.25rem; color: var(--primary); display: none; text-align: left;}
+    .order-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.25rem; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.01); display: flex; flex-direction: column; gap: 1.25rem; animation: fadeIn 0.3s ease; }
+    
+    .order-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+    .order-id { font-weight: 700; color: var(--primary); font-size: 1.2rem; }
+    .order-date { font-size: 0.8rem; color: var(--muted-foreground); margin-top: 0.15rem; }
+    
+    .status-badge { padding: 0.4rem 1.15rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .status-pending { background: oklch(0.96 0.04 90); color: oklch(0.55 0.12 80); }
+    .status-processing { background: oklch(0.93 0.04 220); color: oklch(0.45 0.12 230); }
+    .status-shipped { background: oklch(0.93 0.05 130); color: oklch(0.43 0.11 125); }
+    .status-delivered { background: oklch(0.94 0.06 160); color: oklch(0.42 0.14 150); }
+    .status-completed { background: oklch(0.94 0.06 160); color: oklch(0.42 0.14 150); }
+
+    .detail-row { display: flex; flex-direction: column; gap: 0.25rem; }
+    .detail-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground); font-weight: 600; }
+    .detail-value { font-size: 0.95rem; font-weight: 500; color: var(--foreground); }
+    .price-large { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-top: 0.25rem; }
+
+    /* ─── DYNAMIC 4-STEP TIMELINE ENGINE ─── */
+    .timeline-container { display: flex; justify-content: space-between; margin: 0.75rem 0; position: relative; padding: 0; }
+    .timeline-container::before { content: ''; position: absolute; top: 13px; left: 10%; right: 10%; height: 3px; background-color: var(--border); z-index: 1; }
+    .timeline-step { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; flex: 1; text-align: center; }
+    .timeline-dot { width: 28px; height: 28px; border-radius: 50%; background-color: white; border: 3px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; color: var(--muted-foreground); transition: all 0.3s ease; }
+    .timeline-text { font-size: 0.7rem; font-weight: 600; color: var(--muted-foreground); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.02em; }
+    
+    .step-active .timeline-dot { border-color: var(--gold); background-color: var(--gold); color: white; box-shadow: 0 0 0 4px oklch(0.88 0.09 90 / 0.4); }
+    .step-active .timeline-text { color: var(--foreground); font-weight: 700; }
+    .step-done .timeline-dot { border-color: var(--primary); background-color: var(--primary); color: white; }
+    .step-done .timeline-text { color: var(--primary); }
+
+    .message-box { text-align: center; padding: 3rem 1.5rem; background: var(--card); border-radius: 1rem; border: 1px dashed var(--border); color: var(--muted-foreground); display: block; }
+    .message-box svg { color: var(--gold); margin-bottom: 1rem; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    footer { margin-top: auto; background-color: #111; color: #666; text-align: center; padding: 2rem; font-size: 0.85rem; border-top: 1px solid #222; }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-main">SALMAN</span>
+        <span class="logo-sub">ENTERPRISES</span>
+      </a>
+      <div class="header-actions">
+        <a href="index.html" class="btn-back">
+          <i data-lucide="arrow-left" style="width:16px;height:16px"></i> Shop
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="search-panel">
+      <div id="login-status-target"></div>
+      <h2 class="panel-title">
+        <i data-lucide="shield-check" style="width:24px;height:24px;color:var(--gold)"></i> 
+        Your Order Manifest Dashboard
+      </h2>
+      <p class="panel-desc" id="dashboard-desc">Verifying your secure login status parameters...</p>
+      
+      <!-- INLINE FRONT PAGE LOGIN FORM -->
+      <div id="front-login-container"></div>
+    </section>
+
+    <h3 class="results-heading" id="results-title">Your Order History</h3>
+    <div id="results-target"></div>
+
+    <div class="message-box" id="msg-box"></div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Salman Enterprises | Automated Secure Tracking Dashboard. All Rights Reserved.
+  </footer>
+
+  <script>
+    const GOOGLE_SCRIPT_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzu0pHtQ077J4Sfvq3Ybn9PB_lbzCCcBwC0sRfhzvdEK_BU9aCQ6_NUimUfyXH6y8gu/exec";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      checkSessionAndFetch();
+    });
+
+    function checkSessionAndFetch() {
+      const loggedInUser = localStorage.getItem("loggedInUserPhone");
+      const statusTarget = document.getElementById("login-status-target");
+      const desc = document.getElementById("dashboard-desc");
+      const formContainer = document.getElementById("front-login-container");
+      const msgBox = document.getElementById("msg-box");
+      const resultsTitle = document.getElementById("results-title");
+      const resultsTarget = document.getElementById("results-target");
+
+      if (loggedInUser) {
+        // Logged In Status Interface
+        statusTarget.innerHTML = `
+          <div class="login-status-badge status-online">
+            <i data-lucide="user-check" style="width:14px;height:14px"></i> Login Status: Online (${loggedInUser})
+          </div>
+        `;
+        desc.innerHTML = `Welcome back! Displaying secure real-time tracking data link for: <strong>${loggedInUser}</strong>`;
+        
+        formContainer.innerHTML = `
+          <button class="btn-logout" onclick="handleLogout()">
+            <i data-lucide="log-out" style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:2px"></i> Logout
+          </button>
+        `;
+        lucide.createIcons();
+        
+        executeSecureLookup(loggedInUser);
+      } else {
+        // Logged Out Status Interface
+        statusTarget.innerHTML = `
+          <div class="login-status-badge status-offline">
+            <i data-lucide="user-x" style="width:14px;height:14px"></i> Login Status: Offline
+          </div>
+        `;
+        desc.textContent = "Please sign into your customer account to view your live orders and history updates.";
+        
+        formContainer.innerHTML = `
+          <div class="inline-login-form">
+            <input type="tel" id="front-phone-input" class="inline-input" placeholder="Enter Registered Mobile Number" autocomplete="off" />
+            <button class="btn-submit" onclick="handleFrontLogin()">
+              <i data-lucide="log-in" style="width:16px;height:16px"></i> Login
+            </button>
+          </div>
+        `;
+        
+        resultsTitle.style.display = "none";
+        resultsTarget.innerHTML = "";
+        
+        msgBox.style.display = "block";
+        msgBox.innerHTML = `
+          <i data-lucide="lock" style="width:40px;height:40px;stroke-width:1.5;"></i>
+          <p style="margin-top:0.5rem; font-weight:600; color:var(--primary)">Access Restricted</p>
+          <p style="font-size:0.85rem;">Please use the login portal setup on the main console banner directly above to query your active shipments.</p>
+        `;
+        lucide.createIcons();
+      }
+    }
+
+    function handleFrontLogin() {
+      const phoneInput = document.getElementById("front-phone-input");
+      const phone = phoneInput ? phoneInput.value.trim() : "";
+      
+      if (phone && phone.length >= 10) {
+        localStorage.setItem("loggedInUserPhone", phone);
+        checkSessionAndFetch();
+      } else {
+        alert("Please enter a valid phone number (minimum 10 digits).");
+      }
+    }
+
+    function handleLogout() {
+      localStorage.removeItem("loggedInUserPhone");
+      checkSessionAndFetch();
+    }
+
+    function executeSecureLookup(phoneValue) {
+      const resultsTarget = document.getElementById("results-target");
+      const resultsTitle = document.getElementById("results-title");
+      const msgBox = document.getElementById("msg-box");
+
+      resultsTarget.innerHTML = "";
+      resultsTitle.style.display = "none";
+      msgBox.style.display = "block";
+      msgBox.innerHTML = `<i data-lucide="loader" style="width:32px;height:32px" class="lucide-spin"></i><p style="margin-top:0.5rem">Polling linked Google Sheets records...</p>`;
+      lucide.createIcons();
+
+      fetch(`${GOOGLE_SCRIPT_WEBAPP_URL}?search=${encodeURIComponent(phoneValue)}`)
+        .then(response => response.json())
+        .then(orders => {
+          if (!orders || orders.length === 0 || orders.error) {
+            msgBox.innerHTML = `
+              <i data-lucide="package-x" style="width:40px;height:40px;stroke-width:1.5"></i>
+              <p style="margin-top:0.5rem; font-weight:500;">No active orders found.</p>
+              <p style="font-size:0.85rem; color:var(--muted-foreground);">We couldn't find any data matching phone record (${phoneValue}) inside the main spreadsheet registry.</p>
+            `;
+            lucide.createIcons();
+            return;
+          }
+
+          msgBox.style.display = "none";
+          resultsTitle.style.display = "block";
+
+          resultsTarget.innerHTML = orders.map(order => {
+            const currentStatus = (order.status || "Pending").trim().toLowerCase();
+            let step1 = "", step2 = "", step3 = "", step4 = "";
+
+            if (currentStatus === "pending") {
+              step1 = "step-active";
+            } else if (currentStatus === "processing") {
+              step1 = "step-done";
+              step2 = "step-active";
+            } else if (currentStatus === "shipped") {
+              step1 = "step-done";
+              step2 = "step-done";
+              step3 = "step-active";
+            } else if (currentStatus === "delivered" || currentStatus === "completed") {
+              step1 = "step-done";
+              step2 = "step-done";
+              step3 = "step-done";
+              step4 = "step-done step-active";
+            } else {
+              step1 = "step-active";
+            }
+
+            return `
+              <article class="order-card">
+                <div class="order-header">
+                  <div>
+                    <div class="order-id">${escapeStr(order.id)}</div>
+                    <div class="order-date">Placed on: ${escapeStr(order.date)}</div>
+                  </div>
+                  <span class="status-badge status-${currentStatus}">
+                    <i data-lucide="package" style="width:14px;height:14px"></i>
+                    ${escapeStr(order.status)}
+                  </span>
+                </div>
+
+                <div class="timeline-container">
+                  <div class="timeline-step ${step1}">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-text">Ordered</div>
+                  </div>
+                  <div class="timeline-step ${step2}">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-text">Processing</div>
+                  </div>
+                  <div class="timeline-step ${step3}">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-text">Shipped</div>
+                  </div>
+                  <div class="timeline-step ${step4}">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-text">Delivered</div>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <span class="detail-label">Items Manifest</span>
+                  <span class="detail-value">${escapeStr(order.items)}</span>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+                  <div class="detail-row">
+                    <span class="detail-label">Recipient Client</span>
+                    <span class="detail-value">${escapeStr(order.customerName)}</span>
+                  </div>
+                  <div class="detail-row" style="text-align: right;">
+                    <span class="detail-label">Total Bill Amount</span>
+                    <span class="price-large">₹${Number(order.total).toLocaleString('en-IN')}</span>
+                  </div>
+                </div>
+
+                <div class="detail-row" style="border-top:1px dashed var(--border); padding-top:0.75rem;">
+                  <span class="detail-label">Destination Address</span>
+                  <span class="detail-value" style="font-size:0.85rem; color:var(--muted-foreground);">${escapeStr(order.customerAddress)}</span>
+                </div>
+              </article>
+            `;
+          }).join("");
+
+          lucide.createIcons();
+        })
+        .catch(err => {
+          console.error(err);
+          msgBox.innerHTML = `
+            <i data-lucide="alert-circle" style="width:40px;height:40px;color:red"></i>
+            <p style="margin-top:0.5rem; font-weight:500;">Connection timeout error.</p>
+            <p style="font-size:0.85rem;">Check your server infrastructure parameters.</p>
+          `;
+          lucide.createIcons();
+        });
+    }
+
+    function escapeStr(str) {
+      if(!str) return "";
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+  </script>
+
+  <style>
+    .lucide-spin { animation: spin 1s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
+</body>
+</html>

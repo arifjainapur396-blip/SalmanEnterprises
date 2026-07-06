@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Order Status Tracker | Hudood Premium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <style>
+    :root {
+      --radius: 0.625rem;
+      --background: oklch(0.985 0.005 95);
+      --foreground: oklch(0.22 0.04 160);
+      --card: oklch(1 0 0);
+      --card-foreground: oklch(0.22 0.04 160);
+      --primary: oklch(0.32 0.08 160);
+      --primary-foreground: oklch(0.97 0.02 90);
+      --gold: oklch(0.78 0.13 85);
+      --border: oklch(0.9 0.02 100);
+      --muted-foreground: oklch(0.5 0.02 160);
+
+      --bg-pending: #fef9c3;
+      --color-pending: #854d0e;
+      --bg-processing: #e0f2fe;
+      --color-processing: #0369a1;
+      --bg-shipped: #dcfce7;
+      --color-shipped: #15803d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--background); color: var(--foreground); font-family: "Poppins", sans-serif; min-height: 100vh; padding: 4rem 1rem; }
+    .container { width: 100%; max-width: 680px; margin: 0 auto; }
+    .tracker-card { background: var(--card); border: 1px solid var(--border); border-radius: 1.5rem; padding: 3rem 2.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.02); }
+    
+    .header-group { text-align: center; margin-bottom: 2.5rem; }
+    .header-group h1 { font-family: "Playfair Display", serif; font-size: 2.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .header-group p { color: var(--muted-foreground); font-size: 0.95rem; }
+    
+    .user-welcome-badge { display: none; align-items: center; justify-content: center; gap: 0.5rem; background: #f4f4f5; color: var(--primary); padding: 0.6rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin: 0 auto 1.5rem auto; width: max-content; border: 1px solid var(--border); }
+    
+    #trackingForm { display: block; }
+    .search-wrapper { position: relative; display: flex; align-items: center; margin-bottom: 1.5rem; }
+    .search-wrapper svg { position: absolute; left: 1.25rem; color: var(--muted-foreground); width: 20px; height: 20px; }
+    .search-input { width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 1rem; outline: none; background-color: oklch(0.99 0 0); }
+    
+    .btn-lookup { width: 100%; padding: 1rem; background: var(--primary); color: var(--primary-foreground); border: none; border-radius: var(--radius); font-weight: 600; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    
+    .result-display { margin-top: 2rem; display: none; }
+    .results-headline { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary); border-left: 3px solid var(--gold); padding-left: 0.5rem; }
+    .order-item-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; }
+    .detail-row { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 0.95rem; }
+    .detail-label { color: var(--muted-foreground); }
+    .detail-value { font-weight: 500; text-align: right; }
+    .status-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+    
+    .home-link { display: flex; align-items: center; gap: 0.5rem; text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--primary); text-decoration: none; justify-content: center; }
+
+    .animate-spin { animation: spin 1s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="tracker-card">
+
+      <div class="header-group">
+        <h1>Track Your Order</h1>
+        <p id="headerSubtext">View your live order milestones and packaging details instantly</p>
+      </div>
+
+      <div id="userWelcome" class="user-welcome-badge">
+        <i data-lucide="user" style="width:14px; height:14px;"></i>
+        <span id="welcomeText">Logged In</span>
+      </div>
+
+      <form id="trackingForm">
+        <div class="search-wrapper">
+          <i data-lucide="search"></i>
+          <input type="text" id="orderIdInput" class="search-input" placeholder="Enter Order ID manually" autocomplete="off" />
+        </div>
+        <button type="submit" class="btn-lookup">Query System Records</button>
+      </form>
+
+      <div id="msgBox" class="result-display" style="text-align:center; padding: 2rem 0;"></div>
+      <div id="resultsContainer" class="result-display"></div>
+
+      <a href="index.html" class="home-link"><i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Back to Storefront</a>
+
+    </div>
+  </div>
+
+  <script>
+    const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbzu0pHtQ077J4Sfvq3Ybn9PB_lbzCCcBwC0sRfhzvdEK_BU9aCQ6_NUimUfyXH6y8gu/exec";
+
+    function generateOrderCardHtml(order) {
+      const statusLower = (order.status || "pending").toLowerCase();
+      return `
+        <article class="order-item-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+            <span style="font-size:0.9rem; color:var(--muted-foreground);">ID Ref: <strong>${order.id}</strong></span>
+            <span class="status-badge" style="background: var(--bg-${statusLower}); color: var(--color-${statusLower});">${order.status}</span>
+          </div>
+          <div class="detail-row"><span class="detail-label">Customer Account</span><span class="detail-value">${order.customerName}</span></div>
+          <div class="detail-row"><span class="detail-label">Item Load Details</span><span class="detail-value">${order.items}</span></div>
+          <div class="detail-row" style="border-top:1px dashed var(--border); padding-top:0.75rem; margin-top:0.75rem;">
+            <span class="detail-label">Total Invoice</span><span class="detail-value" style="color:var(--primary); font-weight:700; font-size:1.15rem;">₹${Number(order.total).toLocaleString('en-IN')}</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function fetchAndFilterOrders(searchCriteria, type = "id") {
+      const msgBox = document.getElementById("msgBox");
+      const resultsContainer = document.getElementById("resultsContainer");
+
+      msgBox.innerHTML = `<i class="animate-spin" data-lucide="loader-2" style="margin: 0 auto; width: 28px; height: 28px;"></i><p style="margin-top:0.75rem;">Locating live dashboard...</p>`;
+      msgBox.style.display = "block";
+      resultsContainer.style.display = "none";
+      if (window.lucide) lucide.createIcons();
+
+      fetch(`${GOOGLE_SHEET_API}?action=read`)
+        .then(res => res.json())
+        .then(data => {
+          msgBox.style.display = "none";
+          let matches = [];
+
+          if (type === "id") {
+            const found = data.find(o => o.id && o.id.toString().toLowerCase() === searchCriteria.toLowerCase());
+            if (found) matches.push(found);
+          } else if (type === "profile") {
+            matches = data.filter(o => 
+              (o.customerPhone && o.customerPhone.toString().includes(searchCriteria)) || 
+              (o.customerName && o.customerName.toLowerCase().includes(searchCriteria.toLowerCase()))
+            );
+          }
+
+          if (matches.length === 0) {
+            msgBox.innerHTML = `<p style="margin-top:0.5rem; font-weight:600;">No live orders found matching this profile account records.</p>`;
+            msgBox.style.display = "block";
+            // Bring back tracking form if no automatic orders were found to allow manual input search fallback
+            document.getElementById("trackingForm").style.display = "block";
+            return;
+          }
+
+          let htmlOutput = type === "profile" ? `<h3 class="results-headline">Your Current Order Status</h3>` : "";
+          htmlOutput += matches.map(order => generateOrderCardHtml(order)).join("");
+
+          resultsContainer.innerHTML = htmlOutput;
+          resultsContainer.style.display = "block";
+          if (window.lucide) lucide.createIcons();
+        })
+        .catch(err => {
+          console.error(err);
+          msgBox.innerHTML = `<p style="color:#ef4444;">Error links endpoint logs access failure.</p>`;
+          document.getElementById("trackingForm").style.display = "block";
+        });
+    }
+
+    document.getElementById("trackingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const inputVal = document.getElementById("orderIdInput").value.trim();
+      if (inputVal) fetchAndFilterOrders(inputVal, "id");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // SECURITY GUARD CHECK: Sync with login.html and index.html localStorage mappings
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const userName = localStorage.getItem("userName");
+      const userPhone = localStorage.getItem("loggedInUserPhone"); // Fixed mismatch from userPhone to loggedInUserPhone
+
+      if (!isLoggedIn || !userName) {
+        alert("Access Denied: Please log in to view order details.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      document.getElementById("trackingForm").style.display = "none";
+      document.getElementById("headerSubtext").textContent = "Your live account order pipeline details";
+
+      const welcomeBadge = document.getElementById("userWelcome");
+      document.getElementById("welcomeText").textContent = `Logged In: ${userName}`;
+      welcomeBadge.style.display = "flex";
+
+      const searchAnchor = userPhone || userName;
+      fetchAndFilterOrders(searchAnchor, "profile");
+    });
+  </script>
+</body>
+</html>

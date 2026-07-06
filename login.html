@@ -482,7 +482,6 @@
     <i data-lucide="arrow-left" style="width:16px; height:16px"></i> Return to Shop
   </a>
 
-  <!-- ACCOUNT AUTH REGISTRATION SCREEN -->
   <div class="auth-wrapper" id="auth-screen">
     <div class="auth-card">
       <div class="auth-header">
@@ -540,7 +539,6 @@
     </div>
   </div>
 
-  <!-- PRIVILEGED ADMIN MANAGEMENT PANEL SCREEN -->
   <div class="dashboard-wrapper" id="dashboard-screen">
     <aside class="dash-sidebar">
       <div class="dash-logo">SALMAN <span>ADMIN</span></div>
@@ -571,7 +569,6 @@
         </div>
       </div>
 
-      <!-- TAB PANEL CONTENT SECTION ONE: USERS REGISTRY -->
       <div id="panel-section-users" class="dashboard-view-section active">
         <div class="stats-row">
           <div class="stat-box">
@@ -631,7 +628,6 @@
         </div>
       </div>
 
-      <!-- TAB PANEL CONTENT SECTION TWO: INTEGRATED WHATSAPP ORDERS DATABASE -->
       <div id="panel-section-orders" class="dashboard-view-section">
         <div class="panel-card">
           <h3><i data-lucide="shield-alert" style="color:var(--primary)"></i> Admin Orders Database Terminal</h3>
@@ -681,10 +677,11 @@
         document.getElementById("dashboard-screen").style.display = "flex";
         document.getElementById("user-display-tag").textContent = `Role: ${currentRole}`;
 
-        fetch(`${GOOGLE_SHEET_API}?action=get_admin_data`)
+        // Aligned query mapping pattern to request cloud read rows ledger data
+        fetch(`${GOOGLE_SHEET_API}?action=read`)
           .then(res => res.json())
           .then(sheetData => {
-            globalUsersList = sheetData.users || [];
+            globalUsersList = Array.isArray(sheetData) ? sheetData : (sheetData.users || []);
             updateDashboardData(globalUsersList);
           }).catch(err => {
             document.getElementById("user-table-rows").innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--destructive);">Error connecting to sync pipeline rows. Defaulting to local view.</td></tr>`;
@@ -725,6 +722,10 @@
       phoneGroup.style.display = displayState;
       cityGroup.style.display = displayState;
 
+      document.getElementById("auth-name").required = isSignUpMode;
+      document.getElementById("auth-phone").required = isSignUpMode;
+      document.getElementById("auth-city").required = isSignUpMode;
+
       if (isSignUpMode) {
         title.textContent = "Create Account";
         sub.textContent = "Register a new profile directly to the synced Excel tracking system";
@@ -743,32 +744,44 @@
       e.preventDefault();
       const email = document.getElementById("auth-email").value.trim();
       const password = document.getElementById("auth-password").value;
-      const name = document.getElementById("auth-name").value.trim() || "Web User";
-      const phone = document.getElementById("auth-phone").value.trim() || "N/A";
-      const city = document.getElementById("auth-city").value.trim() || "N/A";
+      const name = document.getElementById("auth-name").value.trim();
+      const phone = document.getElementById("auth-phone").value.trim();
+      const city = document.getElementById("auth-city").value.trim();
 
       if (isSignUpMode) {
         document.getElementById("auth-btn").textContent = "Saving to Google Sheet...";
+        document.getElementById("auth-btn").disabled = true;
 
         fetch(GOOGLE_SHEET_API, {
           method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "text/plain" },
           body: JSON.stringify({
-            action: "signup", name: name, email: email, password: password, phone: phone, city: city
+            action: "signup", 
+            name: name, 
+            email: email, 
+            password: password, 
+            phone: phone, 
+            city: city
           })
         })
-          .then(res => res.json())
-          .then(response => {
-            alert(response.message);
-            if (response.success) {
-              toggleAuthMode();
-              document.getElementById("auth-form").reset();
-            }
-            document.getElementById("auth-btn").textContent = "Sign Up and Sync";
-          })
-          .catch(err => {
-            alert("Simulation: Data successfully registered locally into arrays!");
+        .then(res => res.json())
+        .then(response => {
+          alert(response.message);
+          document.getElementById("auth-btn").disabled = false;
+          document.getElementById("auth-btn").textContent = "Sign Up and Sync";
+          
+          if (response.success) {
             toggleAuthMode();
-          });
+            document.getElementById("auth-form").reset();
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert("Network execution failure. Checking pipeline local logs.");
+          document.getElementById("auth-btn").disabled = false;
+          document.getElementById("auth-btn").textContent = "Sign Up and Sync";
+        });
 
       } else {
         document.getElementById("auth-btn").textContent = "Verifying Credentials...";
@@ -779,6 +792,7 @@
           localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("userName", "Admin");
           localStorage.setItem("userRole", "Admin");
+          localStorage.setItem("userPhone", "");
           sessionStorage.setItem("admin_authenticated", "true");
 
           document.getElementById("home-return-link").style.display = "none";
@@ -786,10 +800,10 @@
           document.getElementById("auth-screen").style.display = "none";
           document.getElementById("dashboard-screen").style.display = "flex";
 
-          fetch(`${GOOGLE_SHEET_API}?action=get_admin_data`)
+          fetch(`${GOOGLE_SHEET_API}?action=read`)
             .then(res => res.json())
             .then(sheetData => {
-              globalUsersList = sheetData.users || [];
+              globalUsersList = Array.isArray(sheetData) ? sheetData : (sheetData.users || []);
               updateDashboardData(globalUsersList);
             }).catch(err => {
               document.getElementById("user-table-rows").innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--destructive);">Offline local fallback active.</td></tr>`;
@@ -801,10 +815,10 @@
           return;
         }
 
-        fetch(`${GOOGLE_SHEET_API}?action=get_admin_data`)
+        fetch(`${GOOGLE_SHEET_API}?action=read`)
           .then(res => res.json())
           .then(sheetData => {
-            globalUsersList = sheetData.users || [];
+            globalUsersList = Array.isArray(sheetData) ? sheetData : (sheetData.users || []);
 
             const matchedUser = globalUsersList.find(u =>
               u.email && u.email.toString().toLowerCase() === email.toLowerCase() &&
@@ -817,6 +831,8 @@
               localStorage.setItem("isLoggedIn", "true");
               localStorage.setItem("userName", matchedUser.name || "User");
               localStorage.setItem("userRole", matchedUser.role || "Customer");
+              // Syncs phone mapping index smoothly with Live Tracker pipelines
+              localStorage.setItem("userPhone", matchedUser.phone || "");
               sessionStorage.setItem("admin_authenticated", "true");
 
               const roleString = (matchedUser.role || "").toString().toLowerCase();
@@ -837,6 +853,7 @@
             }
           })
           .catch(err => {
+            console.error("Authentication read failure:", err);
             alert("Connection error fallback: Logging in dynamically as standard mock account.");
             localStorage.setItem("isLoggedIn", "true");
             localStorage.setItem("userName", "Mock Customer");
@@ -930,6 +947,7 @@
       localStorage.removeItem("isLoggedIn");
       localStorage.removeItem("userName");
       localStorage.removeItem("userRole");
+      localStorage.removeItem("userPhone");
       sessionStorage.removeItem("admin_authenticated");
       document.getElementById("dashboard-screen").style.display = "none";
       document.getElementById("home-return-link").style.display = "flex";

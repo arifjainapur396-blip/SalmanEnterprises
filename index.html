@@ -6,10 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hudood Premium Store</title>
 
-  <!-- Tailwind CSS Play CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-  <!-- Lucide Icons Library CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -40,6 +36,29 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+    }
+
+    /* Helper Utilities replacing dependency on tailwind */
+    .flex {
+      display: flex;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    @media(min-width: 640px) {
+      .sm-flex-row {
+        flex-direction: row;
+      }
     }
 
     /* Global Container Utility */
@@ -103,7 +122,7 @@
 
     .desktop-nav {
       display: flex;
-      items: center;
+      align-items: center;
       gap: 2rem;
     }
 
@@ -261,8 +280,9 @@
     /* Hero Slideshow/Carousel Framework Section Styling */
     .hero-slider {
       position: relative;
-      height: calc(85vh - 7.5rem);
-      min-height: 450px;
+      height: 60vh;
+      /* Adjusted from 85vh to prevent extreme image cutting */
+      min-height: 400px;
       background-color: #0c0c0c;
       overflow: hidden;
     }
@@ -271,7 +291,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 98%;
       height: 100%;
       opacity: 0;
       visibility: hidden;
@@ -280,6 +300,7 @@
       align-items: center;
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
     }
 
     .slide::after {
@@ -1012,8 +1033,6 @@
       border-top: 1px solid #1a1a1a;
       padding-top: 2rem;
       display: flex;
-      flex-direction: column;
-      sm-flex-direction: row;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
@@ -1133,9 +1152,16 @@
       }
 
       .desktop-nav.open {
+        display: flex;
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+      }
+
+      .hero-slider {
+        height: 45vh;
+        /* Adjusted mobile height to match wider images without cutting */
+        min-height: 300px;
       }
 
       .slide-content h2 {
@@ -1169,36 +1195,37 @@
       .slide-content {
         padding: 0 1rem;
       }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Top Promo Ribbon -->
   <div class="promo-ribbon">
     ✨ Free Express Delivery on Orders Over ₹999 — Shop the Collection Now!
   </div>
 
-  <!-- Main Global Header Navigation -->
   <header>
     <div class="container nav-wrapper">
       <div class="flex items-center gap-4">
         <button class="menu-toggle" id="menu-toggle-btn" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">
           <span></span><span></span><span></span>
         </button>
-        <a href="index.html" class="brand">Hudood<span>.</span></a>
+        <a class='brand' href='/'>Hudood<span>.</span></a>
       </div>
 
       <nav class="desktop-nav" id="mobile-nav">
-        <a href="index.html" class="active">Home</a>
+        <a class='active' href='/'>Home</a>
         <a href="#products" onclick="toggleMenu()">Products</a>
-        <a href="Status.html">Order Status</a>
+        <a href='tracker.html'>Order Status</a>
         <a href="#contact" onclick="toggleMenu()">Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <!-- Authentication Toggle Button Control UI -->
         <button id="header-auth-btn" class="btn-auth-toggle logged-out" onclick="handleAuthAction()">
           <i data-lucide="log-in" style="width:14px;height:14px"></i>
           <span>Login</span>
@@ -1219,7 +1246,6 @@
     </div>
   </header>
 
-  <!-- Dropdown Search Panel Overlay -->
   <div class="search-panel" id="search-bar">
     <div class="container">
       <div class="search-container">
@@ -1230,11 +1256,8 @@
     </div>
   </div>
 
-  <!-- Hero Slideshow/Carousel Section -->
   <section class="hero-slider">
-    <!-- Slide One -->
-    <div class="slide active"
-      style="background-image: url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1600&q=80');">
+    <div class="slide active" style="background-image: url('offer-banner.png');">
       <div class="container">
         <div class="slide-content">
           <span class="slide-badge">Exclusive Premium Launch</span>
@@ -1245,15 +1268,13 @@
             <button class="btn-primary" onclick="scrollToCollection()">
               Shop Essentials <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
             </button>
-            <a href="Status.html" class="btn-secondary">Track Orders</a>
+            <a class='btn-secondary' href='tracker.html'>Track Orders</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Slide Two -->
-    <div class="slide"
-      style="background-image: url('https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=1600&q=80');">
+    <div class="slide" style="background-image: url('colgate.jpeg');">
       <div class="container">
         <div class="slide-content">
           <span class="slide-badge">Trusted Healthcare Formulations</span>
@@ -1269,7 +1290,6 @@
       </div>
     </div>
 
-    <!-- Slide Navigating Arrows -->
     <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous Slide">
       <i data-lucide="chevron-left" style="width:20px;height:20px"></i>
     </button>
@@ -1277,32 +1297,28 @@
       <i data-lucide="chevron-right" style="width:20px;height:20px"></i>
     </button>
 
-    <!-- Carousel Linear Indicator Dots -->
     <div class="slider-dots">
       <button class="dot active" onclick="currentSlide(0)" aria-label="Slide 1"></button>
       <button class="dot" onclick="currentSlide(1)" aria-label="Slide 2"></button>
     </div>
   </section>
 
-  <!-- Showcase Products Core Catalog Section -->
-  <main class="container flex-grow" style="padding-top: 4rem;" id="products">
+  <main class="container" style="padding-top: 4rem;" id="products">
     <h2 class="section-title">The Hudood Collection</h2>
     <p class="section-subtitle">Experience unmatched luxury in every item. Explore catalog listings filtered across
       verified performance tiers.</p>
 
     <div class="products-grid" id="products-grid">
-      <!-- Dynamic Javascript Layout Pipeline Insertion Node -->
     </div>
   </main>
 
-  <!-- Contact & Communication Portal Section -->
   <section id="contact" style="background: var(--muted); padding: 5rem 0; border-top: 1px solid var(--border);">
     <div class="container" style="max-width: 800px;">
       <h2 class="section-title">Get In Touch</h2>
       <p class="section-subtitle" style="margin-bottom: 2.5rem;">Have inquiries regarding wholesale distribution or bulk
         tracking? Drop us an electronic note instantly.</p>
 
-      <form onsubmit="sendMessage(e)"
+      <form onsubmit="sendMessage(event)"
         style="display:flex; flex-direction:column; gap:1.25rem; background:var(--background); padding:2.5rem; border-radius:20px; border:1px solid var(--border);">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
           <div style="display:flex; flex-direction:column; gap:0.5rem;">
@@ -1327,7 +1343,6 @@
     </div>
   </section>
 
-  <!-- Slide-Over Dynamic Overlay Shopping Cart Panel Template Layout -->
   <div class="cart-overlay" id="cart-overlay" onclick="if(event.target===this) closeCart()">
     <div class="cart-panel">
       <div class="cart-header">
@@ -1337,12 +1352,10 @@
         </button>
       </div>
 
-      <!-- Cart Item Records Dynamic Scroller Body Element Node Container -->
       <div class="cart-body" id="cart-body">
         <p class="cart-empty">Your cart is empty.</p>
       </div>
 
-      <!-- Live Order Tracking Updates Sub-Panel Node Area Component Layer -->
       <div style="padding: 0 1.5rem;" id="cart-live-tracking-panel"></div>
 
       <div class="cart-footer">
@@ -1357,7 +1370,6 @@
     </div>
   </div>
 
-  <!-- Marketing Promotional Offer Modal Popup Layout Container Layer Frame -->
   <div class="offer-modal" id="offer-banner-modal" onclick="if(event.target===this) closeOfferModal()">
     <div class="offer-box">
       <div class="offer-banner-img">
@@ -1379,20 +1391,19 @@
     </div>
   </div>
 
-  <!-- Footer Navigation Hub Infrastructure -->
   <footer>
     <div class="container footer-grid">
       <div class="footer-col">
-        <a href="index.html" class="brand" style="color: white; margin-bottom: 1rem;">Hudood<span>.</span></a>
+        <a class='brand' href='/' style='color: white; margin-bottom: 1rem;'>Hudood<span>.</span></a>
         <p>Curating absolute perfection across luxury daily cosmetics, lifestyle essentials, and premium skincare
           formulations since inception.</p>
       </div>
       <div class="footer-col">
         <h4>Navigation Links</h4>
         <ul class="footer-links">
-          <li><a href="index.html">Home Showcase</a></li>
+          <li><a href='/'>Home Showcase</a></li>
           <li><a href="#products">Product Collection</a></li>
-          <li><a href="Status.html">Order Status Dashboard</a></li>
+          <li><a href='/status'>Order Status Dashboard</a></li>
           <li><a href="#contact">Contact Support Desk</a></li>
         </ul>
       </div>
@@ -1424,131 +1435,23 @@
     </div>
   </footer>
 
-  <!-- Scroll-Assist Contextual Utilities Anchor Target -->
   <button class="back-top" id="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
     aria-label="Scroll Back To Top">
     <i data-lucide="arrow-up" style="width:18px;height:18px"></i>
   </button>
 
-  <!-- APPLICATION CONTROLLER SCRIPT CODE -->
   <script>
-    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzZMw9ynnLtdgID3KUTyHYkw5wt7ljUuFmyfbO4EKVc3fDwxP5bkxExz-EAozgVUixu/exec";
-
-    const products = [
-      { name: "Hudood Product One", price: 499, badge: "BEST SELLER", reviews: 245, desc: "Premium quality product with trusted performance.", image: "colgate.jpeg" },
-      { name: "Hudood Product Two", price: 699, badge: "SALE", reviews: 180, desc: "High quality product for everyday use.", image: "hudood-soap.jpeg" },
-      { name: "Hudood Product Three", price: 899, badge: "POPULAR", reviews: 302, desc: "Premium finish with excellent quality.", image: "images/product3.jpg" },
-      { name: "Hudood Product Four", price: 999, badge: "NEW", reviews: 96, desc: "One of our newest premium products.", image: "images/product4.jpg" },
-      { name: "Hudood Product Five", price: 1199, badge: "HOT", reviews: 411, desc: "Trusted quality with modern packaging.", image: "images/product5.jpg" },
-      { name: "Hudood Product Six", price: 1299, badge: "LIMITED", reviews: 154, desc: "Premium collection for everyday needs.", image: "images/product6.jpg" },
-    ];
-
-    let cartItems = [];
-    let wishlistCount = 0;
-    let menuOpen = false;
-    let searchOpen = false;
-    let currentSlideIndex = 0;
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-    lucide.createIcons();
-
-    document.addEventListener("DOMContentLoaded", () => {
-      checkLoginStatus();
-      lucide.createIcons();
-
-      setInterval(() => {
-        moveSlide(1);
-      }, 5000);
-
-      setTimeout(() => {
-        if (!localStorage.getItem("offerBannerDismissed")) {
-          const bannerModal = document.getElementById("offer-banner-modal");
-          if (bannerModal) bannerModal.classList.add("active");
-        }
-      }, 2000);
-    });
-
-    /* ─── AUTOMATIC LOGIN SYNCHRONIZATION LISTENERS ─── */
-    // Sync login immediately if changed in another tab/window
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'isLoggedIn' || e.key === 'loggedInUserPhone') {
-        checkLoginStatus();
-        if (document.getElementById("cart-overlay").classList.contains("open")) {
-          updateCartUI();
-        }
-      }
-    });
-
-    // Re-verify login status whenever the user switches back to this tab
-    window.addEventListener('focus', () => {
-      checkLoginStatus();
-    });
-
-    function showSlide(index) {
-      const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
-      if (slides.length === 0) return;
-
-      if (index >= slides.length) currentSlideIndex = 0;
-      else if (index < 0) currentSlideIndex = slides.length - 1;
-      else currentSlideIndex = index;
-
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-
-      slides[currentSlideIndex].classList.add('active');
-      if (dots[currentSlideIndex]) dots[currentSlideIndex].classList.add('active');
-    }
-
-    function moveSlide(step) {
-      showSlide(currentSlideIndex + step);
-    }
-
-    function currentSlide(index) {
-      showSlide(index);
-    }
-
-    function checkLoginStatus() {
-      const authBtn = document.getElementById("header-auth-btn");
-      const userAuthenticated = localStorage.getItem("isLoggedIn") === "true";
-      const userPhone = localStorage.getItem("loggedInUserPhone");
-
-      if (userAuthenticated && userPhone) {
-        authBtn.className = "btn-auth-toggle logged-in";
-        authBtn.innerHTML = `<i data-lucide="log-out" style="width:14px;height:14px"></i><span>Logout (${userPhone})</span>`;
-      } else {
-        authBtn.className = "btn-auth-toggle logged-out";
-        authBtn.innerHTML = `<i data-lucide="log-in" style="width:14px;height:14px"></i><span>Login</span>`;
-      }
-      lucide.createIcons();
-      renderLiveTrackingCartPanel();
-    }
-
-    function handleAuthAction() {
-      const userAuthenticated = localStorage.getItem("isLoggedIn") === "true";
-      if (!userAuthenticated) {
-        window.location.href = "login.html";
-      } else {
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("loggedInUserPhone");
-        sessionStorage.removeItem("admin_authenticated");
-        alert("Logged out successfully.");
-        checkLoginStatus();
-        if (document.getElementById("cart-overlay").classList.contains("open")) {
-          updateCartUI();
-        }
-      }
-    }
-
     /* ─── LIVE TRACKER COMPONENT SUBROUTINE ─── */
     function renderLiveTrackingCartPanel() {
-      const userAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+      const storedLoginState = localStorage.getItem("isLoggedIn");
+      const userAuthenticated = (storedLoginState === "true" || storedLoginState === "1");
       const userPhone = localStorage.getItem("loggedInUserPhone");
       const trackingContainer = document.getElementById("cart-live-tracking-panel");
 
       if (!trackingContainer) return;
 
-      if (!userAuthenticated || !userPhone) {
+      // 1. Check if the user is completely logged out
+      if (!userAuthenticated) {
         trackingContainer.innerHTML = `
           <div style="background:var(--muted); border:1px dashed var(--border); padding:1rem; border-radius:var(--radius); text-align:center; font-size:0.8rem; color:var(--muted-foreground); margin-top:0.5rem;">
             <i data-lucide="lock" style="width:16px;height:16px;margin:0 auto 0.25rem; display:block; color:var(--gold);"></i>
@@ -1559,6 +1462,19 @@
         return;
       }
 
+      // 2. Check if logged in, BUT phone number is missing
+      if (userAuthenticated && !userPhone) {
+        trackingContainer.innerHTML = `
+          <div style="background:var(--muted); border:1px solid var(--border); padding:0.85rem; border-radius:var(--radius); font-size:0.8rem; margin-top:0.5rem; color:var(--muted-foreground); text-align:center;">
+            <i data-lucide="info" style="width:14px;height:14px; vertical-align:middle; margin-right:4px;"></i> 
+            Place your first order to link a phone number for live tracking.
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      // 3. User is logged in AND has a phone number (Fetch Orders)
       trackingContainer.innerHTML = `
         <div style="text-align:center; padding:1rem; font-size:0.8rem; color:var(--muted-foreground);">
           <i data-lucide="loader" style="width:16px;height:16px;" class="lucide-spin"></i> Loading recent orders...
@@ -1572,7 +1488,7 @@
           if (!orders || orders.length === 0 || orders.error) {
             trackingContainer.innerHTML = `
               <div style="background:var(--muted); border:1px solid var(--border); padding:0.85rem; border-radius:var(--radius); font-size:0.8rem; margin-top:0.5rem; color:var(--muted-foreground);">
-                <i data-lucide="package-minus" style="width:14px;height:14px; vertical-align:middle; margin-right:4px;"></i> No active orders found under registration: ${userPhone}.
+                <i data-lucide="package-minus" style="width:14px;height:14px; vertical-align:middle; margin-right:4px;"></i> No active orders found under registration: ${escapeStr(userPhone)}.
               </div>
             `;
             if (window.lucide) lucide.createIcons();
@@ -1606,6 +1522,131 @@
           console.error(err);
           trackingContainer.innerHTML = "";
         });
+    }
+
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwI4trLvUQos7KZpchKLE-5OpZwpODTydeetFhwbZtSflscm09XB2XZb5co7SR_Eyx0/exec";
+
+    const products = [
+      { name: "Hudood Product One", price: 499, badge: "BEST SELLER", reviews: 245, desc: "Premium quality product with trusted performance.", image: "colgate.jpeg" },
+      { name: "Hudood Product Two", price: 699, badge: "SALE", reviews: 180, desc: "High quality product for everyday use.", image: "hudood-soap.jpeg" },
+      { name: "Hudood Product Three", price: 899, badge: "POPULAR", reviews: 302, desc: "Premium finish with excellent quality.", image: "images/product3.jpg" },
+      { name: "Hudood Product Four", price: 999, badge: "NEW", reviews: 96, desc: "One of our newest premium products.", image: "images/product4.jpg" },
+      { name: "Hudood Product Five", price: 1199, badge: "HOT", reviews: 411, desc: "Trusted quality with modern packaging.", image: "images/product5.jpg" },
+      { name: "Hudood Product Six", price: 1299, badge: "LIMITED", reviews: 154, desc: "Premium collection for everyday needs.", image: "images/product6.jpg" },
+    ];
+
+    let cartItems = [];
+    let wishlistCount = 0;
+    let menuOpen = false;
+    let searchOpen = false;
+    let currentSlideIndex = 0;
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Core Application Initializer
+    function initApp() {
+      lucide.createIcons();
+      checkLoginStatus();
+
+      setInterval(() => {
+        moveSlide(1);
+      }, 5000);
+
+      setTimeout(() => {
+        if (!localStorage.getItem("offerBannerDismissed")) {
+          const bannerModal = document.getElementById("offer-banner-modal");
+          if (bannerModal) bannerModal.classList.add("active");
+        }
+      }, 2000);
+    }
+
+    // Reliable listener setup replacing the old DOMContentLoaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+
+    // Ensure login button is refreshed even when navigating back via browser history
+    window.addEventListener('pageshow', () => {
+      checkLoginStatus();
+    });
+
+    /* ─── AUTOMATIC LOGIN SYNCHRONIZATION LISTENERS ─── */
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'isLoggedIn' || e.key === 'loggedInUserPhone') {
+        checkLoginStatus();
+        if (document.getElementById("cart-overlay").classList.contains("open")) {
+          updateCartUI();
+        }
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      checkLoginStatus();
+    });
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      if (slides.length === 0) return;
+
+      if (index >= slides.length) currentSlideIndex = 0;
+      else if (index < 0) currentSlideIndex = slides.length - 1;
+      else currentSlideIndex = index;
+
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      slides[currentSlideIndex].classList.add('active');
+      if (dots[currentSlideIndex]) dots[currentSlideIndex].classList.add('active');
+    }
+
+    function moveSlide(step) {
+      showSlide(currentSlideIndex + step);
+    }
+
+    function currentSlide(index) {
+      showSlide(index);
+    }
+
+    // Fixed Authentication Check Logic for proper UI synchronization
+    function checkLoginStatus() {
+      const authBtn = document.getElementById("header-auth-btn");
+      if (!authBtn) return;
+
+      const storedLoginState = localStorage.getItem("isLoggedIn");
+      const userAuthenticated = (storedLoginState === "true" || storedLoginState === "1");
+      const userPhone = localStorage.getItem("loggedInUserPhone") || "";
+
+      if (userAuthenticated) {
+        authBtn.className = "btn-auth-toggle logged-in";
+        authBtn.innerHTML = `<i data-lucide="log-out" style="width:14px;height:14px"></i><span>Logout ${userPhone ? `(${userPhone})` : ''}</span>`;
+      } else {
+        authBtn.className = "btn-auth-toggle logged-out";
+        authBtn.innerHTML = `<i data-lucide="log-in" style="width:14px;height:14px"></i><span>Login</span>`;
+      }
+
+      if (window.lucide) lucide.createIcons();
+      renderLiveTrackingCartPanel();
+    }
+
+    function handleAuthAction() {
+      const storedLoginState = localStorage.getItem("isLoggedIn");
+      const userAuthenticated = (storedLoginState === "true" || storedLoginState === "1");
+
+      if (!userAuthenticated) {
+        window.location.href = "login.html";
+      } else {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("loggedInUserPhone");
+        sessionStorage.removeItem("admin_authenticated");
+        alert("Logged out successfully.");
+        checkLoginStatus();
+        if (document.getElementById("cart-overlay").classList.contains("open")) {
+          updateCartUI();
+        }
+      }
     }
 
     function escapeStr(str) {
@@ -1730,12 +1771,20 @@
       const total = cartItems.reduce((s, i) => s + i.qty, 0);
       const totalPrice = cartItems.reduce((s, i) => s + i.qty * i.price, 0);
       const badge = document.getElementById("cart-badge");
+      const storedLoginState = localStorage.getItem("isLoggedIn");
+      const userAuthenticated = (storedLoginState === "true" || storedLoginState === "1");
+
       badge.textContent = total;
       badge.style.display = total > 0 ? "inline" : "none";
       document.getElementById("cart-title").textContent = `Your Cart (${total})`;
       document.getElementById("cart-total").textContent = `₹${totalPrice}`;
 
       const body = document.getElementById("cart-body");
+
+      const oldName = document.getElementById("cust-name") ? document.getElementById("cust-name").value : "";
+      const oldPhone = document.getElementById("cust-phone") ? document.getElementById("cust-phone").value : "";
+      const oldAddress = document.getElementById("cust-address") ? document.getElementById("cust-address").value : "";
+
       if (cartItems.length === 0) {
         body.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
       } else {
@@ -1753,26 +1802,47 @@
           </button>
         </div>`).join("");
 
-        const savedPhone = localStorage.getItem("loggedInUserPhone") || "";
-        let formHtml = `
-        <div class="checkout-form-container">
-          <h4>Delivery Details</h4>
-          <input type="text" id="cust-name" placeholder="Full Name" required />
-          <input type="tel" id="cust-phone" placeholder="Phone Number" value="${savedPhone}" required />
-          <textarea id="cust-address" placeholder="Complete Address" rows="2" required></textarea>
-        </div>`;
+        let formHtml = "";
+        if (userAuthenticated) {
+          const savedPhone = oldPhone || localStorage.getItem("loggedInUserPhone") || "";
+          formHtml = `
+          <div class="checkout-form-container">
+            <h4>Delivery Details</h4>
+            <input type="text" id="cust-name" placeholder="Full Name" required />
+            <input type="tel" id="cust-phone" placeholder="Phone Number" value="${savedPhone}" required />
+            <textarea id="cust-address" placeholder="Complete Address" rows="2" required></textarea>
+          </div>`;
+        } else {
+          formHtml = `
+          <div style="background:var(--muted); border:1px dashed var(--border); padding:1rem; border-radius:var(--radius); text-align:center; font-size:0.85rem; color:var(--muted-foreground);">
+            Please log in to your account to complete delivery information and place your order.
+          </div>`;
+        }
 
         body.innerHTML = itemsHtml + formHtml;
+
+        if (userAuthenticated) {
+          if (document.getElementById("cust-name") && oldName) document.getElementById("cust-name").value = oldName;
+          if (document.getElementById("cust-address") && oldAddress) document.getElementById("cust-address").value = oldAddress;
+        }
         lucide.createIcons();
       }
 
       const actions = document.getElementById("cart-actions");
       if (cartItems.length > 0) {
-        actions.innerHTML = `
-        <button class="btn-dashboard-order" onclick="submitOrderToDashboard(${totalPrice})">
-          <i data-lucide="shopping-bag" style="width:18px;height:18px"></i>
-          Place Order Directly
-        </button>`;
+        if (userAuthenticated) {
+          actions.innerHTML = `
+          <button class="btn-dashboard-order" onclick="submitOrderToDashboard(${totalPrice})">
+            <i data-lucide="shopping-bag" style="width:18px;height:18px"></i>
+            Place Order Directly
+          </button>`;
+        } else {
+          actions.innerHTML = `
+          <button class="btn-dashboard-order" style="background:var(--gold); color:var(--primary);" onclick="window.location.href='login.html'">
+            <i data-lucide="log-in" style="width:18px;height:18px"></i>
+            Login to Place Order
+          </button>`;
+        }
       } else {
         actions.innerHTML = `<button class="btn-disabled" disabled>Your cart is empty</button>`;
       }
@@ -1796,6 +1866,13 @@
     }
 
     function submitOrderToDashboard(totalPrice) {
+      const storedLoginState = localStorage.getItem("isLoggedIn");
+      if (storedLoginState !== "true" && storedLoginState !== "1") {
+        alert("Authentication required. Redirecting to login page.");
+        window.location.href = "login.html";
+        return;
+      }
+
       const details = getFormDetails();
       if (!details) return;
 
